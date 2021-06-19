@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Reference Guide</title>
+  <style type="text/css">
+  body {
+    box-sizing: border-box;
+    background-color: black;
+    color: #cccccc;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #222222;
+    text-align: center;
+    font-size: 1.62em;
+    padding: 10px;
+    /*
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    */
+  }
+
+  main {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+  }
+
+  footer {
+    background-color: #222222;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  footer span {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  article {
+    width: 100%;
+    background-color: #111111;
+    padding: 20px;
+    margin: 5px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  h2 {
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  h3 {
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  h4 {
+    display: inline;
+    font-size: 1em;
+    font-weight: normal;
+    text-decoration: underline;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  td {
+    text-align: left;
+  }
+
+  td:nth-child(odd) {
+    width: 100px;
+  }
+
+  p, span.p {
+    display: block;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+
+  a:link, a:visited {
+    color: #0000FF;
+  }
+
+  a:hover, a:active {
+    color: #FF00FF;
+  }
+
+  .code, .opt, .sti, .kwd {
+    font-family: Consolas, 'Courier New', Courier, monospace;
+  }
+
+  .code {
+    color: #0000FF;
+  }
+
+  .sti {
+    font-style: italic;
+  }
+
+  .opt {
+    color: #00FF00;
+  }
+
+  .kwd {
+    font-style: normal;
+    color: #FF00FF;
+  }
+
+  .udl {
+    text-decoration: underline;
+  }
+
+  p span.code:first-child, span.p span.code:first-child {
+    margin-right: 20px;
+  }
+
+  #index a {
+    text-decoration: none;
+  }
+  </style>
+</head>
+<body>
+  <header>JavaScript Reference Guide</header>
+  <main>
+    <article>
+      <div style="text-align: center; font-size: 1.2em; font-weight: bold; text-decoration: underline;">Index</div>
+      <div id="index"></div>
+    </article>
+    <article>
+      <h1>Global Features</h1>
+      <h2>Syntax, Keywords and Declaration</h2>
+      <h3>Basic Syntax</h3>
+      <table>
+        <tr>
+          <td><span class="code">// …</span></td><td>line comment.</td>
+          <td><span class="code">/* … */</span></td><td>block comment.</td>
+        </tr>
+        <tr>
+          <td><span class="code">;	</span></td><td>end of line/statement, not always required.</td>
+          <td><span class="code">{ … }	</span></td><td>block scope.</td>
+        </tr>
+        <tr>
+          <td><span class="code">(…)	</span></td><td>grouping operator for expressions</td>
+          <td><span class="code">… , …	</span></td><td>Comma operator: evaluates each, returns last.</td>
+        </tr>
+      </table>
+      <h3>Variables Declarations</h3>
+      <p><span class="code"><span class="kwd">var</span> <span class="sti">variable</span> = <span class="sti">value</span><span class="opt">, …</span></span>	declares a global scope variable, may be initialized to value, may declare an initialize a set of comma-separated variables.</p>
+      <p><span class="code"><span class="kwd">let</span> <span class="sti">variable</span></span> declares a block level variable.</p>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">constant</span></span> declares a constant value o reference to an object.</p>
+      <h3>Functions</h3>
+      <p><span class="code"><span class="kwd">function</span> <span class="sti">funct</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</span> <span class="udl">function declaration:</span> may receive "<span class="code sti opt">parameters</span>", runs containing statements when called, may "<span class="kwd">return</span>" the specified "<span class="sti opt">output</span>" if given, else "<span class="code">undefined</span>" is implied.</p>
+      <p><span class="code"><span class="kwd">var</span> <span class="sti">funct</span> = <span class="kwd">function</span> <span class="sti">functName</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</span> <span class="udl">function expression:</span> assigns the given function to the variable; may be named, but only referred in the expression (useful when self-recurring).</p>
+      <p>
+        <span class="code">(<span class="opt"><span class="sti">parameters</span>, …</span>) => { …; <span class="opt">return <span class="sti">output</span>;</span> }</span> <span class="udl">arrow function notation:</span> creates anonymous functions, if it has only a single statement then its result is taken implicitly as return.
+        <span class="p"><span class="code">arguments</span> functions' built-in array-like object that contains the arguments list.</span>
+        <span class="p"><span class="code">.name</span> nonstandard property that holds the function's name (even named function expressions).</span>
+        <span class="p"><span class="code">.call(<span class="sti">thisArg</span><span class="opt">, <span class="sti">arguments</span>, …</span>)</span> calls a function and sets its "this" reference to "<span class="code sti">thisArg</span>".</span>
+        <span class="p"><span class="code">.apply(<span class="sti">thisArg</span><span class="opt">, <span class="sti">argArray</span></span>)</span> calls a function and sets its "this" reference to "<span class="code sti">thisArg</span>", provides arguments for the functions as and array "<span class="sti opt">argArray</span>".</span>
+        <span class="p"><span class="code">.bind(<span class="sti">thisArg</span><span class="opt">, <span class="sti">arguments</span>, …</span>)</span> creates a new function that, when called, has its "this" keyword set to the provided "<span class="code sti">thisArg</span>".</span>
+      </p>
+      <p><span class="code"><span class="sti">funct</span>(<span class="opt"><span class="sti">arguments</span>, …</span>)</span> <span class="udl">function calling:</span> invokes a defined function, may require arguments to be passed.</p>
+      <p><span class="code">(<span class="sti">functionStatement</span>)(<span class="opt">arguments</span>)</span> <span class="udl">Immediately invoked function expression:</span> immediately calls the function defined in the grouping operator (it is a grouping operator and an invoking operator).</p>
+      <h2>Data types and conversion</h2>
+      <h3>Base data types</h3>
+      <table>
+        <tr>
+          <td><span class="code">Number</span></td><td>integers, floats, "<span class="code">NaN</span>", "<span class="code"><span class="opt">(-)</span>Infinity</span>".</td>
+          <td><span class="code">String</span></td><td>text enclosed by either "<span class="code">'…'</span>" or "<span class="code">"…"</span>".</td>
+        </tr>		
+        <tr>
+          <td><span class="code">Boolean</span></td><td>"<span class="code">true</span>" or "<span class="code">false</span>"</td>
+          <td><span class="code">Object</span></td><td>Includes "<span class="code">Function</span>" and "<span class="code">Array</span>"</td>
+        </tr>
+        <tr>
+          <td><span class="code">null</span></td><td>Intentionally nothing</td>
+          <td><span class="code">undefined</span></td><td>value has never been defined</td>
+        </tr>
+      </table>
+      <h3>Strings</h3>
+      <p><span class="code">'…' | "…"</span> regular string declaration.</p>
+      <p><span class="code">`…`</span> string template literals, displays string with newlines and embedded expressions with placeholders.
+        <span class="p"><span class="code">${…}</span>placeholders for string literals, the expression inside is evaluated and the result printed in the string.</span>
+      </p>
+      <p><span class="udl">Strings Escape Characters (<span class="code">\</span>):</span> <span class="code">\b</span> Backspace; <span class="code">\f</span> Form Feed; <span class="code">\n</span> New Line; <span class="code">\r</span> Carriage Return; <span class="code">\t</span> Horizontal Tabulator; <span class="code">\v</span> Vertical Tabulator.</p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+		
+	
+	
+	
+ 
+Compound Data types
+var array = [ values,… ]	array literal declaration: declares a variable "array" initialized with "values".
+array[index]	access the element at position "index" of the array.
+...list	spread/rest syntax: spreads an array to a list where a list is expected or condenses a list into an array.
+var object = { property: value, …, method: function(…) {…} }	object literal declaration: can contain properties, methods and other objects, declared as "key: value".
+delete	keyword operator that deletes a property from an object.
+[a, b,…] = [x, y,…]; {a, b,…} = {a:x, b:y,…}	Destructuring assignment: allows you to assign the properties of an array or object to variables using syntax that looks similar to array or object literals. 
+Operators
+Arithmetic Operators
++	sum | string concatenation	-	subtraction
+*	multiplication	/	floating point division
+**	exponentiation	%	modulus (integer division remainder)
+++	increment (prefix or postfix)	--	decrement (prefix or postfix)
+oper=	assignment, simple or compound (may be preceded by other operands: +=, -=, *=, /=)
+Comparison Operators
+==	equal value	!=	not equal value
+===	equal value and type	!==	not equal value or not equal type
+>	greater than	<	less than
+>=	greater than or equal to	<=	less than or equal to
+…?…:…	ternary operator, evaluates first operand and if true returns the one left from the colon, if false the right one
+=…||…	conditional assignment, if the first value is "falsy" (null, undefined, false), then assign the second value
+Logical Operators
+&&	returns true if both statements are true	||	returns true if any one statement is true
+!	reverses the result		
+Type operators
+typeof variable	returns a string with the type of "variable" (string, number, boolean,…).
+object instanceof class	returns true if an object is an instance of an object type.
+property in object	returns true if "property" (as a string) is a member of "object" (object[property] != undefined).
+void expression	evaluates the given expression and then returns "undefined".
+Access Operators
+.		member selection operator: to access properties, methods or other objects inside an object (object.menber).
+[…]	index operator: used to access the member of an array at the position of index inside (number), or a member of an object by its name (string).
+(arguments)	function call operator: invokes the function defined by the preceding expression, can include "arguments".
+
+Logical Structures and Loops
+Flow Control: Break and Continue
+break label;	declares an exit of the innermost loop or the one defined by the "label".
+continue label;	declares a jump to the next iteration of the innermost loop or the one defined by the "label".
+If Else Statements
+if (condition) { …; }	if condition evaluated is true, executes contained statements.
+	else if (condition) { …; }	if previous conditions are false and the one indicated is true, run script.
+	else  { …; }		if all previous conditions are false, run script.
+Switch Case
+switch (statement) { cases… }	evaluates the result of "statement" and executes the "case" that matches.
+	case value: …; break;	executes statements if "statement" is equal to "value", ends with a "break".
+	default: script; break;	run "script" if "statement" is not equal to any defined case value.
+Do While Loops
+label: while (condition) { …; }	executes statements while defined "condition" is true.
+label: do { …; } while (condition)	executes statements once and as long as "condition" is true.
+For Loops
+label: for (initial; condition; step) { …; }	sets the "initial" statement, then runs "script" while "condition" is true, executing the "step" statement at the end of each iteration.
+for (key in object) { …; }	executes statements for each "key" property in the "object", using "key" as iterator key string (name of the current parameter of the object, refer as "object[key]").
+for (item of iterable) { …; }	executes statements for each "item" in the "iterable" object (array or array-like, string) using "item" as iterator. 
+Error Handling, Promises and Modules.
+Error Handling
+try { … }	defines a block of statements that might produce an error.
+	throw expression	defines an exception thrown, can be a string or an  "Error" object (new Error(msg)).
+catch(error) { … }	defines a block of statements to handle an error produced on a "try" block, and stores it in the "error" object of type "Error()".
+.message	property of "Error" type objects that contains the error message.
+.name	property of "Error" type objects that contains the error name.
+finally { … }	optional final block of statements that will be executed weather or not the "try" block threw an error.
+Promises (Asynchronous Functions)
+return new Promise(function callback(resolve, reject) { …; } )	the function won't return an immediate value, but rather will either be successful and send the value in a "resolve(…)", or fail and send an error message from a "reject(…)".
+resolve(resolved)	function declared in promise's callback that returns a "resolved" promise.
+reject(rejected)	function declared in promise's callback that returns a "rejected" promise.
+.then(function callback(resolved) { … })	Promise's method that takes the "resolved" value and executes the statements that would follow, they can be chained (asyncFn(…).then(…).then(…).catch(…)).
+.catch(function callback(rejected) { … })	Promise's method that takes the "rejected " value and executes the statements that would follow.
+.finally(function callback() { … })	Promise's method that is called at the end of a promise chain when the promise is settled, whether fulfilled or rejected.
+async function asyncFn(parameters,…) { … }	declares an asynchronous function that returns an implied promise, can be used inside "try …catch" blocks.
+await asyncStatement	used only inside "async" functions, stops its execution until a resolved or rejected promise is returned from the "asyncStatement" and returns that value.
+Modules
+import exported as alias,… from 'module-or-file-path'	declares a resource imported (static) from another module, where the resources "exported" can be: the default module "defaultExport", all "*" (can also be done as "import 'module'"), or a specific list "{ exportedN as aliasN, … }".
+import('module')	declares a dynamic import when called as a function and returns the module as a "Promise".
+export default resource	declares a "resource" (function, class, object, variable) to be exported to other modules, where only one can be set as "default" which doesn't need to be named.
+
+Built-in Objects, Properties, Methods and Functions
+Parent Object
+Object(…)	constructor function for new objects, equivalent to: var newObject = {}; can be initialized with a list of comma-separated pair of values in the form of “property: value,”, where value can variables, functions or other objects.
+.create(objectTemplate)	class (static) method that creates a new object with the same properties of "objectTemplate" through inheritance (with same initial values by default, stored in ".prototype").
+.getPrototypeof(object)	class (static) method returns the prototype of the specified object.
+.toString()	returns a string representing the object.
+String Objects Methods
+String(…)	constructor function for strings, can convert from numbers.
+.length	property that returns the length of the string.
+.charAt(index)	strings method, returns character at "index".
+.concat(string)	receives a string to be concatenated at the end of the string it is applied.
+.includes(string)	returns true if the "string" argument is contained in the applied string.
+.startsWith(string)	returns true if the string applied starts with the given "string", otherwise false.
+.endsWith(string)	returns true if the string applied ends with the given "string", otherwise false.
+.match(regExp)	returns the matches of the applied "regExp" regular expression.
+.toLowerCase()	returns the string with all characters in lower cases.
+.toUpperCase()	returns the string with all characters in upper cases.
+.trim()	removes blank spaces from both ends of the string.
+.replace(regExp, string)	returns the string with the matches of the "regExp" replaced by "string".
+.search(regExp)	returns the index of the first match of the "regExp", or "-1" if not found.
+.slice(start, end)	returns a new string from "start" index (inclusive) until "end" index (not inclusive) if given, or until the end of the original string; indexes can be negative (from the end of the string)
+.split(separator, limit)	returns an array of substring from the original string divided by a "separator" string or regular expression, but until reaching a "limit" number of elements if given.
+.substr(start, length)	(deprecated) returns a portion of the original string, from "start" index and with a defined by "length" if given.
+.substring(start, end)	strings method, returns part of a string starting a "start" index (inclusive) and ending before "end" index (not inclusive, end of string if omitted).
+.charCodeAt(index)	string method, returns Unicode value of the character at "index".
+Array Objects Properties and Methods
+Array(…)	constructor function for arrays, empty if no arguments, otherwise with its arguments as the values.
+.isArray(argument)	"Array()" class (static) method that returns true if the argument is an array.
+.length	property of any array (and array-like objects like strings and arguments list) that returns their length.
+Array Modifying Methods:
+.push(element)	adds the arguments to the end of the array and returns the next index.
+.unshift(element)	adds the arguments to the start of the array and returns the new length.
+.pop()	removes the last element of the array and returns it.
+.shift()	removes the first element of the array and returns it.
+.concat(elements)	returns the original array joined together with other arrays or values provided in the arguments.
+.slice(start, end)	returns a new array from "start" index (inclusive) until "end" index (not inclusive) if given, or until the end of the original string; indexes can be negative (from the end of the string).
+.splice(start, deleteCount, elements…)	changes the contents of an array from "start" index by removing (if "deleteCount" > 0) and/or adding new "elements" (if any) in place, and returns an array with the removed items (empty if none).
+.fill(value, start, end)	assigns "value" to the elements of the array, from "start" index (inclusive, default "0") to "end" index (not inclusive, default "array.length").
+.reverse()	reverses the order of the elements of an array in place (the original array).
+Array Query Methods:
+.indexOf(element, start)	returns the index of the first element from "start" index (inclusive, default "0") that corresponds to "element", or "-1" if not found.
+.lastIndexOf(element, start)	returns the index of the last element from "start" index and going backwards (inclusive, default "array.length - 1") that corresponds to "element", or "-1" if not found.
+.incluides(element)	returns "true" if the array includes the given element, otherwise "false".
+.join(string)	returns a string created by concatenating all elements in the array with the given "string" delimiter.
+.toString()	returns a string representing the array and its elements.
+. toLocaleString()	returns a localized string representing the array and its elements.
+Array Iterating Methods:
+.forEach(function callback(element, index, array) {…})	takes a callback function as argument that is called upon each "element" of the "array".
+.map(function callback(element, index, array) { …; return mapElement; })	takes a callback function as argument that is called upon each "element" of the "array" and returns a new array out of the returned values of the callback.
+.find(function callback(element, index, array) { …; return boolean; })	returns the first element for which the "callback" function returns "true".
+.findIndex(function callback(element, index, array) { …; return boolean; })	returns the index of the first element for which the "callback" function returns "true".
+.filter(function callback(element, index, array) { …; return boolean; })	returns a new array containing all elements for which the "callback" function returns "true".
+.every(function callback(element, index, array) { …; return boolean; })	returns "true" if all of the elements in the array return "true" on the callback function.
+.some(function callback(element, index, array) { …; return boolean; })	returns "true" if at least one of the elements in the array returns "true" on the callback function.
+.reduce(function callback(accumulator, element, index, array) { …; return toAccumulator; } , initialValue)	executes a reducer function on each element assigning its returned value to the given "accumulator", and returns the final value of it; can have an "initialValue" set for the "accumulator".
+.reduceRight(function callback(accumulator, element, index, array) { …; return toAccumulator; } , initialValue)	executes a reducer function on each element, going from last to first, assigning its returned value to the given "accumulator", and returns the final value of it; can have an "initialValue" set for the "accumulator".
+.sort(function callback(first, second) { …; return number; })	sorts the original array, by converting to strings and comparing their Unicode value, or by result of "callback" comparing two elements and sorting "first" before "second" if it returns a "number" <= 0, or backwards otherwise.
+Date Methods
+Date(…)	constructor function for date objects, by default (if no arguments) to the current time, otherwise accepts arguments in order (year, month zero index, day, hour, minutes, seconds)
+.now()	"Date" class (static) method that returns the number of milliseconds elapsed since the "Unix Epoch" (January 1, 1970 00:00:00 UTC).
+.toLocaleString()	returns the instantiated date in local string format.
+.getTime()	returns the number of milliseconds of the instantiated date since the "Unix Epoch".
+.getMonth()	returns the month of the instantiated date with zero index (0 for January – 11 for December).
+.getDate()	returns the day of the month of the instantiated date (1 – 31).
+.getDay()	returns the day of the week with zero index of the instantiated date (0 for Sunday – 6 for Saturday).
+.getFullYear()	returns the four-digit year of the instantiated date.
+.getHours()	returns the hour in 24-hour format (0 – 23) of the instantiated date.
+.getMinutes()	returns the minutes of the instantiated date.
+.getSeconds()	returns the seconds of the instantiated date.
+Math Methods
+Math	Built-in object that contains mathematical operation methods and constants.
+.PI	property that contains the value of "pi" (π ≈ 3.1416).
+.E	property that contains the value of Euler's constant (e ≈ 2.7183).
+.abs(number)	returns the absolute value of the "number" argument.
+.max(numbers)	returns the greatest value among the parameters
+.min(numbers)	returns the lowest value among the parameters
+.pow(base, exp)	returns the result of the "base" number elevated to the "exp" power.
+.exp(exp)	returns the result of the power of "e" elevated to the number "exp".
+.log(number)	returns the natural logarithm (base "e") of the given "number".
+.sqrt(number)	returns the square root of the parameter.
+.ceil(number)	returns the parameter rounded up.
+.floor(number)	returns the parameter rounded down.
+.round(number)	returns the parameter properly rounded.
+.random()	returns a number at random between 0 (inclusive) and 1 (not inclusive); that is: [0,1)
+.toFixed()	method to fix the number of decimals for a float to amount in argument or zero if not specified.
+.sin(x); .cos(x); tan(x); .asin(x); .acos(x); .atan(x); .asinh(x); .acosh(x); .atanh(x); .asinh(x); .acosh(x); .atanh(x);	trigonometric and hyperbolic functions, angle units are in radians.
+Console Methods
+console	object with methods that display information on the console.
+.log(…)	general output of logging information.
+.warn(…)	outputs a warning message.
+.error(…)	outputs an error message.
+.table(…)	displays tabular data as a table.
+.dir(object)	displays an interactive list of the properties of the specified JavaScript "object".
+.assert(condition, …)	if "condition" is false, outputs a list of objects or a substitution string with objects.
+.count(label)	outputs the number of times it has been called, with "label" if supplied, else with string "default".
+.time(label)	starts a timer set to a "label" string that you can use to track how long an operation takes.
+.timeLog(label)	logs to the console the current value of a timer.
+.timeEnd(label)	stops and logs to the console the final value of a timer.
+JSON Parsing Methods
+JSON	object with methods to handle conversion of JavaScript objects to and from JavaScript Object Notation strings. 
+.parse(string)	returns an object from the "string" parsed.
+.stringify(object)	returns a JSON string from the "object" parsed.
+RegExp Methods
+RegExp('/pattern/options')	constructor function for regular expression objects, receives a regular expression string where "pattern" is the RegExp and "options" are i: case insensitive, g: global, m: multiline.
+var regexp = /pattern/options;	RegExp literal declaration: "pattern" is enclosed inside "/…/".
+.test(string)	tests the RegExp for a match in its "string" parameter and returns a Boolean.
+.exec(string)	executes a search for a match in a specified string and returns a result array, or "null".
+\	ignore default value of preceding character.	.	any character.
+?	previous  character once or none.	*	previous character none or more.
++	previous character once or more.	x	match character "x".
+^	match beginning of the string.	$	match end of the string.
+\d	any digit.	\D	any character that's not a digit.
+\w	any word char (letters, numbers and "_").	\W	any non-word character.
+\s	any single white space char (space, tab, …).	\S	any character that's not a white space.
+\t	horizontal tab.	\r	carriage return.
+\n	linefeed.	\v	vertical tab.
+\f	form-feed.	[\b]	backspace.
+\b	word boundary.	\B	non-word boundary.
+[set]	match one character in the "set".	[^set]	match one character not in the "set".
+x{n,m}	match "x" char "n" times, "," at least, up to "m" times	x|y	matches either "x" or "y".
+x(?=y)	matches "x" only if it's followed by "y".	x(?!y)	matches "x" only if it's not followed by "y".
+(?<=y)x	matches "x" only if it's preceded by "y".	(?<!y)x	matches "x" only if it's not preceded by "y".
+Other Global Functions
+Timers:
+setTimeout(function callback(parameters,…) { … }, delay, callback-arguments…)	executes a "callback" function or specified piece of code once the "delay" timer (in milliseconds) expires, and returns an integer as an ID; if the callback is not defined inline, " callback-arguments…" can be provided.
+clearTimeout(timeoutID)	cancels a timeout previously established by calling "setTimeout()".
+setInterval(function callback(parameters,…) { … }, delay, callback-arguments…)	repeatedly calls a "callback" function or specified piece of code every time the "delay" timer (in milliseconds) expires, and returns an integer as an ID; if the callback is not defined inline, " callback-arguments…" can be provided.
+clearInterval()	cancels a timed, repeating action which was previously established by a "setInterval()".
+Value Check or Conversion:
+Number(…)	constructor function for numbers, can convert from strings.
+parseFloat(string)	parses a "string" (from left to right) and returns a floating-point number.
+parseInt(string, base)	parses a "string", and returns an integer of the specified "base" (default 10).
+isNaN(value)	checks if argument is not a number (or string of), returns true/false.
+.isFinite(value)	global function, checks if argument is a finite number (or string of).
+encodeURI(string);  decodeURI(string)	global functions, encode/decode text from/to URI.
+Custom Constructor Functions, Prototype (inheritance), and JavaScript Class
+function Constructor(parameters, …) { this.prop = param; … ; this.method = function (…) { …; } }; defines a constructor function for objects of type "Constructor".
+var object = new Constructor(arguments, …);	creates an object which is a new instance of the original constructor object;
+.prototype	objects property that accesses the object from which it inherits, can be used on constructor functions to add new methods to derived instances.
+new	instance operator: creates a new object as an instance of the Constructor function that follows.
+this	objects reference keyword, if alone refers to the global object, inside a method refers to the owner object.
+class ClassName extends ParentClass { … }	class declaration for custom defined objects, can inherit ("extends") from a "ParentClass".
+constructor(parameters, …) { this.property = parameter; … }	class designated constructor.
+super	refers the "ParentClass" object if it exists, and calls its constructor if the calling operator its applied.
+static	defines a property or method that belongs to the class itself and not to any instance.
+var newObject = new className(arguments)	class instantiation (object creation).
+
+    </article>
+    <article>
+      DOM Objects, Properties and Methods
+    </article>
+    <article>
+      Client-Side Libraries
+    </article>
+    <article>
+      Node.js
+    </article>
+    <article>
+      React
+    </article>
+    <article>
+      Angular
+    </article>
+  </main>
+  <footer>Legend:      <span class="code">strict syntax</span> <span class="code sti">stand-in</span> <span class="kwd">keyword</span> <span class="opt">optional</span> <span class="sti opt">stand-in optional</span></footer>
+  <script type="text/javascript">
+  document.body.onload = function() {
+    let headers = document.querySelectorAll('h1, h2, h3');
+    let count = 0;
+    headers.forEach((elem) => {
+      let hdId = 'hd' + (++count);
+      let anchor = document.createElement('a');
+      elem.setAttribute('id', hdId);
+      anchor.setAttribute('href', `#${hdId}`);
+      let indent = parseInt(elem.outerHTML.charAt(2)) - 1;
+      anchor.setAttribute('style', `margin-left: ${indent * 30}px`)
+      anchor.innerText = elem.innerText;
+      let line = document.createElement('p');
+      line.appendChild(anchor);
+      document.querySelector('#index').appendChild(line);
+    });
+  };
+  </script>
+</body>
+</html>
