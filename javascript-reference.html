@@ -211,27 +211,24 @@
         <span class="p"><span class="code">${…}</span>placeholders for string literals, the expression inside is evaluated and the result printed in the string.</span>
       </p>
       <p><span class="udl">Strings Escape Characters (<span class="code">\</span>):</span> <span class="code">\b</span> Backspace; <span class="code">\f</span> Form Feed; <span class="code">\n</span> New Line; <span class="code">\r</span> Carriage Return; <span class="code">\t</span> Horizontal Tabulator; <span class="code">\v</span> Vertical Tabulator.</p>
+      <h3>Compound Data types</h3>
+      <p><span class="code"><span class="kwd">var</span> <span class="sti">array</span> = [ <span class="opt"><span class="sti">values</span>,…</span> ]</span> <span class="udl">array literal declaration:</span> declares a variable "array" initialized with "values".
+        <span class="p"><span class="code"><span class="sti">array</span>[<span class="sti">index</span>]</span> access the element at position "<span class="code sti">index</span>" of the array.</span>
+        <span class="p"><span class="code">...<span class="sti">list</span></span> <span class="udl">spread/rest syntax:</span> spreads an array to a list where a list is expected or condenses a list into an array.</span>
+      </p>
+      <p><span class="code"><span class="kwd">var</span> <span class="sti">object</span> = { <span class="opt"><span class="sit">property</span>: <span class="sti">value</span>, …, <span class="sti">method</span>: function(…) {…}</span> }	</span> <span class="udl">object literal declaration:</span> can contain properties, methods and other objects, declared as "<span class="code"><span class="sti">key</span>: <span class="sti">value</span></span>".
+        <span class="p"><span class="code"><span class="kwd">delete</span></span> keyword operator that deletes a property from an object.</span>
+      </p>
+      <p><span class="code">[<span class="sti">a</span>, <span class="sti">b</span>,…] = [<span class="sti">x</span>, <span class="sti">y</span>,…]; {<span class="sti">a</span>, <span class="sti">b</span>,…} = {<span class="sti">a</span>:<span class="sti">x</span>, <span class="sti">b</span>:<span class="sti">y</span>,…}</span> <span class="udl">Destructuring assignment:</span> allows you to assign the properties of an array or object to variables using syntax that looks similar to array or object literals. </p>
       <p><span class="code"></span> </p>
       <p><span class="code"></span> </p>
       <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-		
+      <h2>Operators</h2>
+      <h3>Arithmetic Operators</h3>
 	
 	
+
 	
- 
-Compound Data types
-var array = [ values,… ]	array literal declaration: declares a variable "array" initialized with "values".
-array[index]	access the element at position "index" of the array.
-...list	spread/rest syntax: spreads an array to a list where a list is expected or condenses a list into an array.
-var object = { property: value, …, method: function(…) {…} }	object literal declaration: can contain properties, methods and other objects, declared as "key: value".
-delete	keyword operator that deletes a property from an object.
-[a, b,…] = [x, y,…]; {a, b,…} = {a:x, b:y,…}	Destructuring assignment: allows you to assign the properties of an array or object to variables using syntax that looks similar to array or object literals. 
-Operators
-Arithmetic Operators
 +	sum | string concatenation	-	subtraction
 *	multiplication	/	floating point division
 **	exponentiation	%	modulus (integer division remainder)
