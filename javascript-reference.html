@@ -49,8 +49,7 @@
   }
 
   footer span {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 40px;
   }
 
   article {
@@ -372,70 +371,69 @@
       <p><span class="code">.concat(<span class="sti">elements</span>)</span> returns the original array joined together with other arrays or values provided in the arguments.</p>
       <p><span class="code">.slice(<span class="sti">start</span><span class="opt">, <span class="sti">end</span></span>)</span> returns a new array from "<span class="code sti">start</span>" index (inclusive) until "<span class="sti opt">end</span>" index (not inclusive) if given, or until the end of the original string; indexes can be negative (from the end of the string).</p>
       <p><span class="code">.splice(<span class="sti">start</span><span class="opt">, <span class="sti">deleteCount</span>, <span class="sti">elements</span>…</span>)</span> changes the contents of an array from "<span class="code sti">start</span>" index by removing (if "<span class="sti opt">deleteCount</span>" > 0) and/or adding new "<span class="sti opt">elements</span>" (if any) in place, and returns an array with the removed items (empty if none).</p>
-      <p><span class="code">.fill(<span class="sti">value</span><span class="opt">, <span class="sti">start</span>, <span class="sti">end</span></span>)</span> assigns "<span class="code sti">value</span>" to the elements of the array, from "<span class="sti opt">start</span>" index (inclusive, default "0") to "<span class="sti opt">end</span>" index (not inclusive, default "array.length").</p>
+      <p><span class="code">.fill(<span class="sti">value</span><span class="opt">, <span class="sti">start</span>, <span class="sti">end</span></span>)</span> assigns "<span class="code sti">value</span>" to the elements of the array, from "<span class="sti opt">start</span>" index (inclusive, default "<span class="code">0</span>") to "<span class="sti opt">end</span>" index (not inclusive, default "<span class="code"><span class="sti">array</span>.length</span>").</p>
       <p><span class="code">.reverse()</span> reverses the order of the elements of an array in place (the original array).</p>
       <p><span class="udl">Array Query Methods:</span></p>  
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      	
-      .indexOf(element, start)	returns the index of the first element from "start" index (inclusive, default "0") that corresponds to "element", or "-1" if not found.
-      .lastIndexOf(element, start)	returns the index of the last element from "start" index and going backwards (inclusive, default "array.length - 1") that corresponds to "element", or "-1" if not found.
-      .incluides(<span class="sti">element</span>)	returns "true" if the array includes the given element, otherwise "false".
-      .join(<span class="sti">string</span>)	returns a string created by concatenating all elements in the array with the given "string" delimiter.
-      .toString()	returns a string representing the array and its elements.
-      . toLocaleString()	returns a localized string representing the array and its elements.
+      <p><span class="code">.indexOf(<span class="sti">element</span><span class="opt">, <span class="sti">start</span></span>)</span> returns the index of the first element from "<span class="code sti">start</span>" index (inclusive, default "<span class="code">0</span>") that corresponds to "<span class="code sti">element</span>", or "<span class="code">-1</span>" if not found.</p>
+      <p><span class="code">.lastIndexOf(<span class="sti">element</span><span class="opt">, <span class="sti">start</span></span>)</span> returns the index of the last element from "<span class="code sti">start</span>" index and going backwards (inclusive, default "<span class="code"><span class="sti">array</span>.length - 1</span>") that corresponds to "element", or "-1" if not found.</p>
+      <p><span class="code">.incluides(<span class="sti">element</span>)</span> returns "true" if the array includes the given element, otherwise "false".</p>
+      <p><span class="code">.join(<span class="sti">string</span>)</span> returns a string created by concatenating all elements in the array with the given "string" delimiter.</p>
+      <p><span class="code">.toString()</span> returns a string representing the array and its elements.</p>
+      <p><span class="code">.toLocaleString()</span> returns a localized string representing the array and its elements.</p>
       <p><span class="udl">Array Iterating Methods:</span></p>
-
-      .forEach(function callback(element, index, array) {…})	takes a callback function as argument that is called upon each "element" of the "array".
+      <p><span class="code">.forEach(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) {…})</span> takes a callback function as argument that is called upon each "<span class="code sti">element</span> =" of the "<span class="code sti">array</span>".</p>
       <p><span class="code">.map(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">mapElement</span>; })</span> takes a callback function as argument that is called upon each "element" of the "array" and returns a new array out of the returned values of the callback.</p>
-
-      	
-      
-      .find(function callback(element, index, array) { …; return boolean; })	returns the first element for which the "callback" function returns "true".
-      .findIndex(function callback(element, index, array) { …; return boolean; })	returns the index of the first element for which the "callback" function returns "true".
-      .filter(function callback(element, index, array) { …; return boolean; })	returns a new array containing all elements for which the "callback" function returns "true".
-      .every(function callback(element, index, array) { …; return boolean; })	returns "true" if all of the elements in the array return "true" on the callback function.
-      .some(function callback(element, index, array) { …; return boolean; })	returns "true" if at least one of the elements in the array returns "true" on the callback function.
-      .reduce(function callback(accumulator, element, index, array) { …; return toAccumulator; } , initialValue)	executes a reducer function on each element assigning its returned value to the given "accumulator", and returns the final value of it; can have an "initialValue" set for the "accumulator".
-      .reduceRight(function callback(accumulator, element, index, array) { …; return toAccumulator; } , initialValue)	executes a reducer function on each element, going from last to first, assigning its returned value to the given "accumulator", and returns the final value of it; can have an "initialValue" set for the "accumulator".
-      .sort(function callback(first, second) { …; return number; })	sorts the original array, by converting to strings and comparing their Unicode value, or by result of "callback" comparing two elements and sorting "first" before "second" if it returns a "number" <= 0, or backwards otherwise.
+      <p><span class="code">.find(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">boolean</span>; })</span> returns the first element for which the "<span class="sti opt">callback</span>" function returns "<span class="code">true</span>".</p>
+      <p><span class="code">.findIndex(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">boolean</span>; })</span> returns the index of the first element for which the "callback" function returns "true".</p>
+      <p><span class="code">.filter(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">boolean</span>; })</span> returns a new array containing all elements for which the "callback" function returns "true".</p>
+      <p><span class="code">.every(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">boolean</span>; })</span> returns "true" if all of the elements in the array return "true" on the callback function.</p>
+      <p><span class="code">.some(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">boolean</span>; })</span> returns "true" if at least one of the elements in the array returns "true" on the callback function.</p>
+      <p><span class="code">.reduce(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">accumulator</span>, <span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">toAccumulator</span>; } <span class="opt">, <span class="sti">initialValue</span></span>)</span> executes a reducer function on each element assigning its returned value to the given "accumulator", and returns the final value of it; can have an "initialValue" set for the "accumulator".</p>
+      <p><span class="code">.reduceRight(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">accumulator</span>, <span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">toAccumulator</span>; } <span class="opt">, <span class="sti">initialValue</span></span>)</span> executes a reducer function on each element, going from last to first, assigning its returned value to the given "accumulator", and returns the final value of it; can have an "initialValue" set for the "accumulator".</p>
+      <p><span class="code">.sort(<span class="opt">function <span class="sti">callback</span>(<span class="sti">first</span>, <span class="sti">second</span>) { …; return <span class="sti">number</span>; }</span>)</span> sorts the original array, by converting to strings and comparing their Unicode value, or by result of "callback" comparing two elements and sorting "first" before "second" if it returns a "number" <= 0, or backwards otherwise.</p>
       <h3>Date Methods</h3>
-      Date(…)	constructor function for date objects, by default (if no arguments) to the current time, otherwise accepts arguments in order (year, month zero index, day, hour, minutes, seconds)
-      .now()	"Date" class (static) method that returns the number of milliseconds elapsed since the "Unix Epoch" (January 1, 1970 00:00:00 UTC).
-      .toLocaleString()	returns the instantiated date in local string format.
-      .getTime()	returns the number of milliseconds of the instantiated date since the "Unix Epoch".
-      .getMonth()	returns the month of the instantiated date with zero index (0 for January – 11 for December).
-      .getDate()	returns the day of the month of the instantiated date (1 – 31).
-      .getDay()	returns the day of the week with zero index of the instantiated date (0 for Sunday – 6 for Saturday).
-      .getFullYear()	returns the four-digit year of the instantiated date.
-      .getHours()	returns the hour in 24-hour format (0 – 23) of the instantiated date.
-      .getMinutes()	returns the minutes of the instantiated date.
-      .getSeconds()	returns the seconds of the instantiated date.
+      <p><span class="code">Date(…)</span> constructor function for date objects, by default (if no arguments) to the current time, otherwise accepts arguments in order (year, month zero index, day, hour, minutes, seconds)</p>
+      <p><span class="code">.now()</span> "Date" class (static) method that returns the number of milliseconds elapsed since the "Unix Epoch" (January 1, 1970 00:00:00 UTC).</p>
+      <p><span class="code">.toLocaleString()</span> returns the instantiated date in local string format.</p>
+      <p><span class="code">.getTime()</span> returns the number of milliseconds of the instantiated date since the "Unix Epoch".</p>
+      <p><span class="code">.getMonth()</span> returns the month of the instantiated date with zero index (0 for January – 11 for December).</p>
+      <p><span class="code">.getDate()</span> returns the day of the month of the instantiated date (1 – 31).</p>
+      <p><span class="code">.getDay()</span> returns the day of the week with zero index of the instantiated date (0 for Sunday – 6 for Saturday).</p>
+      <p><span class="code">.getFullYear()</span> returns the four-digit year of the instantiated date.</p>
+      <p><span class="code">.getHours()</span> returns the hour in 24-hour format (0 – 23) of the instantiated date.</p>
+      <p><span class="code">.getMinutes()</span> returns the minutes of the instantiated date.</p>
+      <p><span class="code">.getSeconds()</span> returns the seconds of the instantiated date.</p>
       <h3>Math Methods</h3>
-      Math	Built-in object that contains mathematical operation methods and constants.
-      .PI	property that contains the value of "pi" (π ≈ 3.1416).
-      .E	property that contains the value of Euler's constant (e ≈ 2.7183).
-      .abs(number)	returns the absolute value of the "number" argument.
-      .max(numbers)	returns the greatest value among the parameters
-      .min(numbers)	returns the lowest value among the parameters
-      .pow(base, exp)	returns the result of the "base" number elevated to the "exp" power.
-      .exp(exp)	returns the result of the power of "e" elevated to the number "exp".
-      .log(number)	returns the natural logarithm (base "e") of the given "number".
-      .sqrt(number)	returns the square root of the parameter.
-      .ceil(number)	returns the parameter rounded up.
-      .floor(number)	returns the parameter rounded down.
-      .round(number)	returns the parameter properly rounded.
-      .random()	returns a number at random between 0 (inclusive) and 1 (not inclusive); that is: [0,1)
-      .toFixed()	method to fix the number of decimals for a float to amount in argument or zero if not specified.
-      .sin(x); .cos(x); tan(x); .asin(x); .acos(x); .atan(x); .asinh(x); .acosh(x); .atanh(x); .asinh(x); .acosh(x); .atanh(x);	trigonometric and hyperbolic functions, angle units are in radians.
+      <p><span class="code">Math</span> Built-in object that contains mathematical operation methods and constants.</p>
+      <p><span class="code">.PI</span> property that contains the value of "pi" (π ≈ 3.1416).</p>
+      <p><span class="code">.E</span> property that contains the value of Euler's constant (e ≈ 2.7183).</p>
+      <p><span class="code">.abs(<span class="sti">number</span>)</span> returns the absolute value of the "number" argument.</p>
+      <p><span class="code">.max(<span class="sti">numbers</span>)</span> returns the greatest value among the parameters.</p>
+      <p><span class="code">.min(<span class="sti">numbers</span>)</span> returns the lowest value among the parameters</p>
+      <p><span class="code">.pow(<span class="sti">base</span>, <span class="sti">exp</span>)</span> returns the result of the "base" number elevated to the "exp" power.</p>
+      <p><span class="code">.exp(<span class="sti">exp</span>)</span> returns the result of the power of "e" elevated to the number "exp".</p>
+      <p><span class="code">.log(<span class="sti">number</span>)</span> returns the natural logarithm (base "e") of the given "number".</p>
+      <p><span class="code">.sqrt(<span class="sti">number</span>)</span> returns the square root of the parameter.</p>
+      <p><span class="code">.ceil(<span class="sti">number</span>)</span> returns the parameter rounded up.</p>
+      <p><span class="code">.floor(<span class="sti">number</span>)</span> returns the parameter rounded down.</p>
+      <p><span class="code">.round(<span class="sti">number</span>)</span> returns the parameter properly rounded.</p>
+      <p><span class="code">.random()</span> returns a number at random between 0 (inclusive) and 1 (not inclusive); that is: [0,1)</p>
+      <p><span class="code">.toFixed()</span> method to fix the number of decimals for a float to amount in argument or zero if not specified.</p>
+      <p><span class="code">.sin(<span class="sti">x</span>); .cos(<span class="sti">x</span>); tan(<span class="sti">x</span>); .asin(<span class="sti">x</span>); .acos(<span class="sti">x</span>); .atan(<span class="sti">x</span>); .asinh(<span class="sti">x</span>); .acosh(<span class="sti">x</span>); .atanh(<span class="sti">x</span>); .asinh(<span class="sti">x</span>); .acosh(<span class="sti">x</span>); .atanh(<span class="sti">x</span>);</span> trigonometric and hyperbolic functions, angle units are in radians.</p>
       <h3>Console Methods</h3>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      
       console	object with methods that display information on the console.
       .log(…)	general output of logging information.
       .warn(…)	outputs a warning message.
@@ -868,7 +866,7 @@ useEffect(callback, [dependencies]);	accepts a callback function to be executed 
 
     </article>
   </main>
-  <footer>Legend:      <span class="code">strict syntax</span> <span class="code sti">stand-in</span> <span class="kwd">keyword</span> <span class="opt">optional</span> <span class="sti opt">stand-in optional</span></footer>
+  <footer>Legend: <span class="code">strict syntax</span> <span class="code sti">stand-in</span> <span class="kwd">keyword</span> <span class="opt">optional</span> <span class="sti opt">stand-in optional</span> <span><a href="#" onclick="document.querySelector('#index').scrollIntoView()">Back to Index</a></span> </footer>
   <script type="text/javascript">
   document.body.onload = function() {
     let headers = document.querySelectorAll('h1, h2, h3');
