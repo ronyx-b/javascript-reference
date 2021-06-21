@@ -8,9 +8,9 @@
   <style type="text/css">
   body {
     box-sizing: border-box;
-    background-color: black;
+    background-color: #000000;
     color: #cccccc;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     font-size: 1em;
     margin: 0;
     padding: 0;
@@ -331,63 +331,73 @@
         <span class="p"><span class="code"><span class="kwd">await</span> <span class="sti">asyncStatement</span></span> used only inside "<span class="kwd">async</span>" functions, stops its execution until a resolved or rejected promise is returned from the "<span class="code sti">asyncStatement</span>" and returns that value.</span>
       </p>
       <h3>Modules</h3>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      import exported as alias,… from 'module-or-file-path'	declares a resource imported (static) from another module, where the resources "exported" can be: the default module "defaultExport", all "*" (can also be done as "import 'module'"), or a specific list "{ exportedN as aliasN, … }".
-      import('module')	declares a dynamic import when called as a function and returns the module as a "Promise".
-      export default resource	declares a "resource" (function, class, object, variable) to be exported to other modules, where only one can be set as "default" which doesn't need to be named.
-      
+      <p><span class="code"><span class="kwd">import</span> <span class="sti">exported</span> <span class="opt">as <span class="sti">alias</span>,…</span> <span class="kwd">from</span> '<span class="sti">module-or-file-path</span>'</span> declares a resource imported (static) from another module, where the resources "<span class="code sti">exported</span>" can be: the default module "<span class="code">defaultExport</span>", all "<span class="code">*</span>" (can also be done as "<span class="code">import '<span class="sti">module</span>'</span>"), or a specific list "<span class="code">{ <span class="sti">exportedN</span> <span class="opt">as <span class="sti">aliasN</span>, …</span> }</span>".</p>
+      <p><span class="code">import('<span class="sti">module</span>')</span> declares a dynamic import when called as a function and returns the module as a "<span class="code">Promise</span>".</p>
+      <p><span class="code"><span class="kwd">export</span> <span class="opt">default</span> <span class="sti">resource</span></span> declares a "<span class="code sti">resource</span>" (function, class, object, variable) to be exported to other modules, where only one can be set as "<span class="opt">default</span>" which doesn't need to be named.</p>
       <h2>Built-in Objects, Properties, Methods and Functions</h2>
       <h3>Parent Object</h3>
-      Object(…)	constructor function for new objects, equivalent to: var newObject = {}; can be initialized with a list of comma-separated pair of values in the form of “property: value,”, where value can variables, functions or other objects.
-      .create(objectTemplate)	class (static) method that creates a new object with the same properties of "objectTemplate" through inheritance (with same initial values by default, stored in ".prototype").
-      .getPrototypeof(object)	class (static) method returns the prototype of the specified object.
-      .toString()	returns a string representing the object.
+      <p><span class="code">Object(…)</span> constructor function for new objects, equivalent to: "<span class="code"><span class="kwd">var</span> <span class="sti">newObject</span> = {};</span>" can be initialized with a list of comma-separated pair of values in the form of "<span class="code"><span class="sti">property</span>: <span class="sti">value</span>,</span>", where value can variables, functions or other objects.
+        <span class="p"><span class="code">.create(<span class="sti">objectTemplate</span>)</span> class (static) method that creates a new object with the same properties of "<span class="code sti">objectTemplate</span>" through inheritance (with same initial values by default, stored in "<span class="code">.prototype</span>").</span>
+        <span class="p"><span class="code">.getPrototypeof(<span class="sti">object</span>)</span> class (static) method returns the prototype of the specified object.</span>
+        <span class="p"><span class="code">.toString()</span> returns a string representing the object.</span>
+      </p>
       <h3>String Objects Methods</h3>
-      String(…)	constructor function for strings, can convert from numbers.
-      .length	property that returns the length of the string.
-      .charAt(index)	strings method, returns character at "index".
-      .concat(string)	receives a string to be concatenated at the end of the string it is applied.
-      .includes(string)	returns true if the "string" argument is contained in the applied string.
-      .startsWith(string)	returns true if the string applied starts with the given "string", otherwise false.
-      .endsWith(string)	returns true if the string applied ends with the given "string", otherwise false.
-      .match(regExp)	returns the matches of the applied "regExp" regular expression.
-      .toLowerCase()	returns the string with all characters in lower cases.
-      .toUpperCase()	returns the string with all characters in upper cases.
-      .trim()	removes blank spaces from both ends of the string.
-      .replace(regExp, string)	returns the string with the matches of the "regExp" replaced by "string".
-      .search(regExp)	returns the index of the first match of the "regExp", or "-1" if not found.
-      .slice(start, end)	returns a new string from "start" index (inclusive) until "end" index (not inclusive) if given, or until the end of the original string; indexes can be negative (from the end of the string)
-      .split(separator, limit)	returns an array of substring from the original string divided by a "separator" string or regular expression, but until reaching a "limit" number of elements if given.
-      .substr(start, length)	(deprecated) returns a portion of the original string, from "start" index and with a defined by "length" if given.
-      .substring(start, end)	strings method, returns part of a string starting a "start" index (inclusive) and ending before "end" index (not inclusive, end of string if omitted).
-      .charCodeAt(index)	string method, returns Unicode value of the character at "index".
+      <p><span class="code">String(…)</span> constructor function for strings, can convert from numbers.</p>
+      <p><span class="code">.length</span> property that returns the length of the string.</p>
+      <p><span class="code">.charAt(<span class="sti">index</span>)</span> strings method, returns character at "<span class="code sti">index</span>".</p>
+      <p><span class="code">.concat(<span class="sti">string</span>)</span> receives a string to be concatenated at the end of the string it is applied.</p>
+      <p><span class="code">.includes(<span class="sti">string</span>)</span> returns true if the "<span class="code sti">string</span>" argument is contained in the applied string.</p>
+      <p><span class="code">.startsWith(<span class="sti">string</span>)</span> returns true if the string applied starts with the given "<span class="code sti">string</span>", otherwise false.</p>
+      <p><span class="code">.endsWith(<span class="sti">string</span>)</span> returns true if the string applied ends with the given "<span class="code sti">string</span>", otherwise false.</p>
+      <p><span class="code">.match(<span class="sti">regExp</span>)</span> returns the matches of the applied "<span class="code sti">regExp</span>" regular expression.</p>
+      <p><span class="code">.toLowerCase()</span> returns the string with all characters in lower cases.</p>
+      <p><span class="code">.toUpperCase()</span> returns the string with all characters in upper cases.</p>
+      <p><span class="code">.trim()</span> removes blank spaces from both ends of the string.</p>
+      <p><span class="code">.replace(<span class="sti">regExp</span>, <span class="sti">string</span>)</span> returns the string with the matches of the "<span class="code sti">regExp</span>" replaced by "string".</p>
+      <p><span class="code">.search(<span class="sti">regExp</span>)</span> returns the index of the first match of the "<span class="code sti">regExp</span>", or "<span class="code">-1</span>" if not found.</p>
+      <p><span class="code">.slice(<span class="sti">start</span><span class="opt">, <span class="sti">end</span></span>)</span> returns a new string from "<span class="code sti">start</span>" index (inclusive) until "<span class="code sti">end</span>" index (not inclusive) if given, or until the end of the original string; indexes can be negative (from the end of the string)</p>
+      <p><span class="code">.split(<span class="opt"><span class="sti">separator</span>, <span class="sti">limit</span></span>)</span> returns an array of substring from the original string divided by a "<span class="code sti">separator</span>" string or regular expression, but until reaching a "<span class="code sti">limit</span>" number of elements if given.</p>
+      <p><span class="code">.substr(<span class="sti">start</span><span class="opt">, <span class="sti">length</span></span>)</span> (deprecated) returns a portion of the original string, from "<span class="code sti">start</span>" index and with a defined by "<span class="sti opt">length</span>" if given.</p>
+      <p><span class="code">.substring(<span class="sti">start</span><span class="opt">, <span class="sti">end</span></span>)</span> strings method, returns part of a string starting a "<span class="code sti">start</span>" index (inclusive) and ending before "<span class="sti opt">end</span>" index (not inclusive, end of string if omitted).</p>
+      <p><span class="code">.charCodeAt(<span class="sti">index</span>)</span> string method, returns Unicode value of the character at "<span class="code sti">index</span>".</p>
       <h3>Array Objects Properties and Methods</h3>
-      Array(…)	constructor function for arrays, empty if no arguments, otherwise with its arguments as the values.
-      .isArray(argument)	"Array()" class (static) method that returns true if the argument is an array.
-      .length	property of any array (and array-like objects like strings and arguments list) that returns their length.
+      <p><span class="code">Array(…)</span> constructor function for arrays, empty if no arguments, otherwise with its arguments as the values.</p>
+      <p><span class="code">.isArray(<span class="sti">argument</span>)</span> "<span class="code">Array</span>" class (static) method that returns true if the argument is an array.</p>
+      <p><span class="code">.length</span> property of any array (and array-like objects like strings and arguments list) that returns their length.</p>
       <p><span class="udl">Array Modifying Methods:</span></p>
-      .push(element)	adds the arguments to the end of the array and returns the next index.
-      .unshift(element)	adds the arguments to the start of the array and returns the new length.
-      .pop()	removes the last element of the array and returns it.
-      .shift()	removes the first element of the array and returns it.
-      .concat(elements)	returns the original array joined together with other arrays or values provided in the arguments.
-      .slice(start, end)	returns a new array from "start" index (inclusive) until "end" index (not inclusive) if given, or until the end of the original string; indexes can be negative (from the end of the string).
-      .splice(start, deleteCount, elements…)	changes the contents of an array from "start" index by removing (if "deleteCount" > 0) and/or adding new "elements" (if any) in place, and returns an array with the removed items (empty if none).
-      .fill(value, start, end)	assigns "value" to the elements of the array, from "start" index (inclusive, default "0") to "end" index (not inclusive, default "array.length").
-      .reverse()	reverses the order of the elements of an array in place (the original array).
-      <p><span class="udl">Array Query Methods:</span></p>
+      <p><span class="code">.push(<span class="sti">element</span>)</span> adds the arguments to the end of the array and returns the next index.</p>
+      <p><span class="code">.unshift(<span class="sti">element</span>)</span> adds the arguments to the start of the array and returns the new length.</p>
+      <p><span class="code">.pop()</span> removes the last element of the array and returns it.</p>
+      <p><span class="code">.shift()</span> removes the first element of the array and returns it.</p>
+      <p><span class="code">.concat(<span class="sti">elements</span>)</span> returns the original array joined together with other arrays or values provided in the arguments.</p>
+      <p><span class="code">.slice(<span class="sti">start</span><span class="opt">, <span class="sti">end</span></span>)</span> returns a new array from "<span class="code sti">start</span>" index (inclusive) until "<span class="sti opt">end</span>" index (not inclusive) if given, or until the end of the original string; indexes can be negative (from the end of the string).</p>
+      <p><span class="code">.splice(<span class="sti">start</span><span class="opt">, <span class="sti">deleteCount</span>, <span class="sti">elements</span>…</span>)</span> changes the contents of an array from "<span class="code sti">start</span>" index by removing (if "<span class="sti opt">deleteCount</span>" > 0) and/or adding new "<span class="sti opt">elements</span>" (if any) in place, and returns an array with the removed items (empty if none).</p>
+      <p><span class="code">.fill(<span class="sti">value</span><span class="opt">, <span class="sti">start</span>, <span class="sti">end</span></span>)</span> assigns "<span class="code sti">value</span>" to the elements of the array, from "<span class="sti opt">start</span>" index (inclusive, default "0") to "<span class="sti opt">end</span>" index (not inclusive, default "array.length").</p>
+      <p><span class="code">.reverse()</span> reverses the order of the elements of an array in place (the original array).</p>
+      <p><span class="udl">Array Query Methods:</span></p>  
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      	
       .indexOf(element, start)	returns the index of the first element from "start" index (inclusive, default "0") that corresponds to "element", or "-1" if not found.
       .lastIndexOf(element, start)	returns the index of the last element from "start" index and going backwards (inclusive, default "array.length - 1") that corresponds to "element", or "-1" if not found.
-      .incluides(element)	returns "true" if the array includes the given element, otherwise "false".
-      .join(string)	returns a string created by concatenating all elements in the array with the given "string" delimiter.
+      .incluides(<span class="sti">element</span>)	returns "true" if the array includes the given element, otherwise "false".
+      .join(<span class="sti">string</span>)	returns a string created by concatenating all elements in the array with the given "string" delimiter.
       .toString()	returns a string representing the array and its elements.
       . toLocaleString()	returns a localized string representing the array and its elements.
       <p><span class="udl">Array Iterating Methods:</span></p>
+
       .forEach(function callback(element, index, array) {…})	takes a callback function as argument that is called upon each "element" of the "array".
-      .map(function callback(element, index, array) { …; return mapElement; })	takes a callback function as argument that is called upon each "element" of the "array" and returns a new array out of the returned values of the callback.
+      <p><span class="code">.map(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">mapElement</span>; })</span> takes a callback function as argument that is called upon each "element" of the "array" and returns a new array out of the returned values of the callback.</p>
+
+      	
+      
       .find(function callback(element, index, array) { …; return boolean; })	returns the first element for which the "callback" function returns "true".
       .findIndex(function callback(element, index, array) { …; return boolean; })	returns the index of the first element for which the "callback" function returns "true".
       .filter(function callback(element, index, array) { …; return boolean; })	returns a new array containing all elements for which the "callback" function returns "true".
@@ -439,13 +449,13 @@
       .timeEnd(label)	stops and logs to the console the final value of a timer.
       JSON Parsing Methods
       JSON	object with methods to handle conversion of JavaScript objects to and from JavaScript Object Notation strings. 
-      .parse(string)	returns an object from the "string" parsed.
+      .parse(<span class="sti">string</span>)	returns an object from the "string" parsed.
       .stringify(object)	returns a JSON string from the "object" parsed.
       <h3>RegExp Methods</h3>
       RegExp('/pattern/options')	constructor function for regular expression objects, receives a regular expression string where "pattern" is the RegExp and "options" are i: case insensitive, g: global, m: multiline.
       var regexp = /pattern/options;	RegExp literal declaration: "pattern" is enclosed inside "/…/".
-      .test(string)	tests the RegExp for a match in its "string" parameter and returns a Boolean.
-      .exec(string)	executes a search for a match in a specified string and returns a result array, or "null".
+      .test(<span class="sti">string</span>)	tests the RegExp for a match in its "string" parameter and returns a Boolean.
+      .exec(<span class="sti">string</span>)	executes a search for a match in a specified string and returns a result array, or "null".
       \	ignore default value of preceding character.	.	any character.
       ?	previous  character once or none.	*	previous character none or more.
       +	previous character once or more.	x	match character "x".
@@ -469,11 +479,11 @@
       clearInterval()	cancels a timed, repeating action which was previously established by a "setInterval()".
       <p><span class="udl">Value Check or Conversion:</span></p>
       Number(…)	constructor function for numbers, can convert from strings.
-      parseFloat(string)	parses a "string" (from left to right) and returns a floating-point number.
+      parseFloat(<span class="sti">string</span>)	parses a "string" (from left to right) and returns a floating-point number.
       parseInt(string, base)	parses a "string", and returns an integer of the specified "base" (default 10).
       isNaN(value)	checks if argument is not a number (or string of), returns true/false.
       .isFinite(value)	global function, checks if argument is a finite number (or string of).
-      encodeURI(string);  decodeURI(string)	global functions, encode/decode text from/to URI.
+      encodeURI(<span class="sti">string</span>);  decodeURI(<span class="sti">string</span>)	global functions, encode/decode text from/to URI.
       <h3>Custom Constructor Functions, Prototype (inheritance), and JavaScript Class</h3>
       function Constructor(parameters, …) { this.prop = param; … ; this.method = function (…) { …; } }; defines a constructor function for objects of type "Constructor".
       var object = new Constructor(arguments, …);	creates an object which is a new instance of the original constructor object;
@@ -515,10 +525,10 @@
 .createElement(tag)	creates and returns an HTML element set by the string parameter (HTML "tag").
 .createTextNode(text)	creates and returns a text node (the text within an element vs. the element itself).
       <h3>Body Elements' Methods</h3>
-.appendChild(element) adds the element parameter to the specified HTML element (parent).
+.appendChild(<span class="sti">element</span>) adds the element parameter to the specified HTML element (parent).
 .insertBefore(new, old)	adds a "new" element before the "old" existing element to the parent element.
 .remove()	removes the selected element from the document.
-.removeChild(element)	removes the child "element" from its parent.
+.removeChild(<span class="sti">element</span>)	removes the child "element" from its parent.
 .scrollIntoView()	element method that scrolls the browser window down to the selected HTML element.
 .hasAttribute(name)	element method that checks for the named attribute and returns a Boolean.
 .getAttribute(name)	element method that returns the value of the selected attribute.
@@ -552,9 +562,9 @@ mouseover 	when the mouse moves on top.	mouseout	when the mouse moves outside.
 .go(int)	"History" object method to load a specific page from session history.
 .innerHeight	returns the interior height of the window in pixels.
 .innerWidth		returns the interior width of the window in pixels.
-.alert(string)	displays an alert dialog.
+.alert(<span class="sti">string</span>)	displays an alert dialog.
 .confirm()	displays a confirmation message and ask the user to click either button, and returns a Boolean.
-.prompt(string)	displays a dialog box with an optional message prompting the user for input and returns it.
+.prompt(<span class="sti">string</span>)	displays a dialog box with an optional message prompting the user for input and returns it.
 .close()	closes the current window.
 .open(url, windowName)	loads the specified resource into the new or existing browsing context.
 .print()	opens the Print Dialog to print the current document.
@@ -714,7 +724,7 @@ req.cookies	property that contains the data from the page cookies. It requires a
 req.get(field)	method to get values from the headers sent with the request.
 The Response (res) Object
 res.cookie(name, value, options)	sets the cookies.
-res.send(string)	sends a "string" as response to the "route" request.
+res.send(<span class="sti">string</span>)	sends a "string" as response to the "route" request.
 res.sendFile(file)	sends an HTML "file" (absolute path string) to be displayed as response to the "route" request.
 res.redirect(route)	redirects the request no the specified "route".
 res.render(view, options)	renders a "view" with a predefined rendering engine.
