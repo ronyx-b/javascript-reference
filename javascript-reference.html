@@ -21,21 +21,18 @@
     text-align: center;
     font-size: 1.62em;
     padding: 10px;
-    /*
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
-    */
   }
 
   main {
-    width: 800px;
+    max-width: 850px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 35px;
-    padding: 5px;
   }
 
   footer {
@@ -53,7 +50,6 @@
   }
 
   article {
-    width: 100%;
     background-color: #111111;
     padding: 20px;
     margin: 5px;
@@ -872,10 +868,18 @@ useEffect(callback, [dependencies]);	accepts a callback function to be executed 
     let headers = document.querySelectorAll('h1, h2, h3');
     let count = 0;
     headers.forEach((elem) => {
-      let hdId = 'hd' + (++count);
+      // let hdId = 'hd' + (++count);
       let anchor = document.createElement('a');
-      elem.setAttribute('id', hdId);
-      anchor.setAttribute('href', `#${hdId}`);
+      // elem.setAttribute('id', hdId);
+      // anchor.setAttribute('href', `#${hdId}`);
+      anchor.setAttribute('href', '#');
+      anchor.addEventListener("click", function (e) { 
+        e.preventDefault();
+        // elem.scrollIntoView();
+        console.log(elem.offsetTop);
+        console.log(document.querySelector('header').offsetHeight); 
+        window.scrollTo(0, (elem.offsetTop - document.querySelector('header').offsetHeight - 10));
+      });
       let indent = parseInt(elem.outerHTML.charAt(2)) - 1;
       anchor.setAttribute('style', `margin-left: ${indent * 30}px`)
       anchor.innerText = elem.innerText;
