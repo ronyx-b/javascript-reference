@@ -417,84 +417,120 @@
       <p><span class="code">.toFixed()</span> method to fix the number of decimals for a float to amount in argument or zero if not specified.</p>
       <p><span class="code">.sin(<span class="sti">x</span>); .cos(<span class="sti">x</span>); tan(<span class="sti">x</span>); .asin(<span class="sti">x</span>); .acos(<span class="sti">x</span>); .atan(<span class="sti">x</span>); .asinh(<span class="sti">x</span>); .acosh(<span class="sti">x</span>); .atanh(<span class="sti">x</span>); .asinh(<span class="sti">x</span>); .acosh(<span class="sti">x</span>); .atanh(<span class="sti">x</span>);</span> trigonometric and hyperbolic functions, angle units are in radians.</p>
       <h3>Console Methods</h3>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      
-      console	object with methods that display information on the console.
-      .log(…)	general output of logging information.
-      .warn(…)	outputs a warning message.
-      .error(…)	outputs an error message.
-      .table(…)	displays tabular data as a table.
-      .dir(object)	displays an interactive list of the properties of the specified JavaScript "object".
-      .assert(condition, …)	if "condition" is false, outputs a list of objects or a substitution string with objects.
-      .count(label)	outputs the number of times it has been called, with "label" if supplied, else with string "default".
-      .time(label)	starts a timer set to a "label" string that you can use to track how long an operation takes.
-      .timeLog(label)	logs to the console the current value of a timer.
-      .timeEnd(label)	stops and logs to the console the final value of a timer.
-      JSON Parsing Methods
-      JSON	object with methods to handle conversion of JavaScript objects to and from JavaScript Object Notation strings. 
-      .parse(<span class="sti">string</span>)	returns an object from the "string" parsed.
-      .stringify(object)	returns a JSON string from the "object" parsed.
+      <p><span class="code">console</span> object with methods that display information on the console.</p>
+      <p><span class="code">.log(…)</span> general output of logging information.</p>
+      <p><span class="code">.warn(…)</span> outputs a warning message.</p>
+      <p><span class="code">.error(…)</span> outputs an error message.</p>
+      <p><span class="code">.table(…)</span> displays tabular data as a table.</p>
+      <p><span class="code">.dir(<span class="sti">object</span>)</span> displays an interactive list of the properties of the specified JavaScript "<span class="code sti">object</span>".</p>
+      <p><span class="code">.assert(<span class="sti">condition</span>, …)</span> if "<span class="code sti">condition</span>" is false, outputs a list of objects or a substitution string with objects.</p>
+      <p><span class="code">.count(<span class="sti">label</span>)</span> outputs the number of times it has been called, with "<span class="code sti">label</span>" if supplied, else with string "default".</p>
+      <p><span class="code">.time(<span class="sti">label</span>)</span> starts a timer set to a "<span class="code sti">label</span>" string that you can use to track how long an operation takes.</p>
+      <p><span class="code">.timeLog(<span class="sti">label</span>)</span> logs to the console the current value of a timer.</p>
+      <p><span class="code">.timeEnd(<span class="sti">label</span>)</span> stops and logs to the console the final value of a timer.</p>
+      <h3>JSON Parsing Methods</h3>
+      <p><span class="code">JSON</span> object with methods to handle conversion of JavaScript objects to and from JavaScript Object Notation strings. </p>
+      <p><span class="code">.parse(<span class="sti">string</span>)</span> returns an object from the "<span class="code sti">string</span>" parsed.</p>
+      <p><span class="code">.stringify(<span class="sti">object</span>)</span> returns a JSON string from the "<span class="code sti">object</span>" parsed.</p>
       <h3>RegExp Methods</h3>
-      RegExp('/pattern/options')	constructor function for regular expression objects, receives a regular expression string where "pattern" is the RegExp and "options" are i: case insensitive, g: global, m: multiline.
-      var regexp = /pattern/options;	RegExp literal declaration: "pattern" is enclosed inside "/…/".
-      .test(<span class="sti">string</span>)	tests the RegExp for a match in its "string" parameter and returns a Boolean.
-      .exec(<span class="sti">string</span>)	executes a search for a match in a specified string and returns a result array, or "null".
-      \	ignore default value of preceding character.	.	any character.
-      ?	previous  character once or none.	*	previous character none or more.
-      +	previous character once or more.	x	match character "x".
-      ^	match beginning of the string.	$	match end of the string.
-      \d	any digit.	\D	any character that's not a digit.
-      \w	any word char (letters, numbers and "_").	\W	any non-word character.
-      \s	any single white space char (space, tab, …).	\S	any character that's not a white space.
-      \t	horizontal tab.	\r	carriage return.
-      \n	linefeed.	\v	vertical tab.
-      \f	form-feed.	[\b]	backspace.
-      \b	word boundary.	\B	non-word boundary.
-      [set]	match one character in the "set".	[^set]	match one character not in the "set".
-      x{n,m}	match "x" char "n" times, "," at least, up to "m" times	x|y	matches either "x" or "y".
-      x(?=y)	matches "x" only if it's followed by "y".	x(?!y)	matches "x" only if it's not followed by "y".
-      (?&lt;=y)x	matches "x" only if it's preceded by "y".	(?&lt;!y)x	matches "x" only if it's not preceded by "y".
+      <p><span class="code">RegExp('/<span class="sti">pattern</span>/<span class="sti opt">options</span>')</span> constructor function for regular expression objects, receives a regular expression string where "<span class="code sti">pattern</span>" is the RegExp and "<span class="sti opt">options</span>" are <span class="code">i</span>: case insensitive, <span class="code">g</span>: global, <span class="code">m</span>: multiline.</p>
+      <p><span class="code"><span class="kwd">var</span> <span class="sti">regexp</span> = /<span class="sti">pattern</span>/<span class="sti opt">options</span>;</span> RegExp literal declaration: "<span class="code sti">pattern</span>" is enclosed inside "<span class="code">/…/</span>".</p>
+      <p><span class="code">.test(<span class="sti">string</span>)</span> tests the RegExp for a match in its "<span class="code sti">string</span>" parameter and returns a Boolean.</p>
+      <p><span class="code">.exec(<span class="sti">string</span>)</span> executes a search for a match in a specified string and returns a result array, or "<span class="code">null</span>".</p>
+      <table>
+        <tr>
+          <td><span class="code">\</span></td><td>ignore default value of preceding character.</td>
+          <td><span class="code">.</span></td><td>any character.</td>
+        </tr>
+        <tr>
+          <td><span class="code">?</span></td><td>previous  character once or none.</td>
+          <td><span class="code">*</span></td><td>previous character none or more.</td>
+        </tr>
+        <tr>
+          <td><span class="code">+</span></td><td>previous character once or more.</td>
+          <td><span class="code sti">x</span></td><td>match character "<span class="code sti">x</span>".</td>
+        </tr>
+        <tr>
+          <td><span class="code">^</span></td><td>match beginning of the string.</td>
+          <td><span class="code">$</span></td><td>match end of the string.</td>
+        </tr>
+        <tr>
+          <td><span class="code">\d</span></td><td>any digit.</td>
+          <td><span class="code">\D</span></td><td>any character that's not a digit.</td>
+        </tr>
+        <tr>
+          <td><span class="code">\w</span></td><td>any word char (letters, numbers and "_").</td>
+          <td><span class="code">\W</span></td><td>any non-word character.</td>
+        </tr>
+        <tr>
+          <td><span class="code">\s</span></td><td>any single white space char (space, tab, …).</td>
+          <td><span class="code">\S</span></td><td>any character that's not a white space.</td>
+        </tr>
+        <tr>
+          <td><span class="code">\t</span></td><td>horizontal tab.</td>
+          <td><span class="code">\r</span></td><td>carriage return.</td>
+        </tr>
+        <tr>
+          <td><span class="code">\n</span></td><td>linefeed.</td>
+          <td><span class="code">\v</span></td><td>vertical tab.</td>
+        </tr>
+        <tr>
+          <td><span class="code">\f</span></td><td>form-feed.</td>
+          <td><span class="code">[\b]</span></td><td>backspace.</td>
+        </tr>
+        <tr>
+          <td><span class="code">\b</span></td><td>word boundary.</td>
+          <td><span class="code">\B</span></td><td>non-word boundary.</td>
+        </tr>
+        <tr>
+          <td><span class="code">[<span class="sti">set</span>]</span></td><td>match one character in the "<span class="code sti">set</span>".</td>
+          <td><span class="code">[^<span class="sti">set</span>]</span></td><td>match one character not in the "<span class="code sti">set</span>".</td>
+        </tr>
+        <tr>
+          <td><span class="code"><span class="sti">x</span>{<span class="sti">n</span><span class="opt">,<span class="sti">m</span></span>}</span></td><td>match "<span class="code sti">x</span>" char "<span class="code sti">n</span>" times, "<span class="opt">,</span>" at least, up to "<span class="sti opt">m</span>" times.</td>
+          <td><span class="code"><span class="sti">x</span>|<span class="sti">y</span></span></td><td>matches either "<span class="code sti">x</span>" or "<span class="code sti">y</span>".</td>
+        </tr>
+        <tr>
+          <td><span class="code"><span class="sti">x</span>(?=<span class="sti">y</span>)</span></td><td>matches "<span class="code sti">x</span>" only if it's followed by "<span class="code sti">y</span>".</td>
+          <td><span class="code"><span class="sti">x</span>(?!<span class="sti">y</span>)</span></td><td>matches "<span class="code sti">x</span>" only if it's not followed by "<span class="code sti">y</span>".</td>
+        </tr>
+        <tr>
+          <td><span class="code">(?&lt;=<span class="sti">y</span>)<span class="sti">x</span></span></td><td>matches "<span class="code sti">x</span>" only if it's preceded by "<span class="code sti">y</span>".</td>
+          <td><span class="code">(?&lt;!<span class="sti">y</span>)<span class="sti">x</span></span></td><td>matches "<span class="code sti">x</span>" only if it's not preceded by "<span class="code sti">y</span>".</td>
+        </tr>
+      </table>	
       <h3>Other Global Functions</h3>
       <p><span class="udl">Timers:</span></p>
-      setTimeout(function callback(parameters,…) { … }, delay, callback-arguments…)	executes a "callback" function or specified piece of code once the "delay" timer (in milliseconds) expires, and returns an integer as an ID; if the callback is not defined inline, " callback-arguments…" can be provided.
-      clearTimeout(timeoutID)	cancels a timeout previously established by calling "setTimeout()".
-      setInterval(function callback(parameters,…) { … }, delay, callback-arguments…)	repeatedly calls a "callback" function or specified piece of code every time the "delay" timer (in milliseconds) expires, and returns an integer as an ID; if the callback is not defined inline, " callback-arguments…" can be provided.
-      clearInterval()	cancels a timed, repeating action which was previously established by a "setInterval()".
+      <p><span class="code">setTimeout(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="opt"><span class="sti">parameters</span>,…</span>) { … }, <span class="sti">delay</span><span class="opt">, <span class="sti">callback-arguments</span>…</span>)</span> executes a "<span class="sti opt">callback</span>" function or specified piece of code once the "<span class="code sti">delay</span>" timer (in milliseconds) expires, and returns an integer as an ID; if the callback is not defined inline, "<span class="opt"><span class="sti">callback-arguments</span>…</span>" can be provided.</p>
+      <p><span class="code">clearTimeout(<span class="sti">timeoutID</span>)</span> cancels a timeout previously established by calling "<span class="code">setTimeout()</span>".</p>
+      <p><span class="code">setInterval(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="opt"><span class="sti">parameters</span>,…</span>) { … }, <span class="sti">delay</span><span class="opt">, <span class="sti">callback-arguments</span>…</span>)</span> repeatedly calls a "<span class="sti opt">callback</span>" function or specified piece of code every time the "<span class="code sti">delay</span>" timer (in milliseconds) expires, and returns an integer as an ID; if the callback is not defined inline, "<span class="opt"><span class="sti">callback-arguments</span>…</span>" can be provided.</p>
+      <p><span class="code">clearInterval(<span class="sti">intervalID</span>)</span> cancels a timed, repeating action which was previously established by a "<span class="code">setInterval()</span>".</p>
       <p><span class="udl">Value Check or Conversion:</span></p>
-      Number(…)	constructor function for numbers, can convert from strings.
-      parseFloat(<span class="sti">string</span>)	parses a "string" (from left to right) and returns a floating-point number.
-      parseInt(string, base)	parses a "string", and returns an integer of the specified "base" (default 10).
-      isNaN(value)	checks if argument is not a number (or string of), returns true/false.
-      .isFinite(value)	global function, checks if argument is a finite number (or string of).
-      encodeURI(<span class="sti">string</span>);  decodeURI(<span class="sti">string</span>)	global functions, encode/decode text from/to URI.
+      <p><span class="code">Number(…)</span> constructor function for numbers, can convert from strings.</p>
+      <p><span class="code">parseFloat(<span class="sti">string</span>)</span> parses a "<span class="code sti">string</span>" (from left to right) and returns a floating-point number.</p>
+      <p><span class="code">parseInt(<span class="sti">string</span><span class="opt">, <span class="sti">base</span></span>)</span> parses a "<span class="code sti">string</span>", and returns an integer of the specified "<span class="sti opt">base</span>" (default 10).</p>
+      <p><span class="code">isNaN(<span class="sti">value</span>)</span> checks if argument is not a number (or string of), returns true/false.</p>
+      <p><span class="code">.isFinite(<span class="sti">value</span>)</span> global function, checks if argument is a finite number (or string of).</p>
+      <p><span class="code">encodeURI(<span class="sti">string</span>);  decodeURI(<span class="sti">string</span>)</span> global functions, encode/decode text from/to URI.</p>
       <h3>Custom Constructor Functions, Prototype (inheritance), and JavaScript Class</h3>
-      function Constructor(parameters, …) { this.prop = param; … ; this.method = function (…) { …; } }; defines a constructor function for objects of type "Constructor".
-      var object = new Constructor(arguments, …);	creates an object which is a new instance of the original constructor object;
-      .prototype	objects property that accesses the object from which it inherits, can be used on constructor functions to add new methods to derived instances.
-      new	instance operator: creates a new object as an instance of the Constructor function that follows.
-      this	objects reference keyword, if alone refers to the global object, inside a method refers to the owner object.
-      class ClassName extends ParentClass { … }	class declaration for custom defined objects, can inherit ("extends") from a "ParentClass".
-      constructor(parameters, …) { this.property = parameter; … }	class designated constructor.
-      super	refers the "ParentClass" object if it exists, and calls its constructor if the calling operator its applied.
-      static	defines a property or method that belongs to the class itself and not to any instance.
-      var newObject = new className(arguments)	class instantiation (object creation).
-      
+      <p><span class="code"><span class="kwd">function</span> <span class="sti">Constructor</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { <span class="opt">this.<span class="sti">prop</span> = <span class="sti">param</span>; … ; this.<span class="sti">method</span> = function (…) { …; }</span> };</span> defines a constructor function for objects of type "<span class="code sti">Constructor</span>".
+        <span class="p"><span class="code">var object = new Constructor(arguments, …);</span> creates an object which is a new instance of the original constructor object;</span>
+        <span class="p"><span class="code">.prototype</span> objects property that accesses the object from which it inherits, can be used on constructor functions to add new methods to derived instances.</span>
+      </p>
+      <p><span class="code kwd">new</span> <span class="udl">instance operator:</span> creates a new object as an instance of the Constructor function that follows.</p>
+      <p><span class="code kwd">this</span> objects reference keyword, if alone refers to the global object, inside a method refers to the owner object.</p>
+      <p><span class="code"><span class="kwd">class</span> <span class="sti">ClassName</span> <span class="opt">extends <span class="sti">ParentClass</span></span> { … }</span> class declaration for custom defined objects, can inherit ("<span class="kwd">extends</span>") from a "<span class="sti opt">ParentClass</span>".
+        <span class="p"><span class="code">constructor(<span class="opt"><span class="sti">parameters</span>, …</span> ) { <span class="opt">this.<span class="sti">property</span> = <span class="sti">parameter</span>; …</span> }</span> class designated constructor.</span>
+        <span class="p"><span class="code kwd">super</span> refers the "ParentClass" object if it exists, and calls its constructor if the calling operator its applied.</span>
+        <span class="p"><span class="code kwd">static</span> defines a property or method that belongs to the class itself and not to any instance.</span>
+        <span class="p"><span class="code"><span class="kwd">var</span> <span class="sti">newObject</span> = <span class="kwd">new</span> <span class="sti">className</span>(<span class="opt">arguments</span>)</span> class instantiation (object creation).</span>
+      </p>
     </article>
     <article>
       <h1>DOM Objects, Properties and Methods</h1>
-
       <h2>Element General Properties</h2>
+      <p><span class="code"></span> </p>
+
 .id	returns the value of the id attribute
 .innerHTML	gets or sets the markup contained within the element, which could be text, but could also include other HTML tags.
 .outerHTML	gets or sets the markup contained within the element and including the element itself
