@@ -9,7 +9,7 @@
   body {
     box-sizing: border-box;
     background-color: #000000;
-    color: #cccccc;
+    color: #ffffff;
     font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     font-size: 1em;
     margin: 0;
@@ -134,6 +134,27 @@
     text-decoration: underline;
   }
 
+  div.row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  div.row div {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+
+  div.row div div:nth-child(2) {
+    flex: 1;
+    display: block;
+  }
+
+  div.row div div.code {
+    flex: none;
+    width: 100px;
+  }
+
   p span.code:first-child, span.p span.code:first-child {
     margin-right: 20px;
   }
@@ -141,10 +162,16 @@
   #index a {
     text-decoration: none;
   }
+
+  @media only screen and (max-width:  768px) {
+    div.row {
+      flex-direction: column;
+    }
+  }
   </style>
 </head>
 <body>
-  <header>JavaScript Reference Guide</header>
+  <header>JavaScript Reference Guide ≡</header>
   <main>
     <article>
       <div style="text-align: center; font-size: 1.2em; font-weight: bold; text-decoration: underline;">Index</div>
@@ -154,20 +181,30 @@
       <h1>Global Features</h1>
       <h2>Syntax, Keywords and Declaration</h2>
       <h3>Basic Syntax</h3>
-      <table>
-        <tr>
-          <td><span class="code">// …</span></td><td>line comment.</td>
-          <td><span class="code">/* … */</span></td><td>block comment.</td>
-        </tr>
-        <tr>
-          <td><span class="code">;	</span></td><td>end of line/statement, not always required.</td>
-          <td><span class="code">{ … }	</span></td><td>block scope.</td>
-        </tr>
-        <tr>
-          <td><span class="code">(…)	</span></td><td>grouping operator for expressions</td>
-          <td><span class="code">… , …	</span></td><td>Comma operator: evaluates each, returns last.</td>
-        </tr>
-      </table>
+      <div class="row">
+        <div>
+          <div class="code">// …</div><div>line comment.</div>
+        </div>
+        <div>
+          <div class="code">/* … */</div><div>block comment.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">;</div><div>end of line/statement, not always required.</div>
+        </div>
+        <div>
+          <div class="code">{ … }</div><div>block scope.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">(…)</div><div>grouping operator for expressions.</div>
+        </div>
+        <div>
+          <div class="code">… , …</div><div>Comma operator: evaluates each, returns last.</div>
+        </div>
+      </div>
       <h3>Variables Declarations</h3>
       <p><span class="code"><span class="kwd">var</span> <span class="sti">variable</span> = <span class="sti">value</span><span class="opt">, …</span></span>	declares a global scope variable, may be initialized to value, may declare an initialize a set of comma-separated variables.</p>
       <p><span class="code"><span class="kwd">let</span> <span class="sti">variable</span></span> declares a block level variable.</p>
@@ -179,28 +216,38 @@
         <span class="code">(<span class="opt"><span class="sti">parameters</span>, …</span>) => { …; <span class="opt">return <span class="sti">output</span>;</span> }</span> <span class="udl">arrow function notation:</span> creates anonymous functions, if it has only a single statement then its result is taken implicitly as return.
         <span class="p"><span class="code">arguments</span> functions' built-in array-like object that contains the arguments list.</span>
         <span class="p"><span class="code">.name</span> nonstandard property that holds the function's name (even named function expressions).</span>
-        <span class="p"><span class="code">.call(<span class="sti">thisArg</span><span class="opt">, <span class="sti">arguments</span>, …</span>)</span> calls a function and sets its "this" reference to "<span class="code sti">thisArg</span>".</span>
-        <span class="p"><span class="code">.apply(<span class="sti">thisArg</span><span class="opt">, <span class="sti">argArray</span></span>)</span> calls a function and sets its "this" reference to "<span class="code sti">thisArg</span>", provides arguments for the functions as and array "<span class="sti opt">argArray</span>".</span>
-        <span class="p"><span class="code">.bind(<span class="sti">thisArg</span><span class="opt">, <span class="sti">arguments</span>, …</span>)</span> creates a new function that, when called, has its "this" keyword set to the provided "<span class="code sti">thisArg</span>".</span>
+        <span class="p"><span class="code">.call(<span class="sti">thisArg</span><span class="opt">, <span class="sti">arguments</span>, …</span>)</span> calls a function and sets its "<span class="kwd">this</span>" reference to "<span class="code sti">thisArg</span>".</span>
+        <span class="p"><span class="code">.apply(<span class="sti">thisArg</span><span class="opt">, <span class="sti">argArray</span></span>)</span> calls a function and sets its "<span class="kwd">this</span>" reference to "<span class="code sti">thisArg</span>", provides arguments for the functions as and array "<span class="sti opt">argArray</span>".</span>
+        <span class="p"><span class="code">.bind(<span class="sti">thisArg</span><span class="opt">, <span class="sti">arguments</span>, …</span>)</span> creates a new function that, when called, has its "<span class="kwd">this</span>" keyword set to the provided "<span class="code sti">thisArg</span>".</span>
       </p>
       <p><span class="code"><span class="sti">funct</span>(<span class="opt"><span class="sti">arguments</span>, …</span>)</span> <span class="udl">function calling:</span> invokes a defined function, may require arguments to be passed.</p>
       <p><span class="code">(<span class="sti">functionStatement</span>)(<span class="opt">arguments</span>)</span> <span class="udl">Immediately invoked function expression:</span> immediately calls the function defined in the grouping operator (it is a grouping operator and an invoking operator).</p>
       <h2>Data types and conversion</h2>
       <h3>Base data types</h3>
-      <table>
-        <tr>
-          <td><span class="code">Number</span></td><td>integers, floats, "<span class="code">NaN</span>", "<span class="code"><span class="opt">-</span>Infinity</span>".</td>
-          <td><span class="code">String</span></td><td>text enclosed by either "<span class="code">'…'</span>" or "<span class="code">"…"</span>".</td>
-        </tr>		
-        <tr>
-          <td><span class="code">Boolean</span></td><td>"<span class="code">true</span>" or "<span class="code">false</span>"</td>
-          <td><span class="code">Object</span></td><td>Includes "<span class="code">Function</span>" and "<span class="code">Array</span>"</td>
-        </tr>
-        <tr>
-          <td><span class="code">null</span></td><td>Intentionally nothing</td>
-          <td><span class="code">undefined</span></td><td>value has never been defined</td>
-        </tr>
-      </table>
+      <div class="row">
+        <div>
+          <div class="code">Number</div><div>integers, floats, "<span class="code">NaN</span>", "<span class="code"><span class="opt">-</span>Infinity</span>".</div>
+        </div>
+        <div>
+          <div class="code">String</div><div>text enclosed by either "<span class="code">'…'</span>" or "<span class="code">"…"</span>".</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">Boolean</div><div>"<span class="code">true</span>" or "<span class="code">false</span>".</div>
+        </div>
+        <div>
+          <div class="code">Object</div><div>Includes "<span class="code">Function</span>" and "<span class="code">Array</span>".</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">null</div><div>Intentionally nothing.</div>
+        </div>
+        <div>
+          <div class="code">undefined</div><div>value has never been defined.</div>
+        </div>
+      </div>
       <h3>Strings</h3>
       <p><span class="code">'…' | "…"</span> regular string declaration.</p>
       <p><span class="code">`…`</span> string template literals, displays string with newlines and embedded expressions with placeholders.
@@ -218,70 +265,95 @@
       <p><span class="code">[<span class="sti">a</span>, <span class="sti">b</span>,…] = [<span class="sti">x</span>, <span class="sti">y</span>,…]; {<span class="sti">a</span>, <span class="sti">b</span>,…} = {<span class="sti">a</span>:<span class="sti">x</span>, <span class="sti">b</span>:<span class="sti">y</span>,…}</span> <span class="udl">Destructuring assignment:</span> allows you to assign the properties of an array or object to variables using syntax that looks similar to array or object literals. </p>
       <h2>Operators</h2>
       <h3>Arithmetic Operators</h3>
-      <table>
-        <tr>
-          <td><span class="code">+</span></td><td>sum | string concatenation</td>
-          <td><span class="code">-</span></td><td>subtraction</td>
-        </tr>
-        <tr>
-          <td><span class="code">*</span></td><td>multiplication</td>
-          <td><span class="code">/</span></td><td>floating point division</td>
-        </tr>
-        <tr>
-          <td><span class="code">**</span></td><td>exponentiation</td>
-          <td><span class="code">%</span></td><td>modulus (integer division remainder)</td>
-        </tr>
-        <tr>
-          <td><span class="code">++</span></td><td>increment (prefix or postfix)</td>
-          <td><span class="code">--</span></td><td>decrement (prefix or postfix)</td>
-        </tr>
-        <tr>
-          <td><span class="code"><span class="sti opt">oper</span>=</span></td><td colspan="3">assignment, simple or compound (may be preceded by other operands: +=, -=, *=, /=)</td>
-        </tr>
-      </table>
+      <div class="row">
+        <div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">+</div><div>sum | string concatenation</div>
+          <div class="code">-</div><div>subtraction</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">*</div><div>multiplication</div>
+          <div class="code">/</div><div>floating point division</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">**</div><div>exponentiation</div>
+          <div class="code">%</div><div>modulus (integer division remainder)</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">++</div><div>increment (prefix or postfix)</div>
+          <div class="code">--</div><div>decrement (prefix or postfix)</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code"><span class="sti opt">oper</span>=</span></div><div>assignment, simple or compound (may be preceded by other operands: +=, -=, *=, /=)</div>
+        </div>
+      </div>
       <h3>Comparison Operators</h3>
-      <table>
-        <tr>
-          <td><span class="code">==</span></td><td>equal value</td>
-          <td><span class="code">!=</span></td><td>not equal value</td>
-        </tr>
-        <tr>
-          <td><span class="code">===</span></td><td>equal value and type</td>
-          <td><span class="code">!==</span></td><td>not equal value or not equal type</td>
-        </tr>
-        <tr>
-          <td><span class="code">&gt;</span></td><td>greater than</td>
-          <td><span class="code">&lt;</span></td><td>less than</td>
-        </tr>
-        <tr>
-          <td><span class="code">&gt;=</span></td><td>greater than or equal to</td>
-          <td><span class="code">&lt;=</span></td><td>less than or equal to</td>
-        </tr>
-        <tr>
-          <td><span class="code">…?…:…</span></td><td colspan="3">ternary operator, evaluates first operand, if true returns the one left from the colon, if false the right one</td>
-        </tr>
-        <tr>
-          <td><span class="code">=…||…</span></td><td colspan="3">conditional assignment, if the first value is "falsy" (null, undefined, false), then assign the second value</td>
-        </tr>
-      </table>
+      <div class="row">
+        <div>
+          <div class="code">==</div><div>equal value</div>
+          <div class="code">!=</div><div>not equal value</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">===</div><div>equal value and type</div>
+          <div class="code">!==</div><div>not equal value or not equal type</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">&gt;</div><div>greater than</div>
+          <div class="code">&lt;</div><div>less than</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">&gt;=</div><div>greater than or equal to</div>
+          <div class="code">&lt;=</div><div>less than or equal to</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">…?…:…</div><div>ternary operator, evaluates first operand, if true returns the one left from the colon, if false the right one</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">=…||…</div><div>conditional assignment, if the first value is "falsy" (null, undefined, false), then assign the second value</div>
+        </div>
+      </div>
       <h3>Logical Operators</h3>
-      <table>
-        <tr>
-          <td><span class="code">&&</span></td><td>returns true if both statements are true</td>
-          <td><span class="code">||</span></td><td>returns true if any one statement is true</td>
-        </tr>
-        <tr>
-          <td><span class="code">!</span></td><td>reverses the result</td>
-          <td><span class="code"></span></td><td></td>
-        </tr>
-      </table>
+      <div class="row">
+        <div>
+          <div class="code">&&</div><div>returns true if both statements are true</div>
+          <div class="code">||</div><div>returns true if any one statement is true</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">!</div><div>reverses the result</div>
+          <div class="code"></div><div></div>
+        </div>
+      </div>
       <h3>Type operators</h3>
-      <p><span class="code"><span class="kwd">typeof</span> <span class="sti">variable</span></span> returns a string with the type of "variable" (string, number, boolean, function, object,…).</p>
+      <p><span class="code"><span class="kwd">typeof</span> <span class="sti">variable</span></span> returns a string with the type of "<span class="code sti">variable</span>" (string, number, boolean, function, object,…).</p>
       <p><span class="code"><span class="sti">object</span> <span class="kwd">instanceof</span> <span class="sti">class</span></span> returns true if an object is an instance of an object type.</p>
       <p><span class="code"><span class="sti">property</span> <span class="kwd">in</span> <span class="sti">object</span></span> returns true if "<span class="code sti">property</span>" (as a string) is a member of "<span class="code sti">object</span>" ("<span class="code"><span class="sti">object</span>[<span class="sti">property</span>] != undefined</span>").</p>
       <p><span class="code">void</span> expression	evaluates the given expression and then returns "<span class="code">undefined</span>".</p>
       <h3>Access Operators</h3>
-      <p><span class="code">.</span> <span class="udl">member selection operator:</span> to access properties, methods or other objects inside an object (object.menber).</p>
+      <p><span class="code">.</span> <span class="udl">member selection operator:</span> to access properties, methods or other objects inside an object ("<span class="code"><span class="sti">object</span>.<span class="sti">menber</span></span> ").</p>
       <p><span class="code">[…]</span> <span class="udl">index operator:</span> used to access the member of an array at the position of index inside (number), or a member of an object by its name (string).</p>
       <p><span class="code">(<span class="sti opt">arguments</span>)</span> <span class="udl">function call operator:</span> invokes the function defined by the preceding expression, can include "arguments".</p>
       <h2>Logical Structures and Loops</h2>
@@ -386,7 +458,106 @@
       <p><span class="code">.some(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">boolean</span>; })</span> returns "true" if at least one of the elements in the array returns "true" on the callback function.</p>
       <p><span class="code">.reduce(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">accumulator</span>, <span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">toAccumulator</span>; } <span class="opt">, <span class="sti">initialValue</span></span>)</span> executes a reducer function on each element assigning its returned value to the given "accumulator", and returns the final value of it; can have an "initialValue" set for the "accumulator".</p>
       <p><span class="code">.reduceRight(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">accumulator</span>, <span class="sti">element</span><span class="opt">, <span class="sti">index</span>, <span class="sti">array</span></span>) { …; <span class="kwd">return</span> <span class="sti">toAccumulator</span>; } <span class="opt">, <span class="sti">initialValue</span></span>)</span> executes a reducer function on each element, going from last to first, assigning its returned value to the given "accumulator", and returns the final value of it; can have an "initialValue" set for the "accumulator".</p>
-      <p><span class="code">.sort(<span class="opt">function <span class="sti">callback</span>(<span class="sti">first</span>, <span class="sti">second</span>) { …; return <span class="sti">number</span>; }</span>)</span> sorts the original array, by converting to strings and comparing their Unicode value, or by result of "callback" comparing two elements and sorting "first" before "second" if it returns a "number" <= 0, or backwards otherwise.</p>
+      <p><span class="code">.sort(<span class="opt">function <span class="sti">callback</span>(<span class="sti">first</span>, <span class="sti">second</span>) { …; return <span class="sti">number</span>; }</span>)</span> sorts the original array, by converting to strings and comparing their Unicode value, or by result of "callback" comparing two elements and sorting "first" before "second" if it returns a "number" <= 0, or backwards otherwise.</p>    
+      <h3>JSON Parsing Methods</h3>
+      <p><span class="code">JSON</span> object with methods to handle conversion of JavaScript objects to and from JavaScript Object Notation strings. </p>
+      <p><span class="code">.parse(<span class="sti">string</span>)</span> returns an object from the "<span class="code sti">string</span>" parsed.</p>
+      <p><span class="code">.stringify(<span class="sti">object</span>)</span> returns a JSON string from the "<span class="code sti">object</span>" parsed.</p>
+      <h3>RegExp Methods</h3>
+      <p><span class="code">RegExp('/<span class="sti">pattern</span>/<span class="sti opt">options</span>')</span> constructor function for regular expression objects, receives a regular expression string where "<span class="code sti">pattern</span>" is the RegExp and "<span class="sti opt">options</span>" are <span class="code">i</span>: case insensitive, <span class="code">g</span>: global, <span class="code">m</span>: multiline.</p>
+      <p><span class="code"><span class="kwd">var</span> <span class="sti">regexp</span> = /<span class="sti">pattern</span>/<span class="sti opt">options</span>;</span> RegExp literal declaration: "<span class="code sti">pattern</span>" is enclosed inside "<span class="code">/…/</span>".</p>
+      <p><span class="code">.test(<span class="sti">string</span>)</span> tests the RegExp for a match in its "<span class="code sti">string</span>" parameter and returns a Boolean.</p>
+      <p><span class="code">.exec(<span class="sti">string</span>)</span> executes a search for a match in a specified string and returns a result array, or "<span class="code">null</span>".</p>
+      <div class="row">
+        <div>
+          <div class="code">\</div><div>ignore default value of preceding character.</div>
+          <div class="code">.</div><div>any character.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">?</div><div>previous  character once or none.</div>
+          <div class="code">*</div><div>previous character none or more.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">+</div><div>previous character once or more.</div>
+          <div class="code"><span class="sti">x</span></div><div>match character "<span class="code sti">x</span>".</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">^</div><div>match beginning of the string.</div>
+          <div class="code">$</div><div>match end of the string.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">\d</div><div>any digit.</div>
+          <div class="code">\D</div><div>any character that's not a digit.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">\w</div><div>any word char (letters, numbers and "_").</div>
+          <div class="code">\W</div><div>any non-word character.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">\s</div><div>any single white space char (space, tab, …).</div>
+          <div class="code">\S</div><div>any character that's not a white space.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">\t</div><div>horizontal tab.</div>
+          <div class="code">\r</div><div>carriage return.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">\n</div><div>linefeed.</div>
+          <div class="code">\v</div><div>vertical tab.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">\f</div><div>form-feed.</div>
+          <div class="code">[\b]</div><div>backspace.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">\b</div><div>word boundary.</div>
+          <div class="code">\B</div><div>non-word boundary.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">[<span class="sti">set</span>]</div><div>match one character in the "<span class="code sti">set</span>".</div>
+          <div class="code">[^<span class="sti">set</span>]</div><div>match one character not in the "<span class="code sti">set</span>".</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code"><span class="sti">x</span>{<span class="sti">n</span><span class="opt">,<span class="sti">m</span></span>}</div><div>match "<span class="code sti">x</span>" char "<span class="code sti">n</span>" times, "<span class="opt">,</span>" at least, up to "<span class="sti opt">m</span>" times.</div>
+          <div class="code"><span class="sti">x</span>|<span class="sti">y</span></div><div>matches either "<span class="code sti">x</span>" or "<span class="code sti">y</span>".</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code"><span class="sti">x</span>(?=<span class="sti">y</span>)</div><div>matches "<span class="code sti">x</span>" only if it's followed by "<span class="code sti">y</span>".</div>
+          <div class="code"><span class="sti">x</span>(?!<span class="sti">y</span>)</div><div>matches "<span class="code sti">x</span>" only if it's not followed by "<span class="code sti">y</span>".</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">(?&lt;=<span class="sti">y</span>)<span class="sti">x</span></div><div>matches "<span class="code sti">x</span>" only if it's preceded by "<span class="code sti">y</span>".</div>
+          <div class="code">(?&lt;!<span class="sti">y</span>)<span class="sti">x</span></div><div>matches "<span class="code sti">x</span>" only if it's not preceded by "<span class="code sti">y</span>".</div>
+        </div>
+      </div>
       <h3>Date Methods</h3>
       <p><span class="code">Date(…)</span> constructor function for date objects, by default (if no arguments) to the current time, otherwise accepts arguments in order (year, month zero index, day, hour, minutes, seconds)</p>
       <p><span class="code">.now()</span> "Date" class (static) method that returns the number of milliseconds elapsed since the "Unix Epoch" (January 1, 1970 00:00:00 UTC).</p>
@@ -428,77 +599,6 @@
       <p><span class="code">.time(<span class="sti">label</span>)</span> starts a timer set to a "<span class="code sti">label</span>" string that you can use to track how long an operation takes.</p>
       <p><span class="code">.timeLog(<span class="sti">label</span>)</span> logs to the console the current value of a timer.</p>
       <p><span class="code">.timeEnd(<span class="sti">label</span>)</span> stops and logs to the console the final value of a timer.</p>
-      <h3>JSON Parsing Methods</h3>
-      <p><span class="code">JSON</span> object with methods to handle conversion of JavaScript objects to and from JavaScript Object Notation strings. </p>
-      <p><span class="code">.parse(<span class="sti">string</span>)</span> returns an object from the "<span class="code sti">string</span>" parsed.</p>
-      <p><span class="code">.stringify(<span class="sti">object</span>)</span> returns a JSON string from the "<span class="code sti">object</span>" parsed.</p>
-      <h3>RegExp Methods</h3>
-      <p><span class="code">RegExp('/<span class="sti">pattern</span>/<span class="sti opt">options</span>')</span> constructor function for regular expression objects, receives a regular expression string where "<span class="code sti">pattern</span>" is the RegExp and "<span class="sti opt">options</span>" are <span class="code">i</span>: case insensitive, <span class="code">g</span>: global, <span class="code">m</span>: multiline.</p>
-      <p><span class="code"><span class="kwd">var</span> <span class="sti">regexp</span> = /<span class="sti">pattern</span>/<span class="sti opt">options</span>;</span> RegExp literal declaration: "<span class="code sti">pattern</span>" is enclosed inside "<span class="code">/…/</span>".</p>
-      <p><span class="code">.test(<span class="sti">string</span>)</span> tests the RegExp for a match in its "<span class="code sti">string</span>" parameter and returns a Boolean.</p>
-      <p><span class="code">.exec(<span class="sti">string</span>)</span> executes a search for a match in a specified string and returns a result array, or "<span class="code">null</span>".</p>
-      <table>
-        <tr>
-          <td><span class="code">\</span></td><td>ignore default value of preceding character.</td>
-          <td><span class="code">.</span></td><td>any character.</td>
-        </tr>
-        <tr>
-          <td><span class="code">?</span></td><td>previous  character once or none.</td>
-          <td><span class="code">*</span></td><td>previous character none or more.</td>
-        </tr>
-        <tr>
-          <td><span class="code">+</span></td><td>previous character once or more.</td>
-          <td><span class="code sti">x</span></td><td>match character "<span class="code sti">x</span>".</td>
-        </tr>
-        <tr>
-          <td><span class="code">^</span></td><td>match beginning of the string.</td>
-          <td><span class="code">$</span></td><td>match end of the string.</td>
-        </tr>
-        <tr>
-          <td><span class="code">\d</span></td><td>any digit.</td>
-          <td><span class="code">\D</span></td><td>any character that's not a digit.</td>
-        </tr>
-        <tr>
-          <td><span class="code">\w</span></td><td>any word char (letters, numbers and "_").</td>
-          <td><span class="code">\W</span></td><td>any non-word character.</td>
-        </tr>
-        <tr>
-          <td><span class="code">\s</span></td><td>any single white space char (space, tab, …).</td>
-          <td><span class="code">\S</span></td><td>any character that's not a white space.</td>
-        </tr>
-        <tr>
-          <td><span class="code">\t</span></td><td>horizontal tab.</td>
-          <td><span class="code">\r</span></td><td>carriage return.</td>
-        </tr>
-        <tr>
-          <td><span class="code">\n</span></td><td>linefeed.</td>
-          <td><span class="code">\v</span></td><td>vertical tab.</td>
-        </tr>
-        <tr>
-          <td><span class="code">\f</span></td><td>form-feed.</td>
-          <td><span class="code">[\b]</span></td><td>backspace.</td>
-        </tr>
-        <tr>
-          <td><span class="code">\b</span></td><td>word boundary.</td>
-          <td><span class="code">\B</span></td><td>non-word boundary.</td>
-        </tr>
-        <tr>
-          <td><span class="code">[<span class="sti">set</span>]</span></td><td>match one character in the "<span class="code sti">set</span>".</td>
-          <td><span class="code">[^<span class="sti">set</span>]</span></td><td>match one character not in the "<span class="code sti">set</span>".</td>
-        </tr>
-        <tr>
-          <td><span class="code"><span class="sti">x</span>{<span class="sti">n</span><span class="opt">,<span class="sti">m</span></span>}</span></td><td>match "<span class="code sti">x</span>" char "<span class="code sti">n</span>" times, "<span class="opt">,</span>" at least, up to "<span class="sti opt">m</span>" times.</td>
-          <td><span class="code"><span class="sti">x</span>|<span class="sti">y</span></span></td><td>matches either "<span class="code sti">x</span>" or "<span class="code sti">y</span>".</td>
-        </tr>
-        <tr>
-          <td><span class="code"><span class="sti">x</span>(?=<span class="sti">y</span>)</span></td><td>matches "<span class="code sti">x</span>" only if it's followed by "<span class="code sti">y</span>".</td>
-          <td><span class="code"><span class="sti">x</span>(?!<span class="sti">y</span>)</span></td><td>matches "<span class="code sti">x</span>" only if it's not followed by "<span class="code sti">y</span>".</td>
-        </tr>
-        <tr>
-          <td><span class="code">(?&lt;=<span class="sti">y</span>)<span class="sti">x</span></span></td><td>matches "<span class="code sti">x</span>" only if it's preceded by "<span class="code sti">y</span>".</td>
-          <td><span class="code">(?&lt;!<span class="sti">y</span>)<span class="sti">x</span></span></td><td>matches "<span class="code sti">x</span>" only if it's not preceded by "<span class="code sti">y</span>".</td>
-        </tr>
-      </table>	
       <h3>Other Global Functions</h3>
       <p><span class="udl">Timers:</span></p>
       <p><span class="code">setTimeout(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="opt"><span class="sti">parameters</span>,…</span>) { … }, <span class="sti">delay</span><span class="opt">, <span class="sti">callback-arguments</span>…</span>)</span> executes a "<span class="sti opt">callback</span>" function or specified piece of code once the "<span class="code sti">delay</span>" timer (in milliseconds) expires, and returns an integer as an ID; if the callback is not defined inline, "<span class="opt"><span class="sti">callback-arguments</span>…</span>" can be provided.</p>
@@ -528,96 +628,125 @@
     </article>
     <article>
       <h1>DOM Objects, Properties and Methods</h1>
-      <h2>Element General Properties</h2>
+      <h2>Elements Properties and Methods</h2>
+      <h3>Element Properties</h3>
+      <p><span class="code">.id</span>	returns the value of the id attribute</p>
+      <p><span class="code">.innerHTML</span>	gets or sets the markup contained within the element, which could be text, but could also include other HTML tags.</p>
+      <p><span class="code">.outerHTML</span>	gets or sets the markup contained within the element and including the element itself</p>
+      <p><span class="code">.parentNode</span>	gets a reference to the parent node of this element in the DOM.</p>
+      <p><span class="code">.nextSibling</span>	gets a reference to the sibling element of this element, if any.</p>
+      <p><span class="code">.className</span>	gets or sets the value of the class attribute for the element.</p>
+      <p><span class="code">.style</span>	gets or sets style properties of the element.</p>
+      <p><span class="code">.classList</span>	property containing the information of the element classes:
+        <span class="p"><span class="code">.add()</span>	adds one (or more) class names to the element. If any of them are already present, they are ignored.</span>
+        <span class="p"><span class="code">.remove()</span>	removes one (or more) class names from the element.</span>
+        <span class="p"><span class="code">.toggle()</span>	toggles a class name on (adds it) or off (removes it), depending on the current state.</span>
+        <span class="p"><span class="code">.contains()</span>	checks if the specified class name is already defined for this element.</span>
+        <span class="p"><span class="code">.replace()</span>	replaces an old class name with the new one.</span>
+      </p>
+      <h3>Element Methods</h3>
+      <p><span class="code">.appendChild(<span class="sti">element</span>)</span> adds the element parameter to the specified HTML element (parent).</p>
+      <p><span class="code">.insertBefore(<span class="sti">new</span>, <span class="sti">old</span>)</span>	adds a "<span class="code sti">new</span>" element before the "<span class="code sti">old</span>" existing element to the parent element.</p>
+      <p><span class="code">.remove()</span>	removes the selected element from the document.</p>
+      <p><span class="code">.removeChild(<span class="sti">element</span>)</span>	removes the child "<span class="code sti">element</span>" from its parent.</p>
+      <p><span class="code">.scrollIntoView()</span>	element method that scrolls the browser window down to the selected HTML element.</p>
+      <p><span class="code">.hasAttribute(<span class="sti">name</span>)</span>	element method that checks for the named attribute and returns a Boolean.</p>
+      <p><span class="code">.getAttribute(<span class="sti">name</span>)</span>	element method that returns the value of the selected attribute.</p>
+      <p><span class="code">.setAttribute(<span class="sti">name</span>, <span class="sti">value</span>)</span>	element method that sets the value of its named attribute.</p>
+      <p><span class="code">.removeAttribute(<span class="sti">name</span>)</span>	removes the selected attribute from the element.</p>
+      <h2>Document Object Properties and Methods</h2>
+      <p><span class="code">.body</span>	property that refers to the webpage HTML "<span class="code">&lt;body&gt;</span>" element;</p>
+      <p><span class="code">.getElementById(<span class="sti">id</span>)</span>	returns the HTML element with "id" equal to the string parameter</p>
+      <p><span class="code">.getElementsByClassName(<span class="sti">className</span>)</span>	returns a list of HTML elements with the corresponding string class.</p>
+      <p><span class="code">.querySelector(<span class="sti">selector</span>)</span>	returns a reference to the first element that matches the CSS selector as the string parameter (tags, classes [.] and IDs [#]).</p>
+      <p><span class="code">.querySelectorAll(<span class="sti">selector</span>)</span>	returns a "<span class="code">NodeList</span>" (array-like object) of elements that matches the CSS selector as the string parameter</p>
+      <p><span class="code">.createElement(<span class="sti">tag</span>)</span>	creates and returns an HTML element set by the string parameter (HTML "tag").</p>
+      <p><span class="code">.createTextNode(<span class="sti">text</span>)</span>	creates and returns a text node (the text within an element vs. the element itself).
+
+      <h2>Events</h2>
+      <p><span class="code">.on<span class="sti">event</span> = <span class="kwd">function</span>(<span class="sti">e</span>) {…}</span> sets an event handler function to an object ("<span class="code">on</span>" + "<span class="code sti">event</span>") that can receive an instance of the "<span class="code">Event</span>" object ("<span class="code sti">e</span>").</p>
+      <p><span class="code">.addEventListener("<span class="sti">event</span>", <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">e</span>) {…})</span> element method that adds a function to be called on the selected event string.</p>
+      <p><span class="code">.removEventListener("<span class="sti">event</span>", <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">e</span>) {…})</span> removes the function (needs to have been named) from the event listener list of the element.</p>
+      <div class="row">
+        <div>
+          <div class="code">load</div><div>when a resource has finished loading.</div>
+          <div class="code">beforeunload</div><div>just before unloaded (window closed).</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">focus</div><div>when the element receives focus.</div>
+          <div class="code">blur</div><div>when the element loses focus.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">click</div><div>when a single click on an element.</div>
+          <div class="code">dblclick</div><div>when a double click on an element.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">keypress</div><div>when a key is pressed on the keyboard.</div>
+          <div class="code">contextmenu</div><div>when the right mouse button is clicked.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">change</div><div>when the content of an element changes.</div>
+          <div class="code">resize</div><div>when the element is resized.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">mouseover</div><div>when the mouse moves on top.</div>
+          <div class="code">mouseout</div><div>when the mouse moves outside.</div>
+        </div>
+      </div>
+      <p><span class="code">.target</span> event property that references the element that triggered it.</p>
+      <p><span class="code">.preventDefault()</span> event object method that prevents default behavior (Ej: a form submission).</p>
+      <p><span class="code">.stopPropagation()</span> event object method that prevents triggering other event handlers.</p>
+      <p><span class="code">.screenX; .screenY;</span> properties of a mouse event object that return the position in pixels of the mouse.</p>
+
+      <h2>Window Object Properties and Methods</h2>
       <p><span class="code"></span> </p>
+      .location	read-only property returns a Location object with information about the current location of the document, you can also assign a "DOMString" to it.
+      .href	property that can set or returns the current address.
+      .assign(href)	method that sets the "href" address from "location".
+      .reload()	reloads the current page.
+      .replace(href)	replaces the current value of the location to the new "href".
+      .history	read-only property returns a reference to the "History" object.
+      .back()	"History" object method to move backward through history.
+      .forward()	"History" object method to move forward through history.
+      .go(int)	"History" object method to load a specific page from session history.
+      .innerHeight	returns the interior height of the window in pixels.
+      .innerWidth		returns the interior width of the window in pixels.
+      .alert(<span class="sti">string</span>)	displays an alert dialog.
+      .confirm()	displays a confirmation message and ask the user to click either button, and returns a Boolean.
+      .prompt(<span class="sti">string</span>)	displays a dialog box with an optional message prompting the user for input and returns it.
+      .close()	closes the current window.
+      .open(url, windowName)	loads the specified resource into the new or existing browsing context.
+      .print()	opens the Print Dialog to print the current document.
 
-.id	returns the value of the id attribute
-.innerHTML	gets or sets the markup contained within the element, which could be text, but could also include other HTML tags.
-.outerHTML	gets or sets the markup contained within the element and including the element itself
-.parentNode	gets a reference to the parent node of this element in the DOM.
-.nextSibling	gets a reference to the sibling element of this element, if any.
-.className	gets or sets the value of the class attribute for the element.
-.style	gets or sets style properties of the element.
-.classList	property containing the information of the element classes.
-.add()	adds one (or more) class names to the element. If any of them are already present, they are ignored.
-.remove()	removes one (or more) class names from the element.
-.toggle()	toggles a class name on (adds it) or off (removes it), depending on the current state.
-.contains()	checks if the specified class name is already defined for this element.
-.replace()	replaces an old class name with the new one.
-
-      <h2>Element Methods</h2>
-      <h3>"document" Object Properties Methods</h3>
-.body	property that refers to the webpage HTML "<body>" element;
-.getElementById(id)	returns the HTML element with "id" equal to the string parameter
-.getElementsByClassName(class)	returns a list of HTML elements with the corresponding string class.
-.querySelector(selector)	returns a reference to the first element that matches the CSS selector as the string parameter (tags, classes [.] and IDs [#]).
-.querySelectorAll(selector)	returns a "NodeList" (array-like) of elements that matches the CSS selector as the string parameter
-.createElement(tag)	creates and returns an HTML element set by the string parameter (HTML "tag").
-.createTextNode(text)	creates and returns a text node (the text within an element vs. the element itself).
-      <h3>Body Elements' Methods</h3>
-.appendChild(<span class="sti">element</span>) adds the element parameter to the specified HTML element (parent).
-.insertBefore(new, old)	adds a "new" element before the "old" existing element to the parent element.
-.remove()	removes the selected element from the document.
-.removeChild(<span class="sti">element</span>)	removes the child "element" from its parent.
-.scrollIntoView()	element method that scrolls the browser window down to the selected HTML element.
-.hasAttribute(name)	element method that checks for the named attribute and returns a Boolean.
-.getAttribute(name)	element method that returns the value of the selected attribute.
-.setAttribute(name, value)	element method that sets the value of its named attribute.
-.removeAttribute(name)	removes the selected attribute from the element.
-
-<h2>Events</h2>
-.onevent = function(e) {…}	sets an event handler function to an object ("on" + "event") that can receive an instance of the "Event" object (“e”).
-.addEventListener("event", function callback(e) {…})	element method that adds a function to be called on the selected event string.
-. removEventListener("event", function callback(e) {…})	removes the function (needs to have been named) from the event listener list of the element.
-load	when a resource has finished loading.	beforeunload	just before unloaded (window closed).
-focus	when the element receives focus.	blur	when the element loses focus.
-click	when a single click on an element.	dblclick	when a double click on an element.
-keypress	when a key is pressed on the keyboard.	contextmenu	when the right mouse button is clicked.
-change	when the content of an element changes.	resize	when the element is resized.
-mouseover 	when the mouse moves on top.	mouseout	when the mouse moves outside.
-.target	event property that references the element that triggered it.
-.preventDefault()	event object method that prevents default behavior (Ej: a form submission).
-.stopPropagation() event object method that prevents triggering other event handlers.
-.screenX; .screenY;	properties of a mouse event object that return the position in pixels of the mouse
-
-<h2>Window Object Properties and Methods</h2>
-.location	read-only property returns a Location object with information about the current location of the document, you can also assign a "DOMString" to it.
-.href	property that can set or returns the current address.
-.assign(href)	method that sets the "href" address from "location".
-.reload()	reloads the current page.
-.replace(href)	replaces the current value of the location to the new "href".
-.history	read-only property returns a reference to the "History" object.
-.back()	"History" object method to move backward through history.
-. forward()	"History" object method to move forward through history.
-.go(int)	"History" object method to load a specific page from session history.
-.innerHeight	returns the interior height of the window in pixels.
-.innerWidth		returns the interior width of the window in pixels.
-.alert(<span class="sti">string</span>)	displays an alert dialog.
-.confirm()	displays a confirmation message and ask the user to click either button, and returns a Boolean.
-.prompt(<span class="sti">string</span>)	displays a dialog box with an optional message prompting the user for input and returns it.
-.close()	closes the current window.
-.open(url, windowName)	loads the specified resource into the new or existing browsing context.
-.print()	opens the Print Dialog to print the current document.
-
-<h2>AJAX (Asynchronous JavaScript and XML)</h2>
-<h3>XMLHttpRequest API</h3>
-XMLHttpRequest()	constructor function that creates a new XMLHttpRequest.
-.open(method, url)	instance method that sets the "method" for the request and the "url" of destination.
-.send()	instance method that sends the HTTP request to the "url" previously defined.
-.onload	event listener property that triggers when the response is received, where a function can be assigned.
-.responseText	property that holds the response body string; if in JSON format, needs to be parsed first 	(Ej: xhr.onload = function() { …; response = JSON.parse(this.responseText);… }).
-<h3>Fetch API</h3>
-Request(resourse, init)	creates a new "Request" object.
-fetch(resourse, init)	global method that fetches a "resource" (url string or "Request" object) from the network, returning a "Promise" that resolves to a "Response" object; can also receive an "init" configuration object.
-init = { method: …, body: …, headers: {…}, mode: …, credentials: … }	structure of the "init" object (default "method: 'GET'"). When uploading JSON data in the body ("method: 'POST'||'PUT'"), it must be parsed ("body: JSON.stringify(data)") and the "headers" must include "'Content-Type': 'application/json'".
-body: (new FormData()).append(fileKey, fileElement.files[i])	the "append()" method of a "FormData()" object can be used to upload files in a fetch request.
-Response	object type that resolves from a "Request".
-.text()	"Response" instance method that returns a "Promise" that will resolve into text.
-.json()	"Response" instance method that returns a "Promise" that will resolve into an object.
-.ok	read-only property Boolean stating whether the response was successful (status in the range 200-299) or not.
-.status	read-only property that returns the status-number of a request (200, 403, 404, …).
-.statusText	read-only property that returns the status-text ("OK", "Not Found",  …).
-EJ: fetch(request).then(response => response.json()).then(json => {…})
+      <h2>AJAX (Asynchronous JavaScript and XML)</h2>
+      <h3>XMLHttpRequest API</h3>
+      XMLHttpRequest()	constructor function that creates a new XMLHttpRequest.
+      .open(method, url)	instance method that sets the "method" for the request and the "url" of destination.
+      .send()	instance method that sends the HTTP request to the "url" previously defined.
+      .onload	event listener property that triggers when the response is received, where a function can be assigned.
+      .responseText	property that holds the response body string; if in JSON format, needs to be parsed first 	(Ej: xhr.onload = function() { …; response = JSON.parse(this.responseText);… }).
+      <h3>Fetch API</h3>
+      Request(resourse, init)	creates a new "Request" object.
+      fetch(resourse, init)	global method that fetches a "resource" (url string or "Request" object) from the network, returning a "Promise" that resolves to a "Response" object; can also receive an "init" configuration object.
+      init = { method: …, body: …, headers: {…}, mode: …, credentials: … }	structure of the "init" object (default "method: 'GET'"). When uploading JSON data in the body ("method: 'POST'||'PUT'"), it must be parsed ("body: JSON.stringify(data)") and the "headers" must include "'Content-Type': 'application/json'".
+      body: (new FormData()).append(fileKey, fileElement.files[i])	the "append()" method of a "FormData()" object can be used to upload files in a fetch request.
+      Response	object type that resolves from a "Request".
+      .text()	"Response" instance method that returns a "Promise" that will resolve into text.
+      .json()	"Response" instance method that returns a "Promise" that will resolve into an object.
+      .ok	read-only property Boolean stating whether the response was successful (status in the range 200-299) or not.
+      .status	read-only property that returns the status-number of a request (200, 403, 404, …).
+      .statusText	read-only property that returns the status-text ("OK", "Not Found",  …).
+      EJ: fetch(request).then(response => response.json()).then(json => {…})
 
     </article>
     <article>
