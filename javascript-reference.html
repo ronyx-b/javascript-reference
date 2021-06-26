@@ -152,7 +152,7 @@
 
   div.row div div.code {
     flex: none;
-    width: 100px;
+    min-width: 100px;
   }
 
   p span.code:first-child, span.p span.code:first-child {
@@ -265,11 +265,6 @@
       <p><span class="code">[<span class="sti">a</span>, <span class="sti">b</span>,…] = [<span class="sti">x</span>, <span class="sti">y</span>,…]; {<span class="sti">a</span>, <span class="sti">b</span>,…} = {<span class="sti">a</span>:<span class="sti">x</span>, <span class="sti">b</span>:<span class="sti">y</span>,…}</span> <span class="udl">Destructuring assignment:</span> allows you to assign the properties of an array or object to variables using syntax that looks similar to array or object literals. </p>
       <h2>Operators</h2>
       <h3>Arithmetic Operators</h3>
-      <div class="row">
-        <div>
-
-        </div>
-      </div>
       <div class="row">
         <div>
           <div class="code">+</div><div>sum | string concatenation</div>
@@ -662,7 +657,6 @@
       <p><span class="code">.querySelectorAll(<span class="sti">selector</span>)</span>	returns a "<span class="code">NodeList</span>" (array-like object) of elements that matches the CSS selector as the string parameter</p>
       <p><span class="code">.createElement(<span class="sti">tag</span>)</span>	creates and returns an HTML element set by the string parameter (HTML "tag").</p>
       <p><span class="code">.createTextNode(<span class="sti">text</span>)</span>	creates and returns a text node (the text within an element vs. the element itself).
-
       <h2>Events</h2>
       <p><span class="code">.on<span class="sti">event</span> = <span class="kwd">function</span>(<span class="sti">e</span>) {…}</span> sets an event handler function to an object ("<span class="code">on</span>" + "<span class="code sti">event</span>") that can receive an instance of the "<span class="code">Event</span>" object ("<span class="code sti">e</span>").</p>
       <p><span class="code">.addEventListener("<span class="sti">event</span>", <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">e</span>) {…})</span> element method that adds a function to be called on the selected event string.</p>
@@ -709,151 +703,184 @@
       <p><span class="code">.screenX; .screenY;</span> properties of a mouse event object that return the position in pixels of the mouse.</p>
 
       <h2>Window Object Properties and Methods</h2>
-      <p><span class="code"></span> </p>
-      .location	read-only property returns a Location object with information about the current location of the document, you can also assign a "DOMString" to it.
-      .href	property that can set or returns the current address.
-      .assign(href)	method that sets the "href" address from "location".
-      .reload()	reloads the current page.
-      .replace(href)	replaces the current value of the location to the new "href".
-      .history	read-only property returns a reference to the "History" object.
-      .back()	"History" object method to move backward through history.
-      .forward()	"History" object method to move forward through history.
-      .go(int)	"History" object method to load a specific page from session history.
-      .innerHeight	returns the interior height of the window in pixels.
-      .innerWidth		returns the interior width of the window in pixels.
-      .alert(<span class="sti">string</span>)	displays an alert dialog.
-      .confirm()	displays a confirmation message and ask the user to click either button, and returns a Boolean.
-      .prompt(<span class="sti">string</span>)	displays a dialog box with an optional message prompting the user for input and returns it.
-      .close()	closes the current window.
-      .open(url, windowName)	loads the specified resource into the new or existing browsing context.
-      .print()	opens the Print Dialog to print the current document.
-
+      <p><span class="code">.location</span> read-only property returns a Location object with information about the current location of the document, you can also assign a "DOMString" to it.
+        <span class="p"><span class="code">.href</span> property that can set or returns the current address.</span>
+        <span class="p"><span class="code">.assign(<span class="sti">href</span>)</span> method that sets the "href" address from "location".</span>
+        <span class="p"><span class="code">.reload()</span> reloads the current page.</span>
+        <span class="p"><span class="code">.replace(<span class="sti">href</span>)</span> replaces the current value of the location to the new "href".</span>
+      </p>
+      <p><span class="code">.history</span> read-only property returns a reference to the "History" object.
+        <span class="p"><span class="code">.back()</span> "<span class="code">History</span>" object method to move backward through history.</span>
+        <span class="p"><span class="code">.forward()</span> "<span class="code">History</span>" object method to move forward through history.</span>
+        <span class="p"><span class="code">.go(<span class="sti">int</span>)</span> "<span class="code">History</span>" object method to load a specific page from session history.</span>
+      </p>
+      <p><span class="code">.innerHeight</span> returns the interior height of the window in pixels.</p>
+      <p><span class="code">.innerWidth</span> returns the interior width of the window in pixels.</p>
+      <p><span class="code">.alert(<span class="sti">string</span>)</span> displays an alert dialog.</p>
+      <p><span class="code">.confirm()</span> displays a confirmation message and ask the user to click either button, and returns a Boolean.</p>
+      <p><span class="code">.prompt(<span class="sti">string</span>)</span> displays a dialog box with an optional message prompting the user for input and returns it.</p>
+      <p><span class="code">.close()</span> closes the current window.</p>
+      <p><span class="code">.open(<span class="sti">url</span><span class="opt">, <span class="sti">windowName</span></span>)</span> loads the specified resource into the new or existing browsing context.</p>
+      <p><span class="code">.print()</span> opens the Print Dialog to print the current document.</p>
       <h2>AJAX (Asynchronous JavaScript and XML)</h2>
       <h3>XMLHttpRequest API</h3>
-      XMLHttpRequest()	constructor function that creates a new XMLHttpRequest.
-      .open(method, url)	instance method that sets the "method" for the request and the "url" of destination.
-      .send()	instance method that sends the HTTP request to the "url" previously defined.
-      .onload	event listener property that triggers when the response is received, where a function can be assigned.
-      .responseText	property that holds the response body string; if in JSON format, needs to be parsed first 	(Ej: xhr.onload = function() { …; response = JSON.parse(this.responseText);… }).
+      <p><span class="code">XMLHttpRequest()</span> constructor function that creates a new XMLHttpRequest.</p>
+      <p><span class="code">.open(method, url)</span> instance method that sets the "method" for the request and the "url" of destination.</p>
+      <p><span class="code">.send()</span> instance method that sends the HTTP request to the "url" previously defined.</p>
+      <p><span class="code">.onload</span> event listener property that triggers when the response is received, where a function can be assigned.</p>
+      <p><span class="code">.responseText</span> property that holds the response body string; if in JSON format, needs to be parsed first 	(Ej: <span class="code"><span class="sti">xhr</span>.onload = function() { …; <span class="sti">response</span> = <span class="opt">JSON.parse(</span>this.responseText<span class="opt">)</span>;… }</span>).</p>
       <h3>Fetch API</h3>
-      Request(resourse, init)	creates a new "Request" object.
-      fetch(resourse, init)	global method that fetches a "resource" (url string or "Request" object) from the network, returning a "Promise" that resolves to a "Response" object; can also receive an "init" configuration object.
-      init = { method: …, body: …, headers: {…}, mode: …, credentials: … }	structure of the "init" object (default "method: 'GET'"). When uploading JSON data in the body ("method: 'POST'||'PUT'"), it must be parsed ("body: JSON.stringify(data)") and the "headers" must include "'Content-Type': 'application/json'".
-      body: (new FormData()).append(fileKey, fileElement.files[i])	the "append()" method of a "FormData()" object can be used to upload files in a fetch request.
-      Response	object type that resolves from a "Request".
-      .text()	"Response" instance method that returns a "Promise" that will resolve into text.
-      .json()	"Response" instance method that returns a "Promise" that will resolve into an object.
-      .ok	read-only property Boolean stating whether the response was successful (status in the range 200-299) or not.
-      .status	read-only property that returns the status-number of a request (200, 403, 404, …).
-      .statusText	read-only property that returns the status-text ("OK", "Not Found",  …).
-      EJ: fetch(request).then(response => response.json()).then(json => {…})
-
+      <p><span class="code">Request(<span class="sti">resourse</span><span class="opt">, <span class="sti">init</span></span>)</span> creates a new "<span class="code">Request</span>" object.</p>
+      <p><span class="code">fetch(<span class="sti">resourse</span><span class="opt">, <span class="sti">init</span></span>)</span> global method that fetches a "resource" (url string or "Request" object) from the network, returning a "Promise" that resolves to a "Response" object; can also receive an "init" configuration object.
+        <span class="p"><span class="code"><span class="sti">init</span> = { method: …<span class="opt">, body: …, headers: {…}, mode: …, credentials: …</span> }</span> structure of the "init" object (default "method: 'GET'"). When uploading JSON data in the body ("method: 'POST'||'PUT'"), it must be parsed ("body: JSON.stringify(data)") and the "headers" must include "'Content-Type': 'application/json'".</span>
+        <span class="p"><span class="code">body: (<span class="kwd">new</span> FormData()).append(<span class="sti">fileKey</span>, <span class="sti">fileElement</span>.files[i])</span> the "<span class="code">append()</span>" method of a "<span class="code">FormData()</span>" object can be used to upload files in a fetch request.</span>
+      </p>
+      <p><span class="code">Response</span> object type that resolves from a "Request".
+        <span class="p"><span class="code">.text()</span> "Response" instance method that returns a "Promise" that will resolve into text.</span>
+        <span class="p"><span class="code">.json()</span> "Response" instance method that returns a "Promise" that will resolve into an object.</span>
+        <span class="p"><span class="code">.ok</span> read-only property Boolean stating whether the response was successful (status in the range 200-299) or not.</span>
+        <span class="p"><span class="code">.status</span> read-only property that returns the status-number of a request (200, 403, 404, …).</span>
+        <span class="p"><span class="code">.statusText</span> read-only property that returns the status-text ("OK", "Not Found",  …).</span>
+      </p>
+      <p>EJ: <span class="code">fetch(<span class="sti">request</span>).then(<span class="sti">response</span> => <span class="sti">response</span>.json()).then(<span class="sti">json</span> => {…})</span></p>
     </article>
     <article>
       <h1>Client-Side Libraries</h1>
-
-      
-jQuery
-Basic Syntax
-jQuery, $	objects that hold the functions of the "jQuery" library.
-$(selector).action()	Syntax of jQuery commands, where "selector" can be any CSS selector (like in "document.querySelector()":
-'tag'	All elements of "tag" type.	'.class'	All elements of class "class".
-'#id'	The element with attribute "id=id".	this	The current element.
-'…:even'	All even elements	'…:odd'	All odd elements
-'…:first'	First element of its type		
-'…:checked'	An element with the property of "checked" (like a radio button or checkbox)
-'tag[attr=value]'	All "tag" elements that have an attribute "attr", equal to "value", can be multiple.
-$(document).ready(function() {…}); or $(function() {…});	syntax for the wrapping function for all other jQuery operations.
-noConflict() method releases the hold on the $ shortcut identifier, so that other scripts can use it; it also returns a reference to jQuery, that you can save in a variable, for later use
-Methods
-.empty()	remove all child nodes of the set of matched elements from the DOM.
-.remove(filter)	removes the selected element(s) and its child elements, can include a "filter" to select specific elements.
-.text(textString)	Sets (if "textString" is given) or returns the text content of selected elements.
-.html(htmlString)	Get / Set the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.
-.append(htmlElem)	Insert content, specified by the parameter, to the end of each element in the set of matched elements.
-.prepend(htmlElem)	Insert content, specified by the parameter, at the beginning of each element in the set of matched elements.
-.after(htmlElem)	Insert content, specified by the parameter, after each element in the set of matched elements.
-.before(htmlElem)	Insert content, specified by the parameter, before each element in the set of matched elements.
-.attr(attribute) = value	Get / Set the value of an "attribute" for the first element in the set of matched elements or set one or more attributes for every matched element.
-.val(value)	Get / Set the value of a regular form field. For a "select" element with "multiple", can take an array of values to set as selected options.
-.prop('checked', boolean)	Get / Set the state of checked/unchecked of a checkbox or radio buttons (for checkboxes, if the Boolean is not supplied, it gets).
-.css(style)	sets or returns one or more style properties for the selected elements.
-.addClass(classList)	Adds one or more classes to the selected elements.
-.removeClass(classList)	Removes one or more classes from the selected elements.
-.toggleClass(classList)	Toggles between adding/removing classes from the selected elements.
-.width(px)	sets or returns the width of an element (excludes padding, border and margin).
-.height(px)	sets or returns the height of an element (excludes padding, border and margin).
-.innerWidth()	returns the width of an element (includes padding).
-.innerHeight()	returns the height of an element (includes padding).
-.outerWidth(includeMargin)	returns the width of an element (includes padding and border), the Boolean "includeMargin" is included and set to "true", it also includes the margin.
-.outerHeight(includeMargin)	returns the height of an element (includes padding and border) , the Boolean "includeMargin" is included and set to "true", it also includes the margin
-.on(events, selector, arguments, function callback(event,…) {…})	takes at least an "events" string made of one or more space-separated event types and optional namespaces, and a "callback" function that itself takes an "event" instance and can take other arguments; the function is executed when the event is triggered. Can also take a "selector" string to filter the descendants of the selected elements that trigger the event, and a set of "arguments" to be passed to the "callback" function if its not declared inline.
-.on(events, selector, arguments)	takes an "events" object, where the keys are any event string or optional namespaces, and the values are the handler callback functions.
-.each(function callback(index) {…})	applies the supplied "callback" function to each element returned by the selector.
-.parent()	returns the direct parent element of the selected element.
-.parents()	returns all ancestor elements of the selected element, all the way up to the document's root element ("<html>").
-.parentsUntil(htmlElem)	returns all ancestor elements between two given arguments ("htmlElem").
-.children(selector)	returns all direct children of the selected element, or only those that match the "selector".
-.find(selector)	returns descendant elements of the selected element, all the way down to the last descendant, or only those that match the "selector".
-siblings() method returns all sibling elements of the selected element.
-next() method returns the next sibling element of the selected element.
-nextAll() method returns all next sibling elements of the selected element.
-nextUntil(selector) method returns all next sibling elements between two given arguments.
-prev(), prevAll() and prevUntil() methods work just like the methods above but with reverse functionality: they return previous sibling elements (traverse backwards along sibling elements in the DOM tree, instead of forward).
-first() method returns the first element of the specified elements.
-last() method returns the last element of the specified elements.
-eq(index) method returns an element with a specific index number of the selected elements.
-filter() method lets you specify a criteria. Elements that do not match the criteria are removed from the selection, and those that match will be returned.
-not() method returns all elements that do not match the criteria.
-Effects Methods
-(All can be chained one after the other)
-.hide(speed, callback)	hides the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.show(speed, callback)	shows the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.toggle(speed, callback)	toggles between hiding and showing the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.fadeIn(speed, callback)	fades in the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.fadeOut(speed, callback)	fades out the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.fadeToggle(speed, callback)	toggles between fading in and out the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.fadeTo(speed, opacity, callback)	allows fading to a given opacity (value between 0 and 1) the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.slideDown(speed, callback)	slides down to show the target element (with style "display: none"), can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.slideUp(speed, callback)	slides up to hide the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.slideToggle(speed, callback)	toggles between sliding down to show and sliding up to hide the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.animate(params, speed, callback)	method used to create custom animations by applying the "params" CSS style object to the target element, at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.
-.stop(stopAll, goToEnd)	method used to stop an animation or effect before it is finished, works for all jQuery effect functions, including sliding, fading and custom animations. Takes a "stopAll" and a "goToEnd" Boolean.
-jQuery AJAX
-load(URL,data,callback) method loads data from a server and puts the returned data into the selected element.
-.get(URL,callback) method requests data from the server with an HTTP GET request.
-.post(URL,data,function callback(data, status) {}) method requests data from the server using an HTTP POST request.
-
-Lodash
-
-
-
-
-
+      <h2>jQuery</h2>
+      <h3>Basic Syntax</h3>
+      <p><span class="code">jQuery, $</span> objects that hold the functions of the "jQuery" library.</p>
+      <p><span class="code">$(<span class="sti">selector</span>).<span class="sti">action</span>()</span> Syntax of jQuery commands, where "<span class="code sti">selector</span>" can be any CSS selector (like in "<span class="code">document.querySelector()</span>":</p>
+      <div class="row">
+        <div>
+          <div class="code">'<span class="sti">tag</span>'</div><div>All elements of "tag" type.</div>
+          <div class="code">'.<span class="sti">class</span>'</div><div>All elements of class "class".</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">'#id'</div><div>The element with attribute "id=id".</div>
+          <div class="code">this</div><div>The current element.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">'…:even'</div><div>All even elements</div>
+          <div class="code">'…:odd'</div><div>All odd elements</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">'…:first'</div><div>First element of its type</div>
+          <div class="code"></div><div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">'…:checked'</div><div>An element with the property of "checked" (like a radio button or checkbox)</div>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <div class="code">'tag[attr=value]'</div><div>All "tag" elements that have an attribute "attr", equal to "value", can be multiple.</div>
+        </div>
+      </div>
+      <p><span class="code">$(document).ready(function() {…}); | $(function() {…});</span> syntax for the wrapping function for all other jQuery operations.</p>
+      <p><span class="code">noConflict()</span> method that releases the hold on the $ shortcut identifier, so that other scripts can use it; it also returns a reference to jQuery, that you can save in a variable, for later use.</p>
+      <h3>Methods</h3>
+      <p><span class="code">.empty()</span> remove all child nodes of the set of matched elements from the DOM.</p>
+      <p><span class="code">.remove(filter)</span> removes the selected element(s) and its child elements, can include a "filter" to select specific elements.</p>
+      <p><span class="code">.text(textString)</span> Sets (if "textString" is given) or returns the text content of selected elements.</p>
+      <p><span class="code">.html(htmlString)</span> Get / Set the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.</p>
+      <p><span class="code">.append(htmlElem)</span> Insert content, specified by the parameter, to the end of each element in the set of matched elements.</p>
+      <p><span class="code">.prepend(htmlElem)</span> Insert content, specified by the parameter, at the beginning of each element in the set of matched elements.</p>
+      <p><span class="code">.after(htmlElem)</span> Insert content, specified by the parameter, after each element in the set of matched elements.</p>
+      <p><span class="code">.before(htmlElem)</span> Insert content, specified by the parameter, before each element in the set of matched elements.</p>
+      <p><span class="code">.attr(attribute)<span class="opt"> = <span class="sti">value</span></span></span> Get / Set the value of an "attribute" for the first element in the set of matched elements or set one or more attributes for every matched element.</p>
+      <p><span class="code">.val(value)</span> Get / Set the value of a regular form field. For a "select" element with "multiple", can take an array of values to set as selected options.</p>
+      <p><span class="code">.prop('checked', boolean)</span> Get / Set the state of checked/unchecked of a checkbox or radio buttons (for checkboxes, if the Boolean is not supplied, it gets).</p>
+      <p><span class="code">.css(style)</span> sets or returns one or more style properties for the selected elements.</p>
+      <p><span class="code">.addClass(classList)</span> Adds one or more classes to the selected elements.</p>
+      <p><span class="code">.removeClass(classList)</span> Removes one or more classes from the selected elements.</p>
+      <p><span class="code">.toggleClass(classList)</span> Toggles between adding/removing classes from the selected elements.</p>
+      <p><span class="code">.width(px)</span> sets or returns the width of an element (excludes padding, border and margin).</p>
+      <p><span class="code">.height(px)</span> sets or returns the height of an element (excludes padding, border and margin).</p>
+      <p><span class="code">.innerWidth()</span> returns the width of an element (includes padding).</p>
+      <p><span class="code">.innerHeight()</span> returns the height of an element (includes padding).</p>
+      <p><span class="code">.outerWidth(includeMargin)</span> returns the width of an element (includes padding and border), the Boolean "includeMargin" is included and set to "true", it also includes the margin.</p>
+      <p><span class="code">.outerHeight(includeMargin)</span> returns the height of an element (includes padding and border) , the Boolean "includeMargin" is included and set to "true", it also includes the margin.</p>
+      <p><span class="code">.on(events, selector, arguments, function callback(event,…) {…})</span> takes at least an "events" string made of one or more space-separated event types and optional namespaces, and a "callback" function that itself takes an "event" instance and can take other arguments; the function is executed when the event is triggered. Can also take a "selector" string to filter the descendants of the selected elements that trigger the event, and a set of "arguments" to be passed to the "callback" function if its not declared inline.</p>
+      <p><span class="code">.on(events, selector, arguments)</span> takes an "events" object, where the keys are any event string or optional namespaces, and the values are the handler callback functions.</p>
+      <p><span class="code">.each(function callback(index) {…})</span> applies the supplied "callback" function to each element returned by the selector.</p>
+      <p><span class="code">.parent()</span> returns the direct parent element of the selected element.</p>
+      <p><span class="code">.parents()</span> returns all ancestor elements of the selected element, all the way up to the document's root element ("&lt;html&gt;").</p>
+      <p><span class="code">.parentsUntil(htmlElem)</span> returns all ancestor elements between two given arguments ("htmlElem").</p>
+      <p><span class="code">.children(selector)</span> returns all direct children of the selected element, or only those that match the "selector".</p>
+      <p><span class="code">.find(selector)</span> returns descendant elements of the selected element, all the way down to the last descendant, or only those that match the "selector".</p>
+      <p><span class="code">.siblings()</span> method returns all sibling elements of the selected element.</p>
+      <p><span class="code">.next()</span> method returns the next sibling element of the selected element.</p>
+      <p><span class="code">.nextAll()</span> method returns all next sibling elements of the selected element.</p>
+      <p><span class="code">.nextUntil(selector)</span> method returns all next sibling elements between two given arguments.</p>
+      <p><span class="code">.prev(); .prevAll(); .prevUntil()</span> methods work just like the methods above but with reverse functionality: they return previous sibling elements (traverse backwards along sibling elements in the DOM tree, instead of forward).</p>
+      <p><span class="code">.first()</span> method returns the first element of the specified elements.</p>
+      <p><span class="code">.last()</span> method returns the last element of the specified elements.</p>
+      <p><span class="code">.eq(index)</span> method returns an element with a specific index number of the selected elements.</p>
+      <p><span class="code">.filter()</span> method lets you specify a criteria. Elements that do not match the criteria are removed from the selection, and those that match will be returned.</p>
+      <p><span class="code">.not()</span> method returns all elements that do not match the criteria.</p>
+      <h3>Effects Methods</h3>  
+      <p>(All can be chained one after the other)</p>
+      <p><span class="code">.hide(speed, callback)</span> hides the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.show(speed, callback)</span> shows the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.toggle(speed, callback)</span> toggles between hiding and showing the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.fadeIn(speed, callback)</span> fades in the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.fadeOut(speed, callback)</span> fades out the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.fadeToggle(speed, callback)</span> toggles between fading in and out the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.fadeTo(speed, opacity, callback)</span> allows fading to a given opacity (value between 0 and 1) the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.slideDown(speed, callback)</span> slides down to show the target element (with style "display: none"), can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.slideUp(speed, callback)</span> slides up to hide the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.slideToggle(speed, callback)</span> toggles between sliding down to show and sliding up to hide the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.animate(params, speed, callback)</span> method used to create custom animations by applying the "params" CSS style object to the target element, at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.stop(stopAll, goToEnd)</span> method used to stop an animation or effect before it is finished, works for all jQuery effect functions, including sliding, fading and custom animations. Takes a "stopAll" and a "goToEnd" Boolean.</p>
+      <h3>jQuery AJAX</h3>
+      <p><span class="code">load(URL,data,callback)</span> method loads data from a server and puts the returned data into the selected element.</p>
+      <p><span class="code">.get(URL,callback)</span> method requests data from the server with an HTTP GET request.</p>
+      <p><span class="code">.post(URL,data,function callback(data, status) {})</span> method requests data from the server using an HTTP POST request.</p>
+      <h2>Lodash</h2>
     </article>
     <article>
       <h1>Node.js</h1>
-
+      <h2>Commands</h2>
+      <p><span class="code">node file</span> executes the JavaScript "file" on the node environment.</p>
+      <p><span class="code">npm init</span> calls the "Node Package Manager (NPM)" to create a new "package.json" file for a new project.</p>
+      <p><span class="code">npm install|i module -g</span> calls the NPM to install the "module" on the current project ("node_modules" folder); if not given, installs all modules in "package.json" not currently installed. Option "-g" allows to install globally.</p>
+      <p><span class="code">npm uninstall module</span> calls the NPM to uninstall the "module" from the current project.</p>
+      <p><span class="code">npm prune</span> removes any module that is installed but not used from the "package.json" and "node_modules".</p>
+      <p><span class="code">npm list</span> show a list of all packages installed for use by this application.</p>
+      <h2>Node Global Properties and Methods</h2>
+      <p><span class="code">process</span> global object that provides information about, and control over, the current Node.js process.
+        <span class="p"><span class="code">.stdin</span> property that returns a stream connected to "stdin".</span>
+        <span class="p"><span class="code">.stdout</span> property that returns a stream connected to "stdout".</span>
+        <span class="p"><span class="code">.stderr</span> property returns a stream connected to "stderr".</span>
+        <span class="p"><span class="code">.env</span> property returns an object containing the user environment.</span>
+      </p>
+      <p><span class="code">__dirname</span> the name of the directory that the currently executing script resides in.</p>
+      <p><span class="code">__filename</span> the filename of the code being executed. This is the resolved absolute path of this code file.</p>
+      <p><span class="code">require(module)</span> imports the "module" (node module or local file) and returns it as an object, by standard declared as a "const".</p>
+      <p><span class="code">module</span> object that provides general utility methods when interacting with instances of "Module".
+        <span class="p"><span class="code">.exports</span> property that holds an object that exposes statements (module's properties or methods) to be imported by other modules. ("<span class="code">module.exports.<span class="sti">resource</span> = <span class="sti">statement</span></span>")</span>
+      </p>
       
-Commands
-node file	executes the JavaScript "file" on the node environment.
-npm init	calls the "Node Package Manager (NPM)" to create a new "package.json" file for a new project.
-npm install|i module -g	calls the NPM to install the "module" on the current project ("node_modules" folder); if not given, installs all modules in "package.json" not currently installed. Option "-g" allows to install globally.
-npm uninstall module	calls the NPM to uninstall the "module" from the current project.
-npm prune	removes any module that is installed but not used from the "package.json" and "node_modules".
-npm list	show a list of all packages installed for use by this application.
 
-Node Global Properties and Methods
-process	global object that provides information about, and control over, the current Node.js process.
-.stdin	property that returns a stream connected to "stdin".
-.stdout	property that returns a stream connected to "stdout".
-.stderr	property returns a stream connected to "stderr".
-.env	property returns an object containing the user environment.
-__dirname	the name of the directory that the currently executing script resides in.
-__filename	the filename of the code being executed. This is the resolved absolute path of this code file.
-require(module)	imports the "module" (node module or local file) and returns it as an object, by standard declared as a "const".
-module	object that provides general utility methods when interacting with instances of "Module".
-.exports	property that holds an object that exposes statements (module's properties or methods) to be imported by other modules. ("module.exports.resource = statement")
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 Express.js Module
 Express Set-up
@@ -1027,9 +1054,14 @@ useEffect(callback, [dependencies]);	accepts a callback function to be executed 
 
     </article>
   </main>
-  <footer>Legend: <span class="code">strict syntax</span> <span class="code sti">stand-in</span> <span class="kwd">keyword</span> <span class="opt">optional</span> <span class="sti opt">stand-in optional</span> <span><a href="#" onclick="document.querySelector('#index').scrollIntoView()">Back to Index</a></span> </footer>
+  <footer>Legend: <span class="code">strict syntax</span> <span class="code sti">stand-in</span> <span class="kwd">keyword</span> <span class="opt">optional</span> <span class="sti opt">stand-in optional</span> <span><a href="#" id="goToTop">Back to Index</a></span> </footer>
   <script type="text/javascript">
   document.body.onload = function() {
+    document.querySelector('#goToTop').addEventListener('click', function (e) { 
+        e.preventDefault();
+        window.scrollTo(0, (document.querySelector('#index').offsetTop - document.querySelector('header').offsetHeight - 30));
+      });
+
     let headers = document.querySelectorAll('h1, h2, h3');
     let count = 0;
     headers.forEach((elem) => {
@@ -1038,7 +1070,7 @@ useEffect(callback, [dependencies]);	accepts a callback function to be executed 
       // elem.setAttribute('id', hdId);
       // anchor.setAttribute('href', `#${hdId}`);
       anchor.setAttribute('href', '#');
-      anchor.addEventListener("click", function (e) { 
+      anchor.addEventListener('click', function (e) { 
         e.preventDefault();
         // elem.scrollIntoView();
         console.log(elem.offsetTop);
