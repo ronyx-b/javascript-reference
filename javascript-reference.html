@@ -10,7 +10,7 @@
     box-sizing: border-box;
     background-color: #000000;
     color: #ffffff;
-    font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
     font-size: 1em;
     margin: 0;
     padding: 0;
@@ -864,29 +864,27 @@
       </p>
       <p><span class="code">__dirname</span> the name of the directory that the currently executing script resides in.</p>
       <p><span class="code">__filename</span> the filename of the code being executed. This is the resolved absolute path of this code file.</p>
-      <p><span class="code">require(module)</span> imports the "module" (node module or local file) and returns it as an object, by standard declared as a "const".</p>
+      <p><span class="code">require(module)</span> imports the "module" (node module or local file) and returns it as an object, by standard declared as a "<span class="kwd">const</span>".</p>
       <p><span class="code">module</span> object that provides general utility methods when interacting with instances of "Module".
         <span class="p"><span class="code">.exports</span> property that holds an object that exposes statements (module's properties or methods) to be imported by other modules. ("<span class="code">module.exports.<span class="sti">resource</span> = <span class="sti">statement</span></span>")</span>
       </p>
-      
+      <h2>Express.js Module</h2>
+      <h3>Express Set-up</h3>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">express</span> = require('express')</span> imports the express module and stores it in the "<span class="code sti">express</span>" object.</p>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">app</span> = <span class="sti">express</span>()</span> calls the function on the "<span class="code sti">express</span>" object which returns an application "<span class="code sti">app</span>".</p>
+      <p><span class="code"><span class="sti">express</span>.static(<span class="sti">staticPath</span>)</span> method to set a folder for static resources, used as argument in the "<span class="code"><span class="sti">app</span>.use()</span>" method, and can be set to specific routes ("<span class="code"><span class="sti">app</span>.use(<span class="sti">route</span>, <span class="sti">express</span>.static(…))</span>").</p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
 
 
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-
-Express.js Module
-Express Set-up
-const express = require('express')	imports the express module and stores it in the "express" object.
-const app = express()	calls the function on the "express" object which returns an application "app".
-express.static(staticPath)	method to set a folder for static resources, used as argument in the "app.use()" method, and can be set to specific routes (app.use(route, express.static(…))).
 express.urlencoded({ extended: true })	method to set a middleware to handle regular text submissions form data and access the data on "req.body", used as argument in the "app.use()" method. If parsing "application/x-www-form-urlencoded" form data, must use "extended: false".
 The Application (app) Object
 app.locals	property that allows you to attach local variables to the application.
