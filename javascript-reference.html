@@ -89,6 +89,11 @@
     text-align: left;
   }
 
+  ul {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   td:nth-child(odd) {
     width: 100px;
   }
@@ -873,6 +878,74 @@
       <p><span class="code"><span class="kwd">const</span> <span class="sti">express</span> = require('express')</span> imports the express module and stores it in the "<span class="code sti">express</span>" object.</p>
       <p><span class="code"><span class="kwd">const</span> <span class="sti">app</span> = <span class="sti">express</span>()</span> calls the function on the "<span class="code sti">express</span>" object which returns an application "<span class="code sti">app</span>".</p>
       <p><span class="code"><span class="sti">express</span>.static(<span class="sti">staticPath</span>)</span> method to set a folder for static resources, used as argument in the "<span class="code"><span class="sti">app</span>.use()</span>" method, and can be set to specific routes ("<span class="code"><span class="sti">app</span>.use(<span class="sti">route</span>, <span class="sti">express</span>.static(…))</span>").</p>
+      <p><span class="code"><span class="sti">express</span>.urlencoded({ extended: true })</span> method to set a middleware to handle regular text submissions form data and access the data on "<span class="code"><span class="sti">req</span>.body</span>", used as argument in the "<span class="code"><span class="sti">app</span>.use()</span>" method. If parsing "<span class="code">application/x-www-form-urlencoded</span>" form data, must use "<span class="code">extended: false</span>".</p>
+      <h3>The Application (app) Object</h3>
+      <p><span class="code"><span class="sti">app</span>.locals</span> property that allows you to attach local variables to the application.</p>
+      <p><span class="code"><span class="sti">app</span>.listen(<span class="sti">port</span><span class="opt">, function <span class="sti">callback</span>() {…}</span>)</span> starts the "<span class="code sti">express</span>" server application "<span class="code sti">app</span>" listening on "<span class="code sti">port</span>" and can call a "<span class="sti opt">callback</span>" function.</p>
+      <p><span class="code"><span class="sti">app</span>.get(<span class="sti">route</span><span class="opt">, function <span class="sti">middleware</span>(<span class="sti">req</span>, <span class="sti">res</span>, <span class="sti">next</span>) {…}, …</span>, <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">req</span>, <span class="sti">res</span>) {…})</span> Routes a HTTP GET request (regular access) matching a "<span class="code sti">route</span>" path to be handled by the "callback" function, and can have one or more "middleware" functions; these functions receive the request "req" and "res" response objects.
+        <span class="p"><span class="code"><span class="sti">next</span>()</span>	allows the ".get()" method to continue to the next "<span class="sti opt">middleware</span>" function.</span>
+      </p>
+      <p><span class="code"><span class="sti">app</span>.post(<span class="sti">route</span><span class="opt">, <span class="sti">middleware</span>, …</span>, <span class="sti">callback</span>)</span> Routes a HTTP POST request for a matching path to a callback function specified.</p>
+      <p><span class="code"><span class="sti">app</span>.put(<span class="sti">route</span><span class="opt">, <span class="sti">middleware</span>, …</span>, <span class="sti">callback</span>)</span> Routes a HTTP PUT request for a matching path to a callback function specified.</p>
+      <p><span class="code"><span class="sti">app</span>.delete(<span class="sti">route</span><span class="opt">, <span class="sti">middleware</span>, …</span>, <span class="sti">callback</span>)</span> Routes a HTTP DELETE request for a matching path to a callback function specified.</p>
+      <p><span class="code"><span class="sti">app</span>.all(<span class="sti">route</span><span class="opt">, <span class="sti">middleware</span>, …</span>, <span class="sti">callback</span>)</span> method will catch all HTTP requests for all verbs. IE: GET, PUT, POST, DELETE, etc. for a matching path.</p>
+      <p><span class="code"><span class="sti">app</span>.engine(<span class="sti">ext</span>, <span class="sti">callback</span>)</span> method that registers the given template engine "<span class="code sti">callback</span>" as "<span class="code sti">ext</span>".</p>
+      <p><span class="code"><span class="sti">app</span>.set(<span class="sti">name</span>, <span class="sti">value</span>)</span> used to assigns the setting "<span class="code sti">name</span>" string to "<span class="code sti">value</span>" string. Some settings are:
+        <span class="p"><span class="code">'views'</span> string or array, a directory or an array of directories for the application's views.</span>
+        <span class="p"><span class="code">'view engine'</span> The default engine extension to use when omitted.</span>
+      </p>
+      <p><span class="code"><span class="sti">app</span>.use(…)</span> method to add middleware to your application, functions typically placed before the routing methods that automatically execute either when a specified path is matched or globally before every request. Can also be used at the end of the server to catch all other requests that don't match any other route handlers declared before it (Ej: "<span class="code"><span class="sti">app</span>.use((<span class="sti">req</span>, <span class="sti">res</span>) => { <span class="sti">res</span>.status(404).send('<span class="sti">Page Not Found</span>'); });</span>")</p>
+      <h3>The Request (req) Object</h3>
+      <p><span class="code"><span class="sti">req</span>.body</span> property that contains the data submitted from a request. It requires a body parsing middleware first.</p>
+      <p><span class="code"><span class="sti">req</span>.params</span> property that contains the data sent in the URL as "<span class="sti">route</span>/:<span class="sti">param</span>".</p>
+      <p><span class="code"><span class="sti">req</span>.query</span> property that contains the data sent in the query string.</p>
+      <p><span class="code"><span class="sti">req</span>.cookies</span> property that contains the data from the page cookies. It requires a cookie parsing middleware first.</p>
+      <p><span class="code"><span class="sti">req</span>.get(<span class="sti">field</span>)</span> method to get values from the headers sent with the request.</p>
+      <h3>The Response (res) Object</h3>
+      <p><span class="code"><span class="sti">res</span>.cookie(<span class="sti">name</span>, <span class="sti">value</span>, <span class="sti">options</span>)</span> sets the cookies.</p>
+      <p><span class="code"><span class="sti">res</span>.send(<span class="sti">string</span>)</span> sends a "<span class="code sti">string</span>" as response to the "<span class="code sti">route</span>" request.</p>
+      <p><span class="code"><span class="sti">res</span>.sendFile(<span class="sti">file</span>)</span> sends an HTML "<span class="code sti">file</span>" (absolute path string) to be displayed as response to the "<span class="code sti">route</span>" request.</p>
+      <p><span class="code"><span class="sti">res</span>.redirect(<span class="sti">route</span>)</span> redirects the request no the specified "<span class="code sti">route</span>".</p>
+      <p><span class="code"><span class="sti">res</span>.render(<span class="sti">view</span><span class="opt">, <span class="sti">options</span></span>)</span> renders a "<span class="code sti">view</span>" with a predefined rendering engine.</p>
+      <p><span class="code"><span class="sti">res</span>.json(…)</span> You can use "<span class="code"><span class="sti">res</span>.json()</span>" to send back a JSON object with key value pairs of data.</p>
+      <p><span class="code"><span class="sti">res</span>.download()</span> this allows you to send a file back as a response.</p>
+      <p><span class="code"><span class="sti">res</span>.end()</span> Use this if you want to end a response immediately and send nothing back.</p>
+      <p><span class="code"><span class="sti">res</span>.get()</span> You can use "<span class="code"><span class="sti">res</span>.get()</span>" to lookup any header that is outgoing on the response.</p>
+      <p><span class="code"><span class="sti">res</span>.status(<span class="sti">code</span>)</span> sends back a specific status code and appropriate response to go with it, can be chained before a send ("<span class="code"><span class="sti">res</span>.status(…).send(…)</span>"). Most codes can be: <span class="code">200</span> "Ok", <span class="code">201</span> "Created", <span class="code">204</span> "No Content", <span class="code">302</span> "Found", <span class="code">401</span> "Unauthorized", <span class="code">403</span> "Forbidden", <span class="code">404</span> "Not Found", <span class="code">408</span> "Request Timeout", <span class="code">500</span> "Internal Server Error"</p>
+      <h2>Node Utility Modules</h2>
+      <h3>Path Module</h3>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">path</span> = require('path')</span> modules with methods to handle paths.</p>
+      <p><span class="code"><span class="sti">path</span>.join(<span class="sti">pathStrings</span>,…)</span> method that joins all given path segments together using the platform-specific separator as a delimiter, then normalizes the resulting path.</p>
+      <p><span class="code"><span class="sti">path</span>.extname(<span class="sti">pathStrings</span>)</span> method that returns the extension of the "<span class="code sti">pathStrings</span>".</p>
+      <h3>File System Module</h3>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">fs</span> = require('fs')</span> imports the "File System" module.</p>
+      <p><span class="code"><span class="sti">fs</span>.unlink(<span class="sti">filePath</span>, <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">error</span>) { … })</span> deletes a file located at "<span class="code sti">filePath</span>" (absolute or relative) and invokes the "<span class="sti opt">callback</span>" function if there's an "<span class="code sti">error</span>".</p>
+      <p><span class="code"><span class="sti">fs</span>.readFileSync(<span class="sti">filePath</span><span class="opt">, {encoding: <span class="sti">null</span>, flag: '<span class="sti">r</span>'}</span>)</span> returns the contents of "<span class="code sti">filePath</span>".</p>
+      <h3>Express Multer Module</h3>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">multer</span> = require('multer')</span> imports the "Multer" multipart from ("<span class="code">enctype="multipart/form-data"</span>") data parser module and stores it in the "<span class="code sti">multer</span>" object. Multer adds a "<span class="code">body</span>" object and a "<span class="code">file</span>" or "<span class="code">files</span>" objecta to the "<span class="code">Request</span>" ("<span class="code sti">res</span>") object.
+        <span class="p"><span class="code">file.fieldname</span> Field name specified in the form.</span>
+        <span class="p"><span class="code">file.originalname</span> Name of the file on the user's computer.</span>
+        <span class="p"><span class="code">file.encoding</span> Encoding type of the file.</span>
+        <span class="p"><span class="code">file.mimetype</span> Mime type of the file.</span>
+        <span class="p"><span class="code">file.size</span> Size of the file in bytes</span>
+        <span class="p"><span class="code">file.destination</span> The folder to which the file has been saved ("<span class="code">DiskStorage</span>").</span>
+        <span class="p"><span class="code">file.filename</span> The name of the file within the "<span class="code">destination</span>" ("<span class="code">DiskStorage</span>").</span>
+        <span class="p"><span class="code">file.path</span> The full path to the uploaded file ("<span class="code">DiskStorage</span>").</span>
+        <span class="p"><span class="code">file.buffer</span> A Buffer of the entire file ("<span class="code">MemoryStorage</span>").</span>
+      </p>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">upload</span> = <span class="sti">multer</span>(<span class="opt">{ dest|storage:…, fileFilter:…, limits:…, preservePath:… }</span>)</span> sets the upload middleware for multer, these options are not required when handling text-only multipart form. They are:
+      <ul>
+        <li>"<span class="opt">dest</span>" (path string) or "storage" (storage engine) set where to store the files.</li>
+        <li>"<span class="opt">fileFilter</span>" takes a function in the form "<span class="code"><span class="kwd">function</span> <span class="sti">fileFilter</span>(<span class="sti">req</span>, <span class="sti">file</span>, <span class="sti">cb</span>) { …; <span class="sti">cb</span>(<span class="sti">err</span>, <span class="sti">result</span>) }</span>" to control which files are accepted through the Boolean passed in the "<span class="code sti">result</span>" of the "<span class="code sti">cb</span>" callback function (if no errors, "<span class="code sti">err</span>" should be "<span class="code">null</span>").</li>
+        <li>"<span class="opt">limits</span>" takes an object specifying the size limits of the several optional properties.</li>
+        <li>"<span class="opt">preservePath</span>" takes a Boolean; if true, keeps the full path of files instead of just the base name.</li>
+      </ul>
+      </p>
+      <p><span class="code"><span class="sti">app</span>.post(<span class="sti">route</span>, <span class="sti">upload</span>.<span class="sti">method</span>(…), <span class="sti">callback</span>)</span> usage of the "<span class="code sti">upload</span>" methods as middleware.</p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
       <p><span class="code"></span> </p>
       <p><span class="code"></span> </p>
       <p><span class="code"></span> </p>
@@ -881,107 +954,45 @@
       <p><span class="code"></span> </p>
       <p><span class="code"></span> </p>
 
-
 	
-	
-	
-express.urlencoded({ extended: true })	method to set a middleware to handle regular text submissions form data and access the data on "req.body", used as argument in the "app.use()" method. If parsing "application/x-www-form-urlencoded" form data, must use "extended: false".
-The Application (app) Object
-app.locals	property that allows you to attach local variables to the application.
-app.listen(port, function callback() {…})	starts the "express" server application "app" listening on "port" and can call a "callback" function.
-app.get(route, function middleware(req, res, next) {…}, …, function callback(req, res) {…})	Routes a HTTP GET request (regular access) matching a "route" path to be handled by the "callback" function, and can have one or more "middleware" functions; these functions receive the request "req" and "res" response objects.
-next()	allows the ".get()" method to continue to the next "middleware" function.
-app.post(route, middleware, …, callback)	Routes a HTTP POST request for a matching path to a callback function specified.
-app.put(route, middleware, …, callback)	Routes a HTTP PUT request for a matching path to a callback function specified.
-app.delete(route, middleware, …, callback)	Routes a HTTP DELETE request for a matching path to a callback function specified.
-app.all(route, middleware, …, callback)	method will catch all HTTP requests for all verbs. IE: GET, PUT, POST, DELETE, etc. for a matching path.
-app.engine(ext, callback)	method that registers the given template engine "callback" as "ext".
-app.set(name, value)	used to assigns the setting "name" string to "value" string. Some settings are:
-'views'	string or array, a directory or an array of directories for the application's views.
-' view engine '	The default engine extension to use when omitted.
-app.use()	method to add middleware to your application, functions typically placed before the routing methods that automatically execute either when a specified path is matched or globally before every request. Can also be used at the end of the server to catch all other requests that don't match any other route handlers declared before it: "app.use((req, res) => { res.status(404).send('Page Not Found'); });"
-The Request (req) Object
-req.body	property that contains the data submitted from a request. It requires a body parsing middleware first.
-req.params	property that contains the data sent in the URL as "route/:param".
-req.query	property that contains the data sent in the query string.
-req.cookies	property that contains the data from the page cookies. It requires a cookie parsing middleware first.
-req.get(field)	method to get values from the headers sent with the request.
-The Response (res) Object
-res.cookie(name, value, options)	sets the cookies.
-res.send(<span class="sti">string</span>)	sends a "string" as response to the "route" request.
-res.sendFile(file)	sends an HTML "file" (absolute path string) to be displayed as response to the "route" request.
-res.redirect(route)	redirects the request no the specified "route".
-res.render(view, options)	renders a "view" with a predefined rendering engine.
-res.json(…)	You can use res.json() to send back a JSON object with key value pairs of data.
-res.download()	this allows you to send a file back as a response.
-res.end()	Use this if you want to end a response immediately and send nothing back.
-res.get()	You can use res.get() to lookup any header that is outgoing on the response.
-res.status(code)	sends back a specific status code and appropriate response to go with it, can be chained before a send ("res.status(…).send(…)"). Most codes can be: 200 "Ok", 201 "Created", 204 "No Content", 302 "Found", 401 "Unauthorized", 403 "Forbidden", 404 "Not Found", 408 "Request Timeout", 500 "Internal Server Error"
-
-Node Utility Modules
-Path Module
-const path = require('path')	modules with methods to handle paths.
-path.join(pathStrings,…)	method that joins all given path segments together using the platform-specific separator as a delimiter, then normalizes the resulting path.
-path.extname(pathString)	method that returns the extension of the "pathString".
-File System Module
-const fs = require('fs')	imports the "File System" module.
-fs.unlink(filePath, function callback(error) { … })	deletes a file located at "filePath" (absolute or relative) and invokes the "callback" function if there's an "error".
-fs.readFileSync(filePath, {encoding: null, flag: 'r'})	returns the contents of "filePath".
-Express Multer Module
-const multer = require('multer')	imports the "Multer" multipart from ("enctype="multipart/form-data"") data parser module and stores it in the "multer" object. Multer adds a "body" object and a "file" or "files" object to the "request" object.
-file.fieldname	Field name specified in the form.
-file.originalname	Name of the file on the user's computer.
-file.encoding	Encoding type of the file.
-file.mimetype	Mime type of the file.
-file.size		Size of the file in bytes
-file.destination	The folder to which the file has been saved ("DiskStorage").
-file.filename	The name of the file within the "destination" ("DiskStorage").
-file.path		The full path to the uploaded file ("DiskStorage").
-file.buffer	A Buffer of the entire file ("MemoryStorage").
-const upload = multer({ dest|storage:…, fileFilter:…, limits:…, preservePath:… })	sets the upload middleware for multer, these options are not required when handling text-only multipart form. They are: 
-•	"dest" (path string) or "storage" (storage engine) set where to store the files.
-•	"fileFilter" takes a function in the form "function fileFilter (req, file, cb) { …; cb(err, result) }" to control which files are accepted through the Boolean passed in the "result" of the "cb" callback function (if no errors, "err" should be "null").
-•	"limits" takes an object specifying the size limits of the several optional properties.
-•	"preservePath" takes a Boolean; if true, keeps the full path of files instead of just the base name.
-app.post(route, upload.method(…), callback)	usage of the "upload" methods as middleware.
-.single(fieldname)	accept a single file with the name "fieldname" and stores it in "req.file".
-.array(fieldname, maxCount)	accept an array of files, all with the name "fieldname". Optionally error out if more than "maxCount" files are uploaded. The array of files will be stored in "req.files".
-.fields(fields)	accept a mix of files, specified by "fields" as an array of objects with "name" and optionally a "maxCount". An object with arrays of files will be stored in "req.files".
+.single(fieldname)	accept a single file with the name "fieldname" and stores it in "<span class="sti">req</span>.file".
+.array(fieldname, maxCount)	accept an array of files, all with the name "fieldname". Optionally error out if more than "maxCount" files are uploaded. The array of files will be stored in "<span class="sti">req</span>.files".
+.fields(fields)	accept a mix of files, specified by "fields" as an array of objects with "name" and optionally a "maxCount". An object with arrays of files will be stored in "<span class="sti">req</span>.files".
 .none()	accept only text fields. If any file upload is made, "LIMIT_UNEXPECTED_FILE" error will be issued.
-.any()	Accepts all files that comes over the wire. An array of files will be stored in "req.files".
-const storage = multer.diskStorage({destination: destination|string, filename: filename;})	creates a storage engine object for "multer" for its "storage" option, where both "destination" (can also be just a "string") and "filename" are callback functions in the form "function callback(req, file, cb) { …; cb(err, result) } })" which take the request "req" object, the "file" object, and the "cb" callback function that sends the expected "result" from the function, and "err" as "null" if there are no errors (the "filename" "value" string must include the file extension).
-const storage = multer. memoryStorage()	The "MemoryStorage" engine stores the files in memory as "Buffer" objects. It doesn't have any options.
+.any()	Accepts all files that comes over the wire. An array of files will be stored in "<span class="sti">req</span>.files".
+<span class="kwd">const</span> storage = multer.diskStorage({destination: destination|string, filename: filename;})	creates a storage engine object for "multer" for its "storage" option, where both "destination" (can also be just a "string") and "filename" are callback functions in the form "function callback(req, file, cb) { …; cb(err, result) } })" which take the request "req" object, the "file" object, and the "cb" callback function that sends the expected "result" from the function, and "err" as "null" if there are no errors (the "filename" "value" string must include the file extension).
+<span class="kwd">const</span> storage = multer. memoryStorage()	The "MemoryStorage" engine stores the files in memory as "Buffer" objects. It doesn't have any options.
 Client Session Module
-const clientSessions = require('client-sessions')	imports the "Client Session" module which uses cookies to store session information.
-app.use(clientSessions({cookieName: ..., secret: ..., duration: ..., activeDuration: ...}))	set-up client session by passing an object for configuration, where:
-•	"cookieName" takes a string to name the object that will be added to the "Request" ("req") object. (Ej: "cookieName: 'session',…" then "req.session.user = userData")
+<span class="kwd">const</span> clientSessions = require('client-sessions')	imports the "Client Session" module which uses cookies to store session information.
+<span class="sti">app</span>.use(clientSessions({cookieName: ..., secret: ..., duration: ..., activeDuration: ...}))	set-up client session by passing an object for configuration, where:
+•	"cookieName" takes a string to name the object that will be added to the "Request" ("req") object. (Ej: "cookieName: 'session',…" then "<span class="sti">req</span>.session.user = userData")
 •	"secret" should be a long un-guessable string.
 •	"duration" takes an integer to set the duration of the session in milliseconds.
 •	"activeDuration" takes an integer to extend the session that amount in milliseconds at each request.
 Dot Env Module
-const dotenv = require('dotenv')	imports the "Dot Env" module, which helps store local "environment" variables.
+<span class="kwd">const</span> dotenv = require('dotenv')	imports the "Dot Env" module, which helps store local "environment" variables.
 dotenv.config()	configures the "Dot Env" module to read variables set on a plain text file name ".env" and stores them on the "process.env" object.
 HTTP and HTTPS Modules
-const http = require('http')	imports the "HTTP" module to create a regular HTTP protocol server app.
-const https = require('https')	imports the " HTTPS" module to create a HTTPS protocol server app.
+<span class="kwd">const</span> http = require('http')	imports the "HTTP" module to create a regular HTTP protocol server app.
+<span class="kwd">const</span> https = require('https')	imports the " HTTPS" module to create a HTTPS protocol server app.
 http.createServer(app).listen(HTTP_PORT, callback)	the method takes the "Application" ("app") object and returns a new "Application" object that will handle all "HTTP" method request.
 http.createServer({key: …, cert: …}, app).listen(HTTPS_PORT, callback)	the method takes an options object with the "key" and "cert" properties that take the contents of the certificate files and the "Application" ("app") object and returns a new "Application" object that will handle all "HTTPS" method request.
  
 Encryption With "bcrypt.js" Module
-const bcrypt = require('bcryptjs')	imports the "bcrypt.js" encryption module.
+<span class="kwd">const</span> bcrypt = require('bcryptjs')	imports the "bcrypt.js" encryption module.
 bcrypt.hash(string, rounds)	takes a "string" and a number of "rounds" (normally "10") and returns a promise that resolves into a "hash" (a hashed value of the "string").
 bcrypt.compare(string, hash)	takes and compares a "string" with a previously generated "hash" and returns a promise that resolves into a Boolean indicating if they match or not.
 
 Express Handlebars Module
 Handlebars Set-Up
-const exphbs = require('express-handlebars')	imports the "Handlebars" rendering engine and assigns its callback function to "exphbs".
-app.engine(ext, exphbs({extname: '.hbs', layoutsDir: 'views/layouts/', partialsDir: 'views/partials/', defaultLayout: 'main', helpers: {…},…}))	adds the handlebars engine to the Express "app" and configures it; where "ext" is the name given to engine (commonly "'hbs'" or "'handlebars'"), and other options can be "defaultLayout" that receives the name of the default layout file without the extension, and an object of "helpers" functions that can be used to add custom logic inside the handlebar statements.
-const hbs = exphbs.create({ config }); app.engine(ext, hbs.engine)	alternatively, the ".create()" method can be used to create an instance of the Handlebars engine and stores it in "hbs", then pass its "engine" callback to the "app.engine()" method.
-app.set('view engine', ext)	sets handlebar as the rendering engine using the "ext" name given to it in the ".engine()" method.
-app.set('views', './views/')	optionally, we can set a custom path for the views ("./views/" by default). If done so, it will need to be reflected on the "layoutsDir" and "partialsDir" configuration options.
-res.render(view, options)	invoked on any routing methods of the "Application" ("app") object (".get()", ".post()", ".put()" , ".delete()" , ".all()"), where "view" is the name of the file without the ".hbs" extension, and the "options" object can be used to set a specific "layout" property (layout file name without extension, equal to "defaultLayout" if omitted, or can be set to "false" for no layout), add or override "helpers", and other custom properties to use as data on the view.
+<span class="kwd">const</span> exphbs = require('express-handlebars')	imports the "Handlebars" rendering engine and assigns its callback function to "exphbs".
+<span class="sti">app</span>.engine(ext, exphbs({extname: '.hbs', layoutsDir: 'views/layouts/', partialsDir: 'views/partials/', defaultLayout: 'main', helpers: {…},…}))	adds the handlebars engine to the Express "app" and configures it; where "ext" is the name given to engine (commonly "'hbs'" or "'handlebars'"), and other options can be "defaultLayout" that receives the name of the default layout file without the extension, and an object of "helpers" functions that can be used to add custom logic inside the handlebar statements.
+<span class="kwd">const</span> hbs = exphbs.create({ config }); <span class="sti">app</span>.engine(ext, hbs.engine)	alternatively, the ".create()" method can be used to create an instance of the Handlebars engine and stores it in "hbs", then pass its "engine" callback to the "<span class="sti">app</span>.engine()" method.
+<span class="sti">app</span>.set('view engine', ext)	sets handlebar as the rendering engine using the "ext" name given to it in the ".engine()" method.
+<span class="sti">app</span>.set('views', './views/')	optionally, we can set a custom path for the views ("./views/" by default). If done so, it will need to be reflected on the "layoutsDir" and "partialsDir" configuration options.
+<span class="sti">res</span>.render(view, options)	invoked on any routing methods of the "Application" ("app") object (".get()", ".post()", ".put()" , ".delete()" , ".all()"), where "view" is the name of the file without the ".hbs" extension, and the "options" object can be used to set a specific "layout" property (layout file name without extension, equal to "defaultLayout" if omitted, or can be set to "false" for no layout), add or override "helpers", and other custom properties to use as data on the view.
 Handlebars Files Syntax
-{{statement}}	syntax for inserting regular handlebar statements (data sent as properties of the "options" object from the "res.render()" method) on an html document. Handlebar documents can be:
+{{statement}}	syntax for inserting regular handlebar statements (data sent as properties of the "options" object from the "<span class="sti">res</span>.render()" method) on an html document. Handlebar documents can be:
 •	Views: regular files located in the "./views" folder.
 •	Partials: Files that can be inserted into other views, located in the "./views/partials" folder.
 •	Layouts: Page templates that can other views inserted into them, located in the "./views/layouts" folder.
@@ -992,14 +1003,14 @@ Handlebars Files Syntax
 @index	built-in variable that allows us to reference the current iteration index.
 this	built-in variable that contains all the information of the current object being iterated.
 {{> partialfilename context }}	inserts a partial view into the current view, can include "context" to send one or more variables to the partial in the form of "variable=value".
-{{{body}}}	inserts views into the body of the layouts (declared in the "layout" property of the "options" object of the "res.render()" method).
+{{{body}}}	inserts views into the body of the layouts (declared in the "layout" property of the "options" object of the "<span class="sti">res</span>.render()" method).
 
 Mongoose Module (MongoBD/Atlas)
 Mongoose Set-up
-const mongoose = require('mongoose')	imports the "Mongoose" module to connect and communicate with "MongoDB/Atlas" databases.
-const Schema = mongoose.Schema	stores the "Schema" constructor from mongoose.
+<span class="kwd">const</span> mongoose = require('mongoose')	imports the "Mongoose" module to connect and communicate with "MongoDB/Atlas" databases.
+<span class="kwd">const</span> Schema = mongoose.Schema	stores the "Schema" constructor from mongoose.
 mongoose.connect(connectionString, options)	method to connect to the database, where "connectionString" is given by the database and contains the user and password, and "options" takes an object that can be used to prevent warning message ("{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}").
-const mongooseInstance = mongoose.createConnection(connectionString)	if working with more than one database, we can create instances of "mongoose" as "mongooseInstance" to which apply the same methods to each instance as needed. These instances can use event methods ".on('error', function callback(error){…})" and ".once('open', callback)" to test each one.
+<span class="kwd">const</span> mongooseInstance = mongoose.createConnection(connectionString)	if working with more than one database, we can create instances of "mongoose" as "mongooseInstance" to which apply the same methods to each instance as needed. These instances can use event methods ".on('error', function callback(error){…})" and ".once('open', callback)" to test each one.
 let schema = new Schema({…})	creates a new data Schema (a blueprint for documents in the collections) with "key: type" pairs, where "type" can be: "String", "Number", "Date", "Boolean", "[Arrays]" of any other schema type, a nested object with one or more values (accessible through the "." member selection operator), or an object for assigning special properties consisting of at least the "type" property and others like "unique" (a Boolean, set to "true" for unique key values), or "default" (to set a default value).
 let Model = mongoose.model(collection, schema)	creates the model objects to work with the documents in our collections, where "collection" is a string that coincides with the name of the collection, and "schema" is the corresponding data schema created with the "Schema" constructor.
 Model.add({…})	method that allows to add additional keys to a created Schema, useful for recursive (containing intances of itself. Ej: "user.add({ family: [user]})" adds an array of "user" to the "user").
@@ -1041,7 +1052,7 @@ $elemMatch	To check conditions on more than one key on an embedded document
       <h1>React</h1>
 
       Props and States
-const [state, setState] = useState(argument);	accepts a parameter that allows to set the initial value of a state and returns an array consisting of the state itself and a function to update it.
+<span class="kwd">const</span> [state, setState] = useState(argument);	accepts a parameter that allows to set the initial value of a state and returns an array consisting of the state itself and a function to update it.
 useEffect(callback, [dependencies]);	accepts a callback function to be executed when the component is mounted and whenever any of variables of the optional dependencies array is modified. The callback may return another callback to be executed when unmounted.
 
     </article>
