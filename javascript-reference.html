@@ -150,14 +150,14 @@
     flex-direction: row;
   }
 
-  div.row div div:nth-child(2) {
-    flex: 1;
-    display: block;
-  }
-
   div.row div div.code {
     flex: none;
     min-width: 100px;
+  }
+
+  div.row div div:nth-child(2) {
+    flex: 1;
+    display: block;
   }
 
   p span.code:first-child, span.p span.code:first-child {
@@ -656,7 +656,7 @@
       <p><span class="code">.removeAttribute(<span class="sti">name</span>)</span>	removes the selected attribute from the element.</p>
       <h2>Document Object Properties and Methods</h2>
       <p><span class="code">.body</span>	property that refers to the webpage HTML "<span class="code">&lt;body&gt;</span>" element;</p>
-      <p><span class="code">.getElementById(<span class="sti">id</span>)</span>	returns the HTML element with "id" equal to the string parameter</p>
+      <p><span class="code">.getElementById(<span class="sti">id</span>)</span>	returns the HTML element with "<span class="code sti">id</span>" equal to the string parameter</p>
       <p><span class="code">.getElementsByClassName(<span class="sti">className</span>)</span>	returns a list of HTML elements with the corresponding string class.</p>
       <p><span class="code">.querySelector(<span class="sti">selector</span>)</span>	returns a reference to the first element that matches the CSS selector as the string parameter (tags, classes [.] and IDs [#]).</p>
       <p><span class="code">.querySelectorAll(<span class="sti">selector</span>)</span>	returns a "<span class="code">NodeList</span>" (array-like object) of elements that matches the CSS selector as the string parameter</p>
@@ -935,132 +935,169 @@
       </p>
       <p><span class="code"><span class="kwd">const</span> <span class="sti">upload</span> = <span class="sti">multer</span>(<span class="opt">{ dest|storage:…, fileFilter:…, limits:…, preservePath:… }</span>)</span> sets the upload middleware for multer, these options are not required when handling text-only multipart form. They are:
       <ul>
-        <li>"<span class="opt">dest</span>" (path string) or "storage" (storage engine) set where to store the files.</li>
+        <li>"<span class="opt">dest</span>" (path string) or "<span class="opt">storage</span>" (storage engine) set where to store the files.</li>
         <li>"<span class="opt">fileFilter</span>" takes a function in the form "<span class="code"><span class="kwd">function</span> <span class="sti">fileFilter</span>(<span class="sti">req</span>, <span class="sti">file</span>, <span class="sti">cb</span>) { …; <span class="sti">cb</span>(<span class="sti">err</span>, <span class="sti">result</span>) }</span>" to control which files are accepted through the Boolean passed in the "<span class="code sti">result</span>" of the "<span class="code sti">cb</span>" callback function (if no errors, "<span class="code sti">err</span>" should be "<span class="code">null</span>").</li>
         <li>"<span class="opt">limits</span>" takes an object specifying the size limits of the several optional properties.</li>
         <li>"<span class="opt">preservePath</span>" takes a Boolean; if true, keeps the full path of files instead of just the base name.</li>
       </ul>
       </p>
-      <p><span class="code"><span class="sti">app</span>.post(<span class="sti">route</span>, <span class="sti">upload</span>.<span class="sti">method</span>(…), <span class="sti">callback</span>)</span> usage of the "<span class="code sti">upload</span>" methods as middleware.</p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-      <p><span class="code"></span> </p>
-
-	
-.single(fieldname)	accept a single file with the name "fieldname" and stores it in "<span class="sti">req</span>.file".
-.array(fieldname, maxCount)	accept an array of files, all with the name "fieldname". Optionally error out if more than "maxCount" files are uploaded. The array of files will be stored in "<span class="sti">req</span>.files".
-.fields(fields)	accept a mix of files, specified by "fields" as an array of objects with "name" and optionally a "maxCount". An object with arrays of files will be stored in "<span class="sti">req</span>.files".
-.none()	accept only text fields. If any file upload is made, "LIMIT_UNEXPECTED_FILE" error will be issued.
-.any()	Accepts all files that comes over the wire. An array of files will be stored in "<span class="sti">req</span>.files".
-<span class="kwd">const</span> storage = multer.diskStorage({destination: destination|string, filename: filename;})	creates a storage engine object for "multer" for its "storage" option, where both "destination" (can also be just a "string") and "filename" are callback functions in the form "function callback(req, file, cb) { …; cb(err, result) } })" which take the request "req" object, the "file" object, and the "cb" callback function that sends the expected "result" from the function, and "err" as "null" if there are no errors (the "filename" "value" string must include the file extension).
-<span class="kwd">const</span> storage = multer. memoryStorage()	The "MemoryStorage" engine stores the files in memory as "Buffer" objects. It doesn't have any options.
-Client Session Module
-<span class="kwd">const</span> clientSessions = require('client-sessions')	imports the "Client Session" module which uses cookies to store session information.
-<span class="sti">app</span>.use(clientSessions({cookieName: ..., secret: ..., duration: ..., activeDuration: ...}))	set-up client session by passing an object for configuration, where:
-•	"cookieName" takes a string to name the object that will be added to the "Request" ("req") object. (Ej: "cookieName: 'session',…" then "<span class="sti">req</span>.session.user = userData")
-•	"secret" should be a long un-guessable string.
-•	"duration" takes an integer to set the duration of the session in milliseconds.
-•	"activeDuration" takes an integer to extend the session that amount in milliseconds at each request.
-Dot Env Module
-<span class="kwd">const</span> dotenv = require('dotenv')	imports the "Dot Env" module, which helps store local "environment" variables.
-dotenv.config()	configures the "Dot Env" module to read variables set on a plain text file name ".env" and stores them on the "process.env" object.
-HTTP and HTTPS Modules
-<span class="kwd">const</span> http = require('http')	imports the "HTTP" module to create a regular HTTP protocol server app.
-<span class="kwd">const</span> https = require('https')	imports the " HTTPS" module to create a HTTPS protocol server app.
-http.createServer(app).listen(HTTP_PORT, callback)	the method takes the "Application" ("app") object and returns a new "Application" object that will handle all "HTTP" method request.
-http.createServer({key: …, cert: …}, app).listen(HTTPS_PORT, callback)	the method takes an options object with the "key" and "cert" properties that take the contents of the certificate files and the "Application" ("app") object and returns a new "Application" object that will handle all "HTTPS" method request.
- 
-Encryption With "bcrypt.js" Module
-<span class="kwd">const</span> bcrypt = require('bcryptjs')	imports the "bcrypt.js" encryption module.
-bcrypt.hash(string, rounds)	takes a "string" and a number of "rounds" (normally "10") and returns a promise that resolves into a "hash" (a hashed value of the "string").
-bcrypt.compare(string, hash)	takes and compares a "string" with a previously generated "hash" and returns a promise that resolves into a Boolean indicating if they match or not.
-
-Express Handlebars Module
-Handlebars Set-Up
-<span class="kwd">const</span> exphbs = require('express-handlebars')	imports the "Handlebars" rendering engine and assigns its callback function to "exphbs".
-<span class="sti">app</span>.engine(ext, exphbs({extname: '.hbs', layoutsDir: 'views/layouts/', partialsDir: 'views/partials/', defaultLayout: 'main', helpers: {…},…}))	adds the handlebars engine to the Express "app" and configures it; where "ext" is the name given to engine (commonly "'hbs'" or "'handlebars'"), and other options can be "defaultLayout" that receives the name of the default layout file without the extension, and an object of "helpers" functions that can be used to add custom logic inside the handlebar statements.
-<span class="kwd">const</span> hbs = exphbs.create({ config }); <span class="sti">app</span>.engine(ext, hbs.engine)	alternatively, the ".create()" method can be used to create an instance of the Handlebars engine and stores it in "hbs", then pass its "engine" callback to the "<span class="sti">app</span>.engine()" method.
-<span class="sti">app</span>.set('view engine', ext)	sets handlebar as the rendering engine using the "ext" name given to it in the ".engine()" method.
-<span class="sti">app</span>.set('views', './views/')	optionally, we can set a custom path for the views ("./views/" by default). If done so, it will need to be reflected on the "layoutsDir" and "partialsDir" configuration options.
-<span class="sti">res</span>.render(view, options)	invoked on any routing methods of the "Application" ("app") object (".get()", ".post()", ".put()" , ".delete()" , ".all()"), where "view" is the name of the file without the ".hbs" extension, and the "options" object can be used to set a specific "layout" property (layout file name without extension, equal to "defaultLayout" if omitted, or can be set to "false" for no layout), add or override "helpers", and other custom properties to use as data on the view.
-Handlebars Files Syntax
-{{statement}}	syntax for inserting regular handlebar statements (data sent as properties of the "options" object from the "<span class="sti">res</span>.render()" method) on an html document. Handlebar documents can be:
-•	Views: regular files located in the "./views" folder.
-•	Partials: Files that can be inserted into other views, located in the "./views/partials" folder.
-•	Layouts: Page templates that can other views inserted into them, located in the "./views/layouts" folder.
-{{#helperName context}} block {{/helperName}}	syntax for inserting built-in helpers.
-{{#if condition}} … {{else}} … {{/if}}	inserts a block that will be displayed if "condition" evaluates to "true" (so it can be "false" if its "undefined"), can include an "else" block that displays if it evaluates to false.
-{{#unless condition}} … {{/unless}}		inserts a block that will be displayed if "condition" evaluates to "false".
-{{#each array}} … {{/each}}	inserts a block of statements that render for each member of the given "array".
-@index	built-in variable that allows us to reference the current iteration index.
-this	built-in variable that contains all the information of the current object being iterated.
-{{> partialfilename context }}	inserts a partial view into the current view, can include "context" to send one or more variables to the partial in the form of "variable=value".
-{{{body}}}	inserts views into the body of the layouts (declared in the "layout" property of the "options" object of the "<span class="sti">res</span>.render()" method).
-
-Mongoose Module (MongoBD/Atlas)
-Mongoose Set-up
-<span class="kwd">const</span> mongoose = require('mongoose')	imports the "Mongoose" module to connect and communicate with "MongoDB/Atlas" databases.
-<span class="kwd">const</span> Schema = mongoose.Schema	stores the "Schema" constructor from mongoose.
-mongoose.connect(connectionString, options)	method to connect to the database, where "connectionString" is given by the database and contains the user and password, and "options" takes an object that can be used to prevent warning message ("{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}").
-<span class="kwd">const</span> mongooseInstance = mongoose.createConnection(connectionString)	if working with more than one database, we can create instances of "mongoose" as "mongooseInstance" to which apply the same methods to each instance as needed. These instances can use event methods ".on('error', function callback(error){…})" and ".once('open', callback)" to test each one.
-let schema = new Schema({…})	creates a new data Schema (a blueprint for documents in the collections) with "key: type" pairs, where "type" can be: "String", "Number", "Date", "Boolean", "[Arrays]" of any other schema type, a nested object with one or more values (accessible through the "." member selection operator), or an object for assigning special properties consisting of at least the "type" property and others like "unique" (a Boolean, set to "true" for unique key values), or "default" (to set a default value).
-let Model = mongoose.model(collection, schema)	creates the model objects to work with the documents in our collections, where "collection" is a string that coincides with the name of the collection, and "schema" is the corresponding data schema created with the "Schema" constructor.
-Model.add({…})	method that allows to add additional keys to a created Schema, useful for recursive (containing intances of itself. Ej: "user.add({ family: [user]})" adds an array of "user" to the "user").
-Mongoose CRUD Operations
-var newDocument = new Model({…})	new documents are created as instances of a "Model", by passing to the constructor an object with the document data.
-newDocument.save(function callback(error, data) {…; process.exit(); })	to save the new document in the collection we apply the ".save()" method to it and pass it a "callback" function which can handle any "error" that might get thrown, as well access the document created with "data"; and finally call the "process.exit()" method at the end to exit the program after saving. By default, an "_id" which is a unique "ObjectID" (primary key) and a "_v" of type "versionKey" will be added as additional properties to each document.
-Query	object type returned by every query method from mongoose (find, update, replace, delete).
-.exec()	method needed to be applied to any query method so that it returns a Promise that resolves into a Mongoose document, which later would have to be converted to a JavaScript object (Ej: "find().exec().then(…)").
-.sort(string|object)	method applied to query methods and before the ".exec()" method, sorts the results as follow:
-•	"string": if a string is used, the string is made by each field name delimited by a blank space, and sorts by each named field ascending ("field"), or descending if the field is preceded by a minus sing ("-field").
-•	"object": if an object is passed, each property is a field and its value can be "asc|ascending|1" or "desc|descending|-1".
-Document	object type to which Promises returned by the ".exec()" method resolve.
-.toObject()	method to convert mongoose "Document" into plain JavaScript objects.
-Model.find(query, fields)	finds all documents that match the conditions set in the "query" object, can filter specific "fields", and returns a "Query" object. Ej: "Model.find(query, fields).exec().then((data) => {data = data.map((document) => (document.toObject()))})"
-Model.findOne(query, fields)	finds one document that matches the conditions set in the "query".
-Model.updateOne(query, { $set: { update }})	update the first document that matches the conditions set in the "query" taking the keys and their values in the "update" object.
-Model.updateMany(query, { $set: { update }})	updates all the documents that matches the conditions set in the "query" taking keys their values in the "update" object.
-Model.replaceOne(query, docObj)	replaces the first document that matches the conditions set in the "query" using the information given in the "docObj" object (for complete update instead of individual fields).
-Model.deleteOne(query)	deletes the first document that matches the conditions set in the "query".
-Model.deleteMany(query)	deletes all the documents that matches the conditions set in the "query".
-Model.findById(id, fields)	finds the document that matches the given "id", equivalent but preferred over "Model.findOne({_id: id})".
-Model.findByIdAndUpdate(id, { $set: { update }})	update the document that matches the given "id" taking the keys and their values in the "update" object.
-Model.findByIdAndDelete(id)	deletes the document that matches the given "id".
-query = { key: value,… }	typical MongoDB/Mongoose query syntax, where there can be one or more field evaluated, and where value can be the exact value or one of the following operator objects, which themselves can be one or more and nested (Ej: "{ key: { oper: { oper:  value }, oper: value } }"):
-$lt	Less than (&lt;).	$lte	Less than or equal to (&lt;=).
-$gt	Greater than (&gt;).	$gte	Greater than or equal to (>=).
-$ne	Not equal (&lt;&gt; or !=).	$not	
-$or	Used as "key", matches any "key: value" pair in an array.	$and	Used as "key", matches all "key: value" pair in an array.
-$in	Matches on value from an array	$nin	Doesn't match any value from an array
-$all	Matches any key array that contains all the values in the given array.	$size	Matches an array with the given size, cannot be combined with other operators.
-$inc	To match an array by size and other operators.		
-$exists	Checks if a value exists.
-$elemMatch	To check conditions on more than one key on an embedded document
-
-
-
+      <p><span class="code"><span class="sti">app</span>.post(<span class="sti">route</span>, <span class="sti">upload</span>.<span class="sti">method</span>(…), <span class="sti">callback</span>)</span> usage of the "<span class="code sti">upload</span>" methods as middleware.
+        <span class="p"><span class="code">.single(<span class="sti">fieldname</span>)</span> accept a single file with the name "<span class="code sti">fieldname</span>" and stores it in "<span class="code"><span class="sti">req</span>.file</span>".</span>
+        <span class="p"><span class="code">.array(<span class="sti">fieldname</span>, <span class="sti">maxCount</span>)</span> accept an array of files, all with the name "<span class="code sti">fieldname</span>". Optionally error out if more than "<span class="code sti">maxCount</span>" files are uploaded. The array of files will be stored in "<span class="code"><span class="sti">req</span>.files</span>".</span>
+        <span class="p"><span class="code">.fields(<span class="sti">fields</span>)</span> accept a mix of files, specified by "<span class="code sti">fields</span>" as an array of objects with "name" and optionally a "maxCount". An object with arrays of files will be stored in "<span class="code"><span class="sti">req</span>.files</span>".</span>
+        <span class="p"><span class="code">.none()</span> accept only text fields. If any file upload is made, "<span class="code">LIMIT_UNEXPECTED_FILE</span>" error will be issued.</span>
+        <span class="p"><span class="code">.any()</span> Accepts all files that comes over the wire. An array of files will be stored in "<span class="code"><span class="sti">req</span>.files</span>".</span>
+      </p>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">storage</span> = <span class="sti">multer</span>.diskStorage({destination: <span class="sti">destination</span>|<span class="sti">string</span>, filename: <span class="sti">filename</span>;})</span> creates a storage engine object for "<span class="code sti">multer</span>" for its "<span class="opt">storage</span>" option, where both "<span class="code sti">destination</span>" (can also be just a "<span class="code sti">string</span>") and "<span class="code sti">filename</span>" are callback functions in the form "<span class="code"><span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">req</span>, <span class="sti">file</span>, <span class="sti">cb</span>) { …; <span class="sti">cb</span>(<span class="sti">err</span>, <span class="sti">result</span>) } })</span>" which take the request "<span class="code sti">req</span>" object, the "<span class="code sti">file</span>" object, and the "<span class="code sti">cb</span>" callback function that sends the expected "<span class="code sti">result</span>" from the function, and "<span class="code sti">err</span>" as "<span class="code">null</span>" if there are no errors (the "<span class="code sti">filename</span>" "<span class="code sti">result</span>" string must include the file extension).</p>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">storage</span> = <span class="sti">multer</span>.memoryStorage()</span> The "<span class="code">MemoryStorage</span>" engine stores the files in memory as "<span class="code">Buffer</span>" objects. It doesn't have any options.</p>
+      <h3>Client Session Module</h3>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">clientSessions</span> = require('client-sessions')</span> imports the "Client Session" module which uses cookies to store session information.</p>
+      <p><span class="code"><span class="sti">app</span>.use(<span class="sti">clientSessions</span>({cookieName: …, secret: …, duration: …, activeDuration: …}))</span> set-up client session by passing an object for configuration, where:
+        <ul>
+          <li>"<span class="code">cookieName</span>" takes a string to name the object that will be added to the "<span class="code">Request</span>" ("<span class="code sti">req</span>") object. (Ej: "<span class="code">cookieName: '<span class="sti">session</span>',…</span>" then "<span class="code"><span class="sti">req</span>.<span class="sti">session</span>.<span class="sti">user</span> = <span class="sti">userData</span></span>")</li>
+          <li>"<span class="code">secret</span>" should be a long un-guessable string.</li>
+          <li>"<span class="code">duration</span>" takes an integer to set the duration of the session in milliseconds.</li>
+          <li>"<span class="code">activeDuration</span>" takes an integer to extend the session that amount in milliseconds at each request.</li>
+        </ul>
+      </p>
+      <h3>Dot Env Module</h3>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">dotenv</span> = require('dotenv')</span> imports the "Dot Env" module, which helps store local "<span class="code">environment</span>" variables.</p>
+      <p><span class="code"><span class="sti">dotenv</span>.config()</span> configures the "Dot Env" module to read variables set on a plain text file name "<span class="code">.env</span>" and stores them on the "<span class="code">process.env</span>" object.</p>
+      <h3>HTTP and HTTPS Modules</h3>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">http</span> = require('http')</span> imports the "HTTP" module to create a regular HTTP protocol server app.</p>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">https</span> = require('https')</span> imports the " HTTPS" module to create a HTTPS protocol server app.</p>
+      <p><span class="code"><span class="sti">http</span>.createServer(<span class="sti">app</span>).listen(<span class="sti">HTTP_PORT</span><span class="opt">, <span class="sti">callback</span></span>)</span> the method takes the "<span class="code">Application</span>" ("<span class="code sti">app</span>") object and returns a new "<span class="code">Application</span>" object that will handle all "<span class="code">HTTP</span>" method request.</p>
+      <p><span class="code"><span class="sti">https</span>.createServer({key: …, cert: …}, <span class="sti">app</span>).listen(<span class="sti">HTTPS_PORT</span><span class="opt">, <span class="sti">callback</span></span>)</span> the method takes an options object with the "<span class="code">key</span>" and "<span class="code">cert</span>" properties that take the contents of the certificate files and the "<span class="code">Application</span>" ("<span class="code sti">app</span>") object and returns a new "<span class="code">Application</span>" object that will handle all "<span class="code">HTTPS</span>" method request.</p>
+      <h3>Encryption With "bcrypt.js" Module</h3>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">bcrypt</span> = require('bcryptjs')</span> imports the "bcrypt.js" encryption module.</p>
+      <p><span class="code"><span class="sti">bcrypt</span>.hash(<span class="sti">string</span>, <span class="sti">rounds</span>)</span> takes a "<span class="code sti">string</span>" and a number of "<span class="code sti">rounds</span>" (normally "<span class="code">10</span>") and returns a promise that resolves into a "<span class="code sti">hash</span>" (a hashed value of the "<span class="code sti">string</span>").</p>
+      <p><span class="code"><span class="sti">bcrypt</span>.compare(<span class="sti">string</span>, <span class="sti">hash</span>)</span> takes and compares a "<span class="code sti">string</span>" with a previously generated "<span class="code sti">hash</span>" and returns a promise that resolves into a Boolean indicating if they match or not.</p>
+      <h2>Express Handlebars Module</h2>
+      <h3>Handlebars Set-Up</h3>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">exphbs</span> = require('express-handlebars')</span> imports the "Handlebars" rendering engine and assigns its callback function to "<span class="code sti">exphbs</span>".</p>
+      <p><span class="code"><span class="sti">app</span>.engine(<span class="sti">ext</span>, <span class="sti">exphbs</span>({extname: '.<span class="sti">hbs</span>'<span class="opt">, layoutsDir: '<span class="sti">views/layouts/</span>', partialsDir: '<span class="sti">views/partials/</span>', defaultLayout: '<span class="sti">main</span>', helpers: {…},…</span>}))</span> adds the handlebars engine to the Express "<span class="code sti">app</span>" and configures it; where "<span class="code sti">ext</span>" is the name given to engine (commonly "<span class="code">'hbs'</span>" or "<span class="code">'handlebars'</span>"), and other options can be "<span class="opt">defaultLayout</span>" that receives the name of the default layout file without the extension, and an object of "<span class="opt">helpers</span>" functions that can be used to add custom logic inside the handlebar statements.</p>
+      <p><span class="code"><span class="opt">const <span class="sti">hbsInstance</span> = <span class="sti">exphbs</span>.create({ <span class="sti">config</span> }); <span class="sti">app</span>.engine(<span class="sti">ext</span>, <span class="sti">hbsInstance</span>.engine)</span></span> alternatively, the "<span class="code">.create()</span>" method can be used to create an instance of the Handlebars engine and stores it in "<span class="code sti">hbsInstance</span>", then pass its "<span class="code">engine</span>" callback to the "<span class="code"><span class="sti">app</span>.engine()</span>" method.</p>
+      <p><span class="code"><span class="sti">app</span>.set('view engine', <span class="sti">ext</span>)</span> sets handlebar as the rendering engine using the "<span class="code sti">ext</span>" name given to it in the "<span class="code"><span class="sti">app</span>.engine()</span>" method.</p>
+      <p><span class="code"><span class="opt"><span class="sti">app</span>.set('views', './views/')</span></span> optionally, we can set a custom path for the views ("<span class="code">./views/</span>" by default). If done so, it will need to be reflected on the "<span class="opt">layoutsDir</span>" and "<span class="opt">partialsDir</span>" configuration options.</p>
+      <p><span class="code"><span class="sti">res</span>.render(<span class="sti">view</span><span class="opt">, <span class="sti">options</span></span>)</span> invoked on any routing methods of the "<span class="code">Application</span>" ("<span class="code sti">app</span>") object ("<span class="code">.get()</span>", "<span class="code">.post()</span>", "<span class="code">.put()</span>" , "<span class="code">.delete()</span>" , "<span class="code">.all()</span>"), where "<span class="code sti">view</span>" is the name of the file without the "<span class="code">.hbs</span>" extension, and the "<span class="sti opt">options</span>" object can be used to set a specific "<span class="opt">layout</span>" property (layout file name without extension, equal to "<span class="opt">defaultLayout</span>" if omitted, or can be set to "<span class="code">false</span>" for no layout), add or override "<span class="opt">helpers</span>", and other custom properties to use as data on the view.</p>
+      <h3>Handlebars Files Syntax</h3>
+      <p><span class="code">{{<span class="sti">statement</span>}}</span> syntax for inserting regular handlebar statements (data sent as properties of the "<span class="sti opt">options</span>" object from the "<span class="code"><span class="sti">res</span>.render()</span>" method) on an html document. Handlebar documents can be:
+        <ul>
+          <li><span class="udl">Views:</span> regular files located in the "<span class="code">./views</span>" folder.</li>
+          <li><span class="udl">Partials:</span> Files that can be inserted into other views, located in the "<span class="code">./views/partials</span>" folder.</li>
+          <li><span class="udl">Layouts:</span> Page templates that can other views inserted into them, located in the "<span class="code">./views/layouts</span>" folder.</li>
+        </ul>
+      </p>
+      <p><span class="code">{{#<span class="sti">helperName</span> <span class="sti">context</span>}} <span class="sti">block</span> {{/<span class="sti">helperName</span>}}</span> syntax for inserting built-in helpers.</p>
+      <p><span class="code">{{#<span class="kwd">if</span> <span class="sti">condition</span>}} … {{<span class="opt">else</span>}} … {{/<span class="kwd">if</span>}}</span> inserts a block that will be displayed if "<span class="code sti">condition</span>" evaluates to "<span class="code">true</span>" (so it can be "<span class="code">false</span>" if its "<span class="code">undefined</span>"), can include an "<span class="opt">else</span>" block that displays if it evaluates to false.</p>
+      <p><span class="code">{{#<span class="kwd">unless</span> <span class="sti">condition</span>}} … {{/<span class="kwd">unless</span>}}</span> inserts a block that will be displayed if "<span class="code sti">condition</span>" evaluates to "<span class="code">false</span>".</p>
+      <p><span class="code">{{#<span class="kwd">each</span> <span class="sti">array</span>}} … {{/<span class="kwd">each</span>}}</span> inserts a block of statements that render for each member of the given "<span class="code sti">array</span>".
+        <span class="p"><span class="code">@index</span> built-in variable that allows us to reference the current iteration index.</span>
+        <span class="p"><span class="code">this</span> built-in variable that contains all the information of the current object being iterated.</span>
+      </p>
+      <p><span class="code">{{> <span class="sti">partialfilename</span> <span class="sti opt">context</span> }}</span> inserts a partial view into the current view, can include "<span class="sti opt">context</span>" to send one or more variables to the partial in the form of "<span class="code"><span class="sti">variable</span>=<span class="sti">value</span></span>".</p>
+      <p><span class="code">{{{body}}}</span> inserts views into the body of the layouts (declared in the "<span class="code">layout</span>" property of the "<span class="sti opt">options</span>" object of the "<span class="code"><span class="sti">res</span>.render()</span>" method).</p>
+      <h2>Mongoose Module (MongoBD/Atlas)</h2>
+      <h3>Mongoose Set-up</h3>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">mongoose</span> = require('mongoose')</span> imports the "Mongoose" module to connect and communicate with "MongoDB/Atlas" databases.</p>
+      <p><span class="code"><span class="kwd">const</span> <span class="sti">Schema</span> = <span class="sti">mongoose</span>.Schema</span> stores the "<span class="code">Schema</span>" constructor from mongoose.</p>
+      <p><span class="code"><span class="sti">mongoose</span>.connect(<span class="sti">connectionString</span><span class="opt">, <span class="sti">options</span></span>)</span> method to connect to the database, where "<span class="code sti">connectionString</span>" is given by the database and contains the user and password, and "<span class="sti opt">options</span>" takes an object that can be used to prevent warning messages ("<span class="code">{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}</span>").</p>
+      <p><span class="code"><span class="opt">const <span class="sti">mongooseInstance</span> = <span class="sti">mongoose</span>.createConnection(<span class="sti">connectionString</span>)</span></span> if working with more than one database, we can create instances of "<span class="code sti">mongoose</span>" as "<span class="code sti">mongooseInstance</span>" to which apply the same methods to each instance as needed. These instances can use event methods "<span class="code">.on('error', <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">error</span>){…})</span>" and "<span class="code">.once('open', <span class="sti">callback</span>)</span>" to test each one.</p>
+      <p><span class="code"><span class="kwd">let</span> <span class="sti">schema</span> = <span class="kwd">new</span> <span class="sti">Schema</span>({…})</span> creates a new data Schema (a blueprint for documents in the collections) with "<span class="code"><span class="sti">key</span>: <span class="sti">type</span></span>" pairs, where "<span class="code sti">type</span>" can be: "<span class="code">String</span>", "<span class="code">Number</span>", "<span class="code">Date</span>", "<span class="code">Boolean</span>", "<span class="code">[<span class="sti">Arrays</span>]</span>" of any other schema type, a nested object with one or more values (accessible through the "<span class="code">.</span>" member selection operator), or a "key" object for assigning special properties consisting of at least the "<span class="code">type</span>" property and others like "<span class="code">unique</span>" (a Boolean, set to "<span class="code">true</span>" for unique key values), or "<span class="code">default</span>" (to set a default value).</p>
+      <p><span class="code"><span class="kwd">let</span> <span class="sti">Model</span> = <span class="sti">mongoose</span>.model(<span class="sti">collection</span>, <span class="sti">schema</span>)</span> creates the model objects to work with the documents in our collections, where "<span class="code sti">collection</span>" is a string that coincides with the name of the collection, and "<span class="code sti">schema</span>" is the corresponding data schema created with the "<span class="code sti">Schema</span>" constructor.</p>
+      <p><span class="code"><span class="sti">Model</span>.add({…})</span> method that allows to add additional keys to a created Schema, useful for recursive (containing intances of itself. Ej: "<span class="code"><span class="sti">user</span>.add({<span class="sti">family</span>: [<span class="sti">user</span>]})</span>" adds an array of "<span class="code sti">user</span>" to the "<span class="code sti">user</span>").</p>
+      <h3>Mongoose CRUD Operations</h3>
+      <p><span class="code"><span class="kwd">let</span> <span class="sti">newDocument</span> = <span class="kwd">new</span> <span class="sti">Model</span>({…})</span> new documents are created as instances of a "<span class="code sti">Model</span>", by passing to the constructor an object with the document data.</p>
+      <p><span class="code"><span class="sti">newDocument</span>.save(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">error</span><span class="opt">, <span class="sti">data</span></span>) {…; process.exit(); })</span> to save the new document in the collection we apply the "<span class="code">.save()</span>" method to it and pass it a "<span class="sti opt">callback</span>" function which can handle any "<span class="code sti">error</span>" that might get thrown, as well access the document created with "<span class="sti opt">data</span>"; and finally call the "<span class="code">process.exit()</span>" method at the end to exit the program after saving. By default, an "<span class="code">_id</span>" which is a unique "<span class="code">ObjectID</span>" (primary key) and a "<span class="code">_v</span>" of type "<span class="code">versionKey</span>" will be added as additional properties to each document.</p>
+      <p><span class="code">Query</span> object type returned by every query method from mongoose (find, update, replace, delete).
+        <span class="p"><span class="code">.exec()</span> method needed to be applied to any query method so that it returns a Promise that resolves into a Mongoose document, which later would have to be converted to a JavaScript object (Ej: "<span class="code">find().exec().then(…)</span>").</span>
+        <span class="p"><span class="code">.sort(<span class="sti">string</span>|<span class="sti">object</span>)</span> optional method applied to query methods and before the "<span class="code">.exec()</span>" method, sorts the results as follow:
+          <ul>
+            <li>"<span class="code sti">string</span>": if a string is used, the string is made by each field name delimited by a blank space, and sorts by each named field ascending ("<span class="code sti">field</span>"), or descending if the field is preceded by a minus sing ("<span class="code">-<span class="sti">field</span></span>").</li>
+            <li>"<span class="code sti">object</span>": if an object is passed, each property is a field and its value can be "<span class="code">asc|ascending|1</span>" or "<span class="code">desc|descending|-1</span>".</li>
+          </ul>
+        </span>
+      </p>
+      <p><span class="code">Document</span> object type to which Promises returned by the "<span class="code">.exec()</span>" method resolve.
+        <span class="p"><span class="code">.toObject()</span> method to convert mongoose "<span class="code">Document</span>" into plain JavaScript objects.</span>
+      </p>
+      <p><span class="code"><span class="sti">Model</span>.find(<span class="sti">query</span><span class="opt">, <span class="sti">fields</span></span>)</span> finds all documents that match the conditions set in the "<span class="code sti">query</span>" object, can filter specific "<span class="sti opt">fields</span>", and returns a "<span class="code">Query</span>" object. Ej: "<span class="code"><span class="sti">Model</span>.find(<span class="sti">query</span><span class="opt">, <span class="sti">fields</span></span>).exec().then((<span class="sti">data</span>) => {<span class="sti">data</span> = <span class="sti">data</span>.map((<span class="sti">document</span>) => (<span class="sti">document</span>.toObject()))})</span>"</p>
+      <p><span class="code"><span class="sti">Model</span>.findOne(<span class="sti">query</span><span class="opt">, <span class="sti">fields</span></span>)</span> finds one document that matches the conditions set in the "<span class="code sti">query</span>".</p>
+      <p><span class="code"><span class="sti">Model</span>.updateOne(<span class="sti">query</span>, { $set: { <span class="sti">update</span> }})</span> update the first document that matches the conditions set in the "<span class="code sti">query</span>" taking the keys and their values in the "<span class="code sti">update</span>" object.</p>
+      <p><span class="code"><span class="sti">Model</span>.updateMany(<span class="sti">query</span>, { $set: { <span class="sti">update</span> }})</span> updates all the documents that matches the conditions set in the "<span class="code sti">query</span>" taking keys their values in the "<span class="code sti">update</span>" object.</p>
+      <p><span class="code"><span class="sti">Model</span>.replaceOne(<span class="sti">query</span>, <span class="sti">docObj</span>)</span> replaces the first document that matches the conditions set in the "<span class="code sti">query</span>" using the information given in the "<span class="code sti">docObj</span>" object (for complete update instead of individual fields).</p>
+      <p><span class="code"><span class="sti">Model</span>.deleteOne(<span class="sti">query</span>)</span> deletes the first document that matches the conditions set in the "<span class="code sti">query</span>".</p>
+      <p><span class="code"><span class="sti">Model</span>.deleteMany(<span class="sti">query</span>)</span> deletes all the documents that matches the conditions set in the "<span class="code sti">query</span>".</p>
+      <p><span class="code"><span class="sti">Model</span>.findById(<span class="sti">id</span><span class="opt">, <span class="sti">fields</span></span>)</span> finds the document that matches the given "<span class="code sti">id</span>", equivalent but preferred over "<span class="code"><span class="sti">Model</span>.findOne({_id: <span class="sti">id</span>})</span>".</p>
+      <p><span class="code"><span class="sti">Model</span>.findByIdAndUpdate(<span class="sti">id</span>, { $set: { <span class="sti">update</span> }})</span> update the document that matches the given "<span class="code sti">id</span>" taking the keys and their values in the "<span class="code sti">update</span>" object.</p>
+      <p><span class="code"><span class="sti">Model</span>.findByIdAndDelete(<span class="sti">id</span>)</span> deletes the document that matches the given "<span class="code sti">id</span>".</p>
+      <p><span class="code"><span class="sti">query</span> = { <span class="sti">key</span>: <span class="sti">value</span>,… }</span> typical MongoDB/Mongoose query syntax, where there can be one or more field evaluated, and where value can be the exact value or one of the following operator objects, which themselves can be one or more and nested (Ej: "<span class="code">{ <span class="sti">key</span>: { <span class="sti">oper</span>: { <span class="sti">oper</span>:  <span class="sti">value</span> }, <span class="sti">oper</span>: <span class="sti">value</span> } }</span>"):
+        <div class="row">
+          <div>
+            <div class="code">$lt</div><div>Less than (&lt;).</div>
+            <div class="code">$lte</div><div>Less than or equal to (&lt;=).</div>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <div class="code">$gt</div><div>Greater than (&gt;).</div>
+            <div class="code">$gte</div><div>Greater than or equal to (&gt;=).</div>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <div class="code">$ne</div><div>Not equal (&lt;&gt; or !=).</div>
+            <div class="code">$not</div><div></div>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <div class="code">$or</div><div>Used as "<span class="code sti">key</span>", matches any "<span class="code"><span class="sti">key</span>: <span class="sti">value</span></span>" pair in an array.</div>
+            <div class="code">$and</div><div style="display: block;">Used as "<span class="code sti">key</span>", matches all "<span class="code"><span class="sti">key</span>: <span class="sti">value</span></span>" pair in an array.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <div class="code">$in</div><div>Matches on value from an array.</div>
+            <div class="code">$nin</div><div>Doesn't match any value from an array.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <div class="code">$all</div><div>Matches any key array that contains all the values in the given array.</div>
+            <div class="code">$size</div><div>Matches an array with the given size, cannot be combined with other operators.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <div class="code">$inc</div><div>To match an array by size and other operators.</div>
+            <div class="code">$exists</div><div>Checks if a value exists.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <div class="code">$elemMatch</div><div>To check conditions on more than one key on an embedded document</div>
+          </div>
+        </div>
+      </p>
     </article>
     <article>
       <h1>React</h1>
-
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
+      <p><span class="code"></span> </p>
       Props and States
-<span class="kwd">const</span> [state, setState] = useState(argument);	accepts a parameter that allows to set the initial value of a state and returns an array consisting of the state itself and a function to update it.
-useEffect(callback, [dependencies]);	accepts a callback function to be executed when the component is mounted and whenever any of variables of the optional dependencies array is modified. The callback may return another callback to be executed when unmounted.
+      <span class="kwd">const</span> [state, setState] = useState(argument);	accepts a parameter that allows to set the initial value of a state and returns an array consisting of the state itself and a function to update it.
+      useEffect(callback, [dependencies]);	accepts a callback function to be executed when the component is mounted and whenever any of variables of the optional dependencies array is modified. The callback may return another callback to be executed when unmounted.
 
     </article>
     <article>
       <h1>Angular</h1>
       [property]="value"	property binding: evaluates the content of the value to a property set in the component.
-(event)="function()"	event binding: executes the function on the event defined.
-
+      (event)="function()"	event binding: executes the function on the event defined.
+      
     </article>
   </main>
   <footer>Legend: <span class="code">strict syntax</span> <span class="code sti">stand-in</span> <span class="kwd">keyword</span> <span class="opt">optional</span> <span class="sti opt">stand-in optional</span> <span><a href="#" id="goToTop">Back to Index</a></span> </footer>
