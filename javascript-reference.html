@@ -168,8 +168,9 @@
     text-decoration: none;
   }
 
-  @media only screen and (max-width:  768px) {
+  @media only screen and (max-width: 600px) {
     div.row {
+      display: flex;
       flex-direction: column;
     }
   }
@@ -273,24 +274,32 @@
       <div class="row">
         <div>
           <div class="code">+</div><div>sum | string concatenation</div>
+        </div>
+        <div>
           <div class="code">-</div><div>subtraction</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">*</div><div>multiplication</div>
+        </div>
+        <div>
           <div class="code">/</div><div>floating point division</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">**</div><div>exponentiation</div>
+        </div>
+        <div>
           <div class="code">%</div><div>modulus (integer division remainder)</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">++</div><div>increment (prefix or postfix)</div>
+        </div>
+        <div>
           <div class="code">--</div><div>decrement (prefix or postfix)</div>
         </div>
       </div>
@@ -303,24 +312,32 @@
       <div class="row">
         <div>
           <div class="code">==</div><div>equal value</div>
+        </div>
+        <div>
           <div class="code">!=</div><div>not equal value</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">===</div><div>equal value and type</div>
+        </div>
+        <div>
           <div class="code">!==</div><div>not equal value or not equal type</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">&gt;</div><div>greater than</div>
+        </div>
+        <div>
           <div class="code">&lt;</div><div>less than</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">&gt;=</div><div>greater than or equal to</div>
+        </div>
+        <div>
           <div class="code">&lt;=</div><div>less than or equal to</div>
         </div>
       </div>
@@ -338,13 +355,14 @@
       <div class="row">
         <div>
           <div class="code">&&</div><div>returns true if both statements are true</div>
+        </div>
+        <div>
           <div class="code">||</div><div>returns true if any one statement is true</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">!</div><div>reverses the result</div>
-          <div class="code"></div><div></div>
         </div>
       </div>
       <h3>Type operators</h3>
@@ -471,90 +489,120 @@
       <div class="row">
         <div>
           <div class="code">\</div><div>ignore default value of preceding character.</div>
+        </div>
+        <div>
           <div class="code">.</div><div>any character.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">?</div><div>previous  character once or none.</div>
+        </div>
+        <div>
           <div class="code">*</div><div>previous character none or more.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">+</div><div>previous character once or more.</div>
+        </div>
+        <div>
           <div class="code"><span class="sti">x</span></div><div>match character "<span class="code sti">x</span>".</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">^</div><div>match beginning of the string.</div>
+        </div>
+        <div>
           <div class="code">$</div><div>match end of the string.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">\d</div><div>any digit.</div>
+        </div>
+        <div>
           <div class="code">\D</div><div>any character that's not a digit.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">\w</div><div>any word char (letters, numbers and "_").</div>
+        </div>
+        <div>
           <div class="code">\W</div><div>any non-word character.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">\s</div><div>any single white space char (space, tab, …).</div>
+        </div>
+        <div>
           <div class="code">\S</div><div>any character that's not a white space.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">\t</div><div>horizontal tab.</div>
+        </div>
+        <div>
           <div class="code">\r</div><div>carriage return.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">\n</div><div>linefeed.</div>
+        </div>
+        <div>
           <div class="code">\v</div><div>vertical tab.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">\f</div><div>form-feed.</div>
+        </div>
+        <div>
           <div class="code">[\b]</div><div>backspace.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">\b</div><div>word boundary.</div>
+        </div>
+        <div>
           <div class="code">\B</div><div>non-word boundary.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">[<span class="sti">set</span>]</div><div>match one character in the "<span class="code sti">set</span>".</div>
+        </div>
+        <div>
           <div class="code">[^<span class="sti">set</span>]</div><div>match one character not in the "<span class="code sti">set</span>".</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code"><span class="sti">x</span>{<span class="sti">n</span><span class="opt">,<span class="sti">m</span></span>}</div><div>match "<span class="code sti">x</span>" char "<span class="code sti">n</span>" times, "<span class="opt">,</span>" at least, up to "<span class="sti opt">m</span>" times.</div>
+        </div>
+        <div>
           <div class="code"><span class="sti">x</span>|<span class="sti">y</span></div><div>matches either "<span class="code sti">x</span>" or "<span class="code sti">y</span>".</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code"><span class="sti">x</span>(?=<span class="sti">y</span>)</div><div>matches "<span class="code sti">x</span>" only if it's followed by "<span class="code sti">y</span>".</div>
+        </div>
+        <div>
           <div class="code"><span class="sti">x</span>(?!<span class="sti">y</span>)</div><div>matches "<span class="code sti">x</span>" only if it's not followed by "<span class="code sti">y</span>".</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">(?&lt;=<span class="sti">y</span>)<span class="sti">x</span></div><div>matches "<span class="code sti">x</span>" only if it's preceded by "<span class="code sti">y</span>".</div>
+        </div>
+        <div>
           <div class="code">(?&lt;!<span class="sti">y</span>)<span class="sti">x</span></div><div>matches "<span class="code sti">x</span>" only if it's not preceded by "<span class="code sti">y</span>".</div>
         </div>
       </div>
@@ -669,36 +717,48 @@
       <div class="row">
         <div>
           <div class="code">load</div><div>when a resource has finished loading.</div>
+        </div>
+        <div>
           <div class="code">beforeunload</div><div>just before unloaded (window closed).</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">focus</div><div>when the element receives focus.</div>
+        </div>
+        <div>
           <div class="code">blur</div><div>when the element loses focus.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">click</div><div>when a single click on an element.</div>
+        </div>
+        <div>
           <div class="code">dblclick</div><div>when a double click on an element.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">keypress</div><div>when a key is pressed on the keyboard.</div>
+        </div>
+        <div>
           <div class="code">contextmenu</div><div>when the right mouse button is clicked.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">change</div><div>when the content of an element changes.</div>
+        </div>
+        <div>
           <div class="code">resize</div><div>when the element is resized.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">mouseover</div><div>when the mouse moves on top.</div>
+        </div>
+        <div>
           <div class="code">mouseout</div><div>when the mouse moves outside.</div>
         </div>
       </div>
@@ -730,8 +790,8 @@
       <h2>AJAX (Asynchronous JavaScript and XML)</h2>
       <h3>XMLHttpRequest API</h3>
       <p><span class="code">XMLHttpRequest()</span> constructor function that creates a new XMLHttpRequest.</p>
-      <p><span class="code">.open(method, url)</span> instance method that sets the "method" for the request and the "url" of destination.</p>
-      <p><span class="code">.send()</span> instance method that sends the HTTP request to the "url" previously defined.</p>
+      <p><span class="code">.open(<span class="sti">method</span>, <span class="sti">url</span>)</span> instance method that sets the "<span class="code sti">method</span>" for the request and the "<span class="code sti">url</span>" of destination.</p>
+      <p><span class="code">.send()</span> instance method that sends the HTTP request to the "<span class="code sti">url</span>" previously defined.</p>
       <p><span class="code">.onload</span> event listener property that triggers when the response is received, where a function can be assigned.</p>
       <p><span class="code">.responseText</span> property that holds the response body string; if in JSON format, needs to be parsed first 	(Ej: <span class="code"><span class="sti">xhr</span>.onload = function() { …; <span class="sti">response</span> = <span class="opt">JSON.parse(</span>this.responseText<span class="opt">)</span>;… }</span>).</p>
       <h3>Fetch API</h3>
@@ -758,24 +818,32 @@
       <div class="row">
         <div>
           <div class="code">'<span class="sti">tag</span>'</div><div>All elements of "tag" type.</div>
+        </div>
+        <div>
           <div class="code">'.<span class="sti">class</span>'</div><div>All elements of class "class".</div>
         </div>
       </div>
       <div class="row">
         <div>
-          <div class="code">'#id'</div><div>The element with attribute "id=id".</div>
+          <div class="code">'#<span class="sti">id</span>'</div><div>The element with attribute "<span class="code">id=<span class="sti">id</span></span>".</div>
+        </div>
+        <div>
           <div class="code">this</div><div>The current element.</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">'…:even'</div><div>All even elements</div>
+        </div>
+        <div>
           <div class="code">'…:odd'</div><div>All odd elements</div>
         </div>
       </div>
       <div class="row">
         <div>
           <div class="code">'…:first'</div><div>First element of its type</div>
+        </div>
+        <div>
           <div class="code"></div><div></div>
         </div>
       </div>
@@ -786,45 +854,45 @@
       </div>
       <div class="row">
         <div>
-          <div class="code">'tag[attr=value]'</div><div>All "tag" elements that have an attribute "attr", equal to "value", can be multiple.</div>
+          <div class="code">'<span class="sti">tag</span>[<span class="sti">attr</span>=<span class="sti">value</span>]'</div><div>All "<span class="code sti">tag</span>" elements that have an attribute "<span class="code sti">attr</span>", equal to "<span class="code sti">value</span>", can be multiple.</div>
         </div>
       </div>
       <p><span class="code">$(document).ready(function() {…}); | $(function() {…});</span> syntax for the wrapping function for all other jQuery operations.</p>
       <p><span class="code">noConflict()</span> method that releases the hold on the $ shortcut identifier, so that other scripts can use it; it also returns a reference to jQuery, that you can save in a variable, for later use.</p>
       <h3>Methods</h3>
       <p><span class="code">.empty()</span> remove all child nodes of the set of matched elements from the DOM.</p>
-      <p><span class="code">.remove(filter)</span> removes the selected element(s) and its child elements, can include a "filter" to select specific elements.</p>
-      <p><span class="code">.text(textString)</span> Sets (if "textString" is given) or returns the text content of selected elements.</p>
-      <p><span class="code">.html(htmlString)</span> Get / Set the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.</p>
-      <p><span class="code">.append(htmlElem)</span> Insert content, specified by the parameter, to the end of each element in the set of matched elements.</p>
-      <p><span class="code">.prepend(htmlElem)</span> Insert content, specified by the parameter, at the beginning of each element in the set of matched elements.</p>
-      <p><span class="code">.after(htmlElem)</span> Insert content, specified by the parameter, after each element in the set of matched elements.</p>
-      <p><span class="code">.before(htmlElem)</span> Insert content, specified by the parameter, before each element in the set of matched elements.</p>
-      <p><span class="code">.attr(attribute)<span class="opt"> = <span class="sti">value</span></span></span> Get / Set the value of an "attribute" for the first element in the set of matched elements or set one or more attributes for every matched element.</p>
-      <p><span class="code">.val(value)</span> Get / Set the value of a regular form field. For a "select" element with "multiple", can take an array of values to set as selected options.</p>
-      <p><span class="code">.prop('checked', boolean)</span> Get / Set the state of checked/unchecked of a checkbox or radio buttons (for checkboxes, if the Boolean is not supplied, it gets).</p>
-      <p><span class="code">.css(style)</span> sets or returns one or more style properties for the selected elements.</p>
-      <p><span class="code">.addClass(classList)</span> Adds one or more classes to the selected elements.</p>
-      <p><span class="code">.removeClass(classList)</span> Removes one or more classes from the selected elements.</p>
-      <p><span class="code">.toggleClass(classList)</span> Toggles between adding/removing classes from the selected elements.</p>
-      <p><span class="code">.width(px)</span> sets or returns the width of an element (excludes padding, border and margin).</p>
-      <p><span class="code">.height(px)</span> sets or returns the height of an element (excludes padding, border and margin).</p>
+      <p><span class="code">.remove(<span class="sti opt">filter</span>)</span> removes the selected element(s) and its child elements, can include a "filter" to select specific elements.</p>
+      <p><span class="code">.text(<span class="sti opt">textString</span>)</span> Sets (if "textString" is given) or returns the text content of selected elements.</p>
+      <p><span class="code">.html(<span class="sti opt">htmlString</span>)</span> Get / Set the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.</p>
+      <p><span class="code">.append(<span class="sti">htmlElem</span>)</span> Insert content, specified by the parameter, to the end of each element in the set of matched elements.</p>
+      <p><span class="code">.prepend(<span class="sti">htmlElem</span>)</span> Insert content, specified by the parameter, at the beginning of each element in the set of matched elements.</p>
+      <p><span class="code">.after(<span class="sti">htmlElem</span>)</span> Insert content, specified by the parameter, after each element in the set of matched elements.</p>
+      <p><span class="code">.before(<span class="sti">htmlElem</span>)</span> Insert content, specified by the parameter, before each element in the set of matched elements.</p>
+      <p><span class="code">.attr(<span class="sti">attribute</span>)<span class="opt"> = <span class="sti">value</span></span></span> Get / Set the value of an "attribute" for the first element in the set of matched elements or set one or more attributes for every matched element.</p>
+      <p><span class="code">.val(<span class="sti opt">value</span>)</span> Get / Set the value of a regular form field. For a "select" element with "multiple", can take an array of values to set as selected options.</p>
+      <p><span class="code">.prop('checked', <span class="sti opt">boolean</span>)</span> Get / Set the state of checked/unchecked of a checkbox or radio buttons (for checkboxes, if the Boolean is not supplied, it gets).</p>
+      <p><span class="code">.css(<span class="sti">style</span>)</span> sets or returns one or more style properties for the selected elements.</p>
+      <p><span class="code">.addClass(<span class="sti">classList</span>)</span> Adds one or more classes to the selected elements.</p>
+      <p><span class="code">.removeClass(<span class="sti">classList</span>)</span> Removes one or more classes from the selected elements.</p>
+      <p><span class="code">.toggleClass(<span class="sti">classList</span>)</span> Toggles between adding/removing classes from the selected elements.</p>
+      <p><span class="code">.width(<span class="sti opt">px</span>)</span> sets or returns the width of an element (excludes padding, border and margin).</p>
+      <p><span class="code">.height(<span class="sti opt">px</span>)</span> sets or returns the height of an element (excludes padding, border and margin).</p>
       <p><span class="code">.innerWidth()</span> returns the width of an element (includes padding).</p>
       <p><span class="code">.innerHeight()</span> returns the height of an element (includes padding).</p>
-      <p><span class="code">.outerWidth(includeMargin)</span> returns the width of an element (includes padding and border), the Boolean "includeMargin" is included and set to "true", it also includes the margin.</p>
-      <p><span class="code">.outerHeight(includeMargin)</span> returns the height of an element (includes padding and border) , the Boolean "includeMargin" is included and set to "true", it also includes the margin.</p>
-      <p><span class="code">.on(events, selector, arguments, function callback(event,…) {…})</span> takes at least an "events" string made of one or more space-separated event types and optional namespaces, and a "callback" function that itself takes an "event" instance and can take other arguments; the function is executed when the event is triggered. Can also take a "selector" string to filter the descendants of the selected elements that trigger the event, and a set of "arguments" to be passed to the "callback" function if its not declared inline.</p>
-      <p><span class="code">.on(events, selector, arguments)</span> takes an "events" object, where the keys are any event string or optional namespaces, and the values are the handler callback functions.</p>
-      <p><span class="code">.each(function callback(index) {…})</span> applies the supplied "callback" function to each element returned by the selector.</p>
+      <p><span class="code">.outerWidth(<span class="sti opt">includeMargin</span>)</span> returns the width of an element (includes padding and border), the Boolean "includeMargin" is included and set to "true", it also includes the margin.</p>
+      <p><span class="code">.outerHeight(<span class="sti opt">includeMargin</span>)</span> returns the height of an element (includes padding and border) , the Boolean "includeMargin" is included and set to "true", it also includes the margin.</p>
+      <p><span class="code">.on(<span class="sti">events</span><span class="opt">, <span class="sti">selector</span>, <span class="sti">arguments</span></span>, <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">event</span>,…) {…})</span> takes at least an "events" string made of one or more space-separated event types and optional namespaces, and a "callback" function that itself takes an "event" instance and can take other arguments; the function is executed when the event is triggered. Can also take a "selector" string to filter the descendants of the selected elements that trigger the event, and a set of "arguments" to be passed to the "callback" function if its not declared inline.</p>
+      <p><span class="code">.on(<span class="sti">events</span><span class="opt">, <span class="sti">selector</span>, <span class="sti">arguments</span></span>)</span> takes an "events" object, where the keys are any event string or optional namespaces, and the values are the handler callback functions.</p>
+      <p><span class="code">.each(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti opt">index</span>) {…})</span> applies the supplied "callback" function to each element returned by the selector.</p>
       <p><span class="code">.parent()</span> returns the direct parent element of the selected element.</p>
       <p><span class="code">.parents()</span> returns all ancestor elements of the selected element, all the way up to the document's root element ("&lt;html&gt;").</p>
-      <p><span class="code">.parentsUntil(htmlElem)</span> returns all ancestor elements between two given arguments ("htmlElem").</p>
-      <p><span class="code">.children(selector)</span> returns all direct children of the selected element, or only those that match the "selector".</p>
-      <p><span class="code">.find(selector)</span> returns descendant elements of the selected element, all the way down to the last descendant, or only those that match the "selector".</p>
+      <p><span class="code">.parentsUntil(<span class="sti">htmlElem</span>)</span> returns all ancestor elements between two given arguments ("htmlElem").</p>
+      <p><span class="code">.children(<span class="sti opt">selector</span>)</span> returns all direct children of the selected element, or only those that match the "selector".</p>
+      <p><span class="code">.find(<span class="sti opt">selector</span>)</span> returns descendant elements of the selected element, all the way down to the last descendant, or only those that match the "selector".</p>
       <p><span class="code">.siblings()</span> method returns all sibling elements of the selected element.</p>
       <p><span class="code">.next()</span> method returns the next sibling element of the selected element.</p>
       <p><span class="code">.nextAll()</span> method returns all next sibling elements of the selected element.</p>
-      <p><span class="code">.nextUntil(selector)</span> method returns all next sibling elements between two given arguments.</p>
+      <p><span class="code">.nextUntil(<span class="sti opt">selector</span>)</span> method returns all next sibling elements between two given arguments.</p>
       <p><span class="code">.prev(); .prevAll(); .prevUntil()</span> methods work just like the methods above but with reverse functionality: they return previous sibling elements (traverse backwards along sibling elements in the DOM tree, instead of forward).</p>
       <p><span class="code">.first()</span> method returns the first element of the specified elements.</p>
       <p><span class="code">.last()</span> method returns the last element of the specified elements.</p>
@@ -833,31 +901,37 @@
       <p><span class="code">.not()</span> method returns all elements that do not match the criteria.</p>
       <h3>Effects Methods</h3>  
       <p>(All can be chained one after the other)</p>
-      <p><span class="code">.hide(speed, callback)</span> hides the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.show(speed, callback)</span> shows the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.toggle(speed, callback)</span> toggles between hiding and showing the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.fadeIn(speed, callback)</span> fades in the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.fadeOut(speed, callback)</span> fades out the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.fadeToggle(speed, callback)</span> toggles between fading in and out the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.fadeTo(speed, opacity, callback)</span> allows fading to a given opacity (value between 0 and 1) the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.slideDown(speed, callback)</span> slides down to show the target element (with style "display: none"), can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.slideUp(speed, callback)</span> slides up to hide the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.slideToggle(speed, callback)</span> toggles between sliding down to show and sliding up to hide the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.animate(params, speed, callback)</span> method used to create custom animations by applying the "params" CSS style object to the target element, at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
-      <p><span class="code">.stop(stopAll, goToEnd)</span> method used to stop an animation or effect before it is finished, works for all jQuery effect functions, including sliding, fading and custom animations. Takes a "stopAll" and a "goToEnd" Boolean.</p>
+      <p><span class="code">.hide(<span class="opt"><span class="sti">speed</span>, <span class="sti">callback</span></span>)</span> hides the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.show(<span class="opt"><span class="sti">speed</span>, <span class="sti">callback</span></span>)</span> shows the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.toggle(<span class="opt"><span class="sti">speed</span>, <span class="sti">callback</span></span>)</span> toggles between hiding and showing the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.fadeIn(<span class="opt"><span class="sti">speed</span>, <span class="sti">callback</span></span>)</span> fades in the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.fadeOut(<span class="opt"><span class="sti">speed</span>, <span class="sti">callback</span></span>)</span> fades out the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.fadeToggle(<span class="opt"><span class="sti">speed</span>, <span class="sti">callback</span></span>)</span> toggles between fading in and out the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.fadeTo(<span class="sti">speed</span>, <span class="sti">opacity</span><span class="opt">, <span class="sti">callback</span></span>)</span> allows fading to a given opacity (value between 0 and 1) the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.slideDown(<span class="opt"><span class="sti">speed</span>, <span class="sti">callback</span></span>)</span> slides down to show the target element (with style "display: none"), can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.slideUp(<span class="opt"><span class="sti">speed</span>, <span class="sti">callback</span></span>)</span> slides up to hide the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.slideToggle(<span class="opt"><span class="sti">speed</span>, <span class="sti">callback</span></span>)</span> toggles between sliding down to show and sliding up to hide the target element, can be animated at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.animate(params<span class="opt">, <span class="sti">speed</span>, <span class="sti">callback</span></span>)</span> method used to create custom animations by applying the "params" CSS style object to the target element, at a given "speed" in milliseconds or a string "'slow'" or "'fast'", and a "callback" function that can be executed once the animation is over.</p>
+      <p><span class="code">.stop(<span class="opt"><span class="sti">stopAll</span>, <span class="sti">goToEnd</span></span>)</span> method used to stop an animation or effect before it is finished, works for all jQuery effect functions, including sliding, fading and custom animations. Takes a "stopAll" and a "goToEnd" Boolean.</p>
       <h3>jQuery AJAX</h3>
-      <p><span class="code">load(URL,data,callback)</span> method loads data from a server and puts the returned data into the selected element.</p>
-      <p><span class="code">.get(URL,callback)</span> method requests data from the server with an HTTP GET request.</p>
-      <p><span class="code">.post(URL,data,function callback(data, status) {})</span> method requests data from the server using an HTTP POST request.</p>
+      <p><span class="code">.load(<span class="sti">URL</span><span class="opt">, <span class="sti">data</span>, function <span class="sti">callback</span>(<span class="sti">responseTxt</span>, <span class="sti">statusTxt</span>, <span class="sti">xhr</span>) {…}</span>)</span> selector method that loads data from a server and puts the returned data into the selected element, where: 
+        <ul>
+          <li>"<span class="code sti">URL</span>": specifies the URL you wish to load.</li>
+          <li>"<span class="sti opt">data</span>": specifies a set of querystring key/value pairs to send along with the request.</li>
+          <li>"<span class="sti opt">callback</span>": takes a "<span class="sti opt">responseTxt</span>" that contains the resulting content if the call succeeds, "<span class="sti opt">statusTxt</span>" contains the status of the call ("success" or "error"), and "<span class="sti opt">xhr</span>" contains the XMLHttpRequest object.</li>
+        </ul>
+      </p>
+      <p><span class="code">.get(<span class="sti">URL</span><span class="opt">, function <span class="sti">callback</span>(<span class="sti">data</span>, <span class="sti">status</span>) {…}</span>)</span> jQuery method requests data from the server with an HTTP GET request from a "URL" and if the request succeeds can call a "callback" that takes the "data" and the "status" from the response.</p>
+      <p><span class="code">.post(<span class="sti">URL</span><span class="opt">, <span class="sti">data</span>, function <span class="sti">callback</span>(<span class="sti">data</span>, <span class="sti">status</span>) {…}</span>)</span> jQuery method requests data from the server using an HTTP POST request to a specified "URL", sending some "data", and if the request succeeds can call a "callback" that takes the "data" and the "status" from the response.</p>
       <h2>Lodash</h2>
     </article>
     <article>
       <h1>Node.js</h1>
       <h2>Commands</h2>
-      <p><span class="code">node file</span> executes the JavaScript "file" on the node environment.</p>
+      <p><span class="code">node <span class="sti">file</span></span> executes the JavaScript "file" on the node environment.</p>
       <p><span class="code">npm init</span> calls the "Node Package Manager (NPM)" to create a new "package.json" file for a new project.</p>
-      <p><span class="code">npm install|i module -g</span> calls the NPM to install the "module" on the current project ("node_modules" folder); if not given, installs all modules in "package.json" not currently installed. Option "-g" allows to install globally.</p>
-      <p><span class="code">npm uninstall module</span> calls the NPM to uninstall the "module" from the current project.</p>
+      <p><span class="code">npm install|i <span class="sti">module</span> -g</span> calls the NPM to install the "module" on the current project ("node_modules" folder); if not given, installs all modules in "package.json" not currently installed. Option "-g" allows to install globally.</p>
+      <p><span class="code">npm uninstall <span class="sti">module</span></span> calls the NPM to uninstall the "module" from the current project.</p>
       <p><span class="code">npm prune</span> removes any module that is installed but not used from the "package.json" and "node_modules".</p>
       <p><span class="code">npm list</span> show a list of all packages installed for use by this application.</p>
       <h2>Node Global Properties and Methods</h2>
@@ -869,7 +943,7 @@
       </p>
       <p><span class="code">__dirname</span> the name of the directory that the currently executing script resides in.</p>
       <p><span class="code">__filename</span> the filename of the code being executed. This is the resolved absolute path of this code file.</p>
-      <p><span class="code">require(module)</span> imports the "module" (node module or local file) and returns it as an object, by standard declared as a "<span class="kwd">const</span>".</p>
+      <p><span class="code">require(<span class="sti">module</span>)</span> imports the "module" (node module or local file) and returns it as an object, by standard declared as a "<span class="kwd">const</span>".</p>
       <p><span class="code">module</span> object that provides general utility methods when interacting with instances of "Module".
         <span class="p"><span class="code">.exports</span> property that holds an object that exposes statements (module's properties or methods) to be imported by other modules. ("<span class="code">module.exports.<span class="sti">resource</span> = <span class="sti">statement</span></span>")</span>
       </p>
@@ -1035,42 +1109,56 @@
         <div class="row">
           <div>
             <div class="code">$lt</div><div>Less than (&lt;).</div>
+          </div>
+          <div>
             <div class="code">$lte</div><div>Less than or equal to (&lt;=).</div>
           </div>
         </div>
         <div class="row">
           <div>
             <div class="code">$gt</div><div>Greater than (&gt;).</div>
+          </div>
+          <div>
             <div class="code">$gte</div><div>Greater than or equal to (&gt;=).</div>
           </div>
         </div>
         <div class="row">
           <div>
             <div class="code">$ne</div><div>Not equal (&lt;&gt; or !=).</div>
+          </div>
+          <div>
             <div class="code">$not</div><div></div>
           </div>
         </div>
         <div class="row">
           <div>
             <div class="code">$or</div><div>Used as "<span class="code sti">key</span>", matches any "<span class="code"><span class="sti">key</span>: <span class="sti">value</span></span>" pair in an array.</div>
-            <div class="code">$and</div><div style="display: block;">Used as "<span class="code sti">key</span>", matches all "<span class="code"><span class="sti">key</span>: <span class="sti">value</span></span>" pair in an array.</div>
+          </div>
+          <div>
+            <div class="code">$and</div><div>Used as "<span class="code sti">key</span>", matches all "<span class="code"><span class="sti">key</span>: <span class="sti">value</span></span>" pair in an array.</div>
           </div>
         </div>
         <div class="row">
           <div>
             <div class="code">$in</div><div>Matches on value from an array.</div>
+          </div>
+          <div>
             <div class="code">$nin</div><div>Doesn't match any value from an array.</div>
           </div>
         </div>
         <div class="row">
           <div>
             <div class="code">$all</div><div>Matches any key array that contains all the values in the given array.</div>
+          </div>
+          <div>
             <div class="code">$size</div><div>Matches an array with the given size, cannot be combined with other operators.</div>
           </div>
         </div>
         <div class="row">
           <div>
             <div class="code">$inc</div><div>To match an array by size and other operators.</div>
+          </div>
+          <div>
             <div class="code">$exists</div><div>Checks if a value exists.</div>
           </div>
         </div>
