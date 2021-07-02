@@ -1287,8 +1287,10 @@
     let indexElem = document.querySelector('#index');
 
     function toggleMenu(e) {
-      if (navBar.style.width != '0') {
-        navBar.style.width = 0;
+      console.log('toggleMenu called');
+      console.log(navBar.style.width);
+      if (navBar.style.width != '' && navBar.style.width != '0px') {
+        navBar.style.width = '0px';
         indexElem.removeEventListener('click', toggleMenu);
       } else {
         navBar.style.width = '100%';
