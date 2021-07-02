@@ -1002,11 +1002,27 @@
         <h2>Lodash</h2>
         <p><span class="code">_.<span class="sti">method</span>(<span class="sti">arguments</span><span class="opt">, …</span>)</span> the methods of the Lodash library are stored on the "<span class="code">_</span>" object.</p>
         <h3>Array Methods</h3>
-        <p><span class="code">.chunk(<span class="sti">array</span><span class="opt">, <span class="sti">size</span></span>)</span> Creates an array of elements from "<span class="sti">array</span>" split into groups the length of "<span class="sti opt">size</span>" (default "<span class="code">1</span>"). If array can't be split evenly, the final chunk will be the remaining elements.</p>
+        <p><span class="code">.chunk(<span class="sti">array</span><span class="opt">, <span class="sti">size</span></span>)</span> Creates an array of elements from "<span class="code sti">array</span>" split into groups the length of "<span class="sti opt">size</span>" (default "<span class="code">1</span>"). If array can't be split evenly, the final chunk will be the remaining elements.</p>
+        <p><span class="code">.findIndex(<span class="sti">array</span>, <span class="sti">predicate</span><span class="opt">, <span class="sti">fromIndex</span></span>)</span> Returns the index of the first element for which "<span class="code sti">predicate</span>" returns truthy for (default "<span class="code">_.identity</span>"), instead of the element itself, beginning from "<span class="sti opt">fromIndex</span>" (default "<span class="code">0</span>").</p>
+        <p><span class="code">.take(<span class="sti">array</span><span class="opt">, <span class="sti">n</span></span>)</span> Creates a slice of array with "<span class="sti opt">n</span>" elements (default "<span class="code">1</span>") taken from the beginning.</p>
+        <h3>Collection Methods</h3>
+        <p><span class="code">.filter(<span class="sti">collection</span><span class="opt">, function <span class="sti">callback</span>(<span class="sti">value</span>, <span class="sti">indexOrKey</span>, <span class="sti">collection</span></span>) {…})</span> Iterates over elements of "<span class="code sti">collection</span>", returning an array of all elements for which the "<span class="sti opt">callback</span>" function returns truthy.</p>
+        <p><span class="code">.sortBy(<span class="sti">collection</span>, [<span class="sti">iteratees</span>])</span> Creates an array of elements, sorted in ascending order by the results of running each element in a "<span class="code sti">collection</span>" thru each "<span class="code sti">iteratees</span>" in the array.</p>
+        <h3>Number Methods</h3>
+        <p><span class="code">.random(<span class="opt"><span class="sti">lower</span>, <span class="sti">upper</span>, <span class="sti">floating</span></span>)</span> Produces a random integer number between the inclusive "<span class="sti opt">lower</span>" (default "<span class="code">0</span>") and "<span class="sti opt">upper</span>" (default "<span class="code">1</span>") bounds. If only one argument is provided, a number between 0 and the given number is returned. If "<span class="sti opt">floating</span>" is true, or either lower or upper are floats, a floating-point number is returned instead of an integer.</p>
+        <h3>Object Methods</h3>
+        .cloneDeep(value)	This method is like _.clone except that it recursively clones value.
+        .pick(object, [paths])	Creates an object composed of the picked object properties.
+        <h3>String Methods</h3>
+        .escape([string=’’])	Converts the characters "&amp;", "&lt;", "&gt;", "&quot;", and "&lsquo;" in string to their corresponding HTML entities.
+        .template([string=’’], [options={}])	Creates a compiled template function that can interpolate data properties in “interpolate” delimiters, HTML-escape interpolated data properties in “escape” delimiters, and execute JavaScript in “evaluate” delimiters. Data properties may be accessed as free variables in the template. If a setting object is given, it takes precedence over _.templateSettings values.
+        &lt;% statements %&gt;
+        &lt;%= globalVar %&gt;
+        &lt;%- templateParam %&gt;        
         <p><span class="code"></span> </p>
         <p><span class="code"></span> </p>
-        <p><span class="code"></span> </p>
-        <p><span class="code"></span> </p>
+        <h3>Util Methods</h3>
+        <p><span class="code">.times(<span class="sti">n</span>, <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">index</span>) {…})</span> Invokes the "<span class="sti opt">callback</span>" function (or a simple statement) "<span class="code sti">n</span>" times.</p>
       </article>
       <article>
         <h1>Node.js</h1>
@@ -1287,9 +1303,7 @@
     let indexElem = document.querySelector('#index');
 
     function toggleMenu(e) {
-      console.log('toggleMenu called');
-      console.log(navBar.style.width);
-      if (navBar.style.width != '' && navBar.style.width != '0px') {
+      if (navBar.style.width == '100%') {
         navBar.style.width = '0px';
         indexElem.removeEventListener('click', toggleMenu);
       } else {
