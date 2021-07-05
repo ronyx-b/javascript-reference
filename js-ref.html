@@ -788,8 +788,8 @@
         <p><span class="code">.createTextNode(<span class="sti">text</span>)</span>	creates and returns a text node (the text within an element vs. the element itself).
         <h2>Events</h2>
         <p><span class="code">.on<span class="sti">event</span> = <span class="kwd">function</span>(<span class="sti">e</span>) {…}</span> sets an event handler function to an object ("<span class="code">on</span>" + "<span class="code sti">event</span>") that can receive an instance of the "<span class="code">Event</span>" object ("<span class="code sti">e</span>").</p>
-        <p><span class="code">.addEventListener("<span class="sti">event</span>", <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">e</span>) {…})</span> element method that adds a function to be called on the selected event string.</p>
-        <p><span class="code">.removEventListener("<span class="sti">event</span>", <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">e</span>) {…})</span> removes the function (needs to have been named) from the event listener list of the element.</p>
+        <p><span class="code">.addEventListener('<span class="sti">event</span>', <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">e</span>) {…})</span> element method that adds a function to be called on the selected event string.</p>
+        <p><span class="code">.removEventListener('<span class="sti">event</span>', <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">e</span>) {…})</span> removes the function (needs to have been named) from the event listener list of the element.</p>
         <div class="row">
           <div>
             <div class="code">load</div><div>when a resource has finished loading.</div>
@@ -842,7 +842,6 @@
         <p><span class="code">.preventDefault()</span> event object method that prevents default behavior (Ej: a form submission).</p>
         <p><span class="code">.stopPropagation()</span> event object method that prevents triggering other event handlers.</p>
         <p><span class="code">.screenX; .screenY;</span> properties of a mouse event object that return the position in pixels of the mouse.</p>
-  
         <h2>Window Object Properties and Methods</h2>
         <p><span class="code">.location</span> read-only property returns a Location object with information about the current location of the document, you can also assign a "DOMString" to it.
           <span class="p"><span class="code">.href</span> property that can set or returns the current address.</span>
@@ -1011,16 +1010,16 @@
         <h3>Number Methods</h3>
         <p><span class="code">.random(<span class="opt"><span class="sti">lower</span>, <span class="sti">upper</span>, <span class="sti">floating</span></span>)</span> Produces a random integer number between the inclusive "<span class="sti opt">lower</span>" (default "<span class="code">0</span>") and "<span class="sti opt">upper</span>" (default "<span class="code">1</span>") bounds. If only one argument is provided, a number between 0 and the given number is returned. If "<span class="sti opt">floating</span>" is true, or either lower or upper are floats, a floating-point number is returned instead of an integer.</p>
         <h3>Object Methods</h3>
-        .cloneDeep(value)	This method is like _.clone except that it recursively clones value.
-        .pick(object, [paths])	Creates an object composed of the picked object properties.
+        <p><span class="code">.clone(<span class="sti">value</span>)</span> Creates a shallow clone of "<span class="code sti">value</span>".</p>
+        <p><span class="code">.cloneDeep(<span class="sti">value</span>)</span> This method is like "<span class="code">_.clone()</span>" except that it recursively clones "<span class="code sti">value</span>" (a deep copy rather than a shallow copy).</p>
+        <p><span class="code">.pick(<span class="sti">object</span>, [<span class="sti">keys</span>])</span> Creates an object composed of the picked properties ("<span class="code sti">keys</span>" array) from the given "<span class="code sti">object</span>".</p>
         <h3>String Methods</h3>
-        .escape([string=’’])	Converts the characters "&amp;", "&lt;", "&gt;", "&quot;", and "&lsquo;" in string to their corresponding HTML entities.
-        .template([string=’’], [options={}])	Creates a compiled template function that can interpolate data properties in “interpolate” delimiters, HTML-escape interpolated data properties in “escape” delimiters, and execute JavaScript in “evaluate” delimiters. Data properties may be accessed as free variables in the template. If a setting object is given, it takes precedence over _.templateSettings values.
-        &lt;% statements %&gt;
-        &lt;%= globalVar %&gt;
-        &lt;%- templateParam %&gt;        
-        <p><span class="code"></span> </p>
-        <p><span class="code"></span> </p>
+        <p><span class="code">.escape(<span class="sti">string</span>)</span> Converts the characters "<span class="code">&amp;</span>", "<span class="code">&lt;</span>", "<span class="code">&gt;</span>", "<span class="code">&quot;</span>", and "<span class="code">&#39;</span>" in "<span class="code sti">string</span>" to their corresponding HTML entities.</p>
+        <p><span class="code">.template(<span class="sti">HTMLstring</span><span class="opt">, <span class="sti">options</span></span>)</span> Creates a compiled template function that can interpolate data properties in "interpolate" delimiters, HTML-escape interpolated data properties in "escape" delimiters, and execute JavaScript in "evaluate" delimiters. Data properties may be accessed as free variables in the template. If a setting "<code class="sti opt">options</code>" object is given, it takes precedence over _.templateSettings values. The returned function takes a single object with the variables to interpolate ("<span class="code"><span class="sti">compiledString</span>({<span class="sti">values</span>, …})</span></span>" returns an HTML string using "<span class="code sti">values</span>" to render its content)
+          <span class="p"><span class="code">&lt;% <span class="sti">evaluate</span> %&gt;</span> Use the "evaluate" delimiter ("<span class="code">&lt;% %&gt;</span>") to execute JavaScript and generate HTML.</span>
+          <span class="p"><span class="code">&lt;%= <span class="sti">interpolate</span> %&gt;</span> Use the "interpolate" delimiter ("<span class="code">&lt;%= %&gt;</span>") to create a compiled template.</span>
+          <span class="p"><span class="code">&lt;%- <span class="sti">escape</span> %&gt;</span> Use the HTML "escape" delimiter ("<span class="code">&lt;%- %&gt;</span>") to escape data property values.</span>
+        </p>
         <h3>Util Methods</h3>
         <p><span class="code">.times(<span class="sti">n</span>, <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">index</span>) {…})</span> Invokes the "<span class="sti opt">callback</span>" function (or a simple statement) "<span class="code sti">n</span>" times.</p>
       </article>
@@ -1029,10 +1028,12 @@
         <h2>Commands</h2>
         <p><span class="code">node <span class="sti">file</span></span> executes the JavaScript "file" on the node environment.</p>
         <p><span class="code">npm init</span> calls the "Node Package Manager (NPM)" to create a new "package.json" file for a new project.</p>
-        <p><span class="code">npm install|i <span class="sti">module</span> -g</span> calls the NPM to install the "module" on the current project ("node_modules" folder); if not given, installs all modules in "package.json" not currently installed. Option "-g" allows to install globally.</p>
+        <p><span class="code">npm start</span> runs an arbitrary command specified in the package's "<span class="code">start</span>" property of its "<span class="code">scripts</span>" object if specified, otherwise it will run "<span class="code">node server.js.</span>"</p>
+        <p><span class="code">npm install|i <span class="opt"><span class="sti">module</span> -g</span></span> calls the NPM to install the "module" on the current project ("node_modules" folder); if not given, installs all modules in "package.json" not currently installed. Option "-g" allows to install globally.</p>
         <p><span class="code">npm uninstall <span class="sti">module</span></span> calls the NPM to uninstall the "module" from the current project.</p>
         <p><span class="code">npm prune</span> removes any module that is installed but not used from the "package.json" and "node_modules".</p>
         <p><span class="code">npm list</span> show a list of all packages installed for use by this application.</p>
+        <p><span class="code">npx <span class="sti">command</span></span> executes "<span class="code sti">command</span>" either from a local "node_modules/.bin", or from a central cache, installing any packages needed in order for "<span class="code sti">command</span>" to run.</p>
         <h2>Node Global Properties and Methods</h2>
         <p><span class="code">process</span> global object that provides information about, and control over, the current Node.js process.
           <span class="p"><span class="code">.stdin</span> property that returns a stream connected to "stdin".</span>
@@ -1270,8 +1271,10 @@
       </article>
       <article>
         <h1>React</h1>
-        <p><span class="code"></span> </p>
-        <p><span class="code"></span> </p>
+        <h2>Commands</h2>
+        <p><span class="code">npm create-react-app</span> installs the react environment to create React apps</p>
+        <p><span class="code">npx create-react-app <span class="sti">app-name</span></span> installs a local react environment and creates an app named "<span class="code sti">app-name</span>".</p>
+
         <p><span class="code"></span> </p>
         <p><span class="code"></span> </p>
         <p><span class="code"></span> </p>
