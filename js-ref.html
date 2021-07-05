@@ -1007,6 +1007,7 @@
         <h3>Collection Methods</h3>
         <p><span class="code">.filter(<span class="sti">collection</span><span class="opt">, function <span class="sti">callback</span>(<span class="sti">value</span>, <span class="sti">indexOrKey</span>, <span class="sti">collection</span></span>) {…})</span> Iterates over elements of "<span class="code sti">collection</span>", returning an array of all elements for which the "<span class="sti opt">callback</span>" function returns truthy.</p>
         <p><span class="code">.sortBy(<span class="sti">collection</span>, [<span class="sti">iteratees</span>])</span> Creates an array of elements, sorted in ascending order by the results of running each element in a "<span class="code sti">collection</span>" thru each "<span class="code sti">iteratees</span>" in the array.</p>
+        <p><span class="code">.shuffle(<span class="sti">array</span>|<span class="sti">object</span>)</span> returns a new collection with its elements shuffled.</p>
         <h3>Number Methods</h3>
         <p><span class="code">.random(<span class="opt"><span class="sti">lower</span>, <span class="sti">upper</span>, <span class="sti">floating</span></span>)</span> Produces a random integer number between the inclusive "<span class="sti opt">lower</span>" (default "<span class="code">0</span>") and "<span class="sti opt">upper</span>" (default "<span class="code">1</span>") bounds. If only one argument is provided, a number between 0 and the given number is returned. If "<span class="sti opt">floating</span>" is true, or either lower or upper are floats, a floating-point number is returned instead of an integer.</p>
         <h3>Object Methods</h3>
@@ -1270,21 +1271,30 @@
         </p>
       </article>
       <article>
-        <h1>React</h1>
+        <h1>React Framework (Babel/JSX)</h1>
         <h2>Commands</h2>
         <p><span class="code">npm create-react-app</span> installs the react environment to create React apps</p>
         <p><span class="code">npx create-react-app <span class="sti">app-name</span></span> installs a local react environment and creates an app named "<span class="code sti">app-name</span>".</p>
+        <h2>ReactDOM Component</h2>
+        <p><span class="code"><span class="kwd">import</span> ReactDOM <span class="kwd">from</span> 'react-dom'</span> imports the "<span class="code">ReactDOM</span>" component.</p>
+        <p><span class="code">ReactDOM.render(&lt;<span class="sti">ComponentsTree</span> /&gt;, <span class="sti">HTMLelement</span>)</span> renders the "<span class="code">&lt;<span class="sti">ComponentsTree</span> /&gt;</span>" inside the "<span class="code sti">HTMLelement</span>". By default, used on the application entry file "<span class="code">index.js</span>", rendering the "<span class="code">&lt;App /&gt;</span>" component wrapped inside a "<span class="code">&lt;React.StrictMode&gt; … &lt;/React.StrictMode&gt;</span>" component, and targeting the element with ID "<span class="code">root</span>"  ("<span class="code">document.querySelector('#root')</span>").</p>
+	      <h2>React Component</h2>
+        <p><span class="code"><span class="kwd">import</span> React <span class="kwd">from</span> 'react'</span> imports the "<span class="code">React</span>" component, which allows to export Component functions as a React Component class ("<span class="code">React.Component</span>")</p>
+        <p><span class="code"><span class="kwd">function</span> <span class="sti">CustomComponent</span>(<span class="opt">props</span>) { <span class="opt">…;</span> <span class="kwd">return</span> (&lt;&gt;<span class="sti">HTMLelements</span>&lt;/&gt;); }</span> defines a React Component as a function that returns HTML and other components wrapped inside a single HTML element. May include a "<span class="opt">props</span>" object as an argument that contains variables passed as attributes of the component ("<span class="code">&lt;<span class="sti">CustomComponent</span> <span class="sti">attr</span>=<span class="sti">value</span> /&gt;</span>" allows to use "<span class="code sti">value</span>" inside the component as "<span class="code">props.<span class="sti">attr</span></span>").
+          <span class="p"><span class="code">{<span class="sti">statement</span>}</span> inside custom components, embedded data and JavaScript statements are wrapped in "<span class="code">{ … }</span>".</span>
+        </p>
+        <p><span class="code"><span class="kwd">export</span> <span class="kwd">default</span> <span class="sti">CustomComponent</span></span> exports the component to be used by other components in react as an element "<span class="code">&lt;<span class="sti">CustomComponent</span> /&gt;</span>".</p>
+        <p><span class="code"><span class="opt">class <span class="sti">CustomComponent</span> extends React.Component { render() { …; return (&lt;&gt;<span class="sti">HTMLelements</span>&lt;/&gt;); } }</span> </span> Alternatively, we can define a React Component as a class that extends "<span class="code">React.Component</span>", a class with a single "<span class="code">render()</span>" method which we have to implement.</p>
+        <h2>React "Hooks"</h2>
+        <p><span class="code"><span class="kwd">import</span> { useState, useEffect } <span class="kwd">from</span> 'react'</span> imports the "<span class="code">useState()</span>" and "<span class="code">useEffect()</span>" functions from React to work with dynamic data rendering.</p>
+        <p><span class="code"><span class="kwd">const</span> [<span class="sti">state</span>, <span class="sti">setState</span>] = useState(<span class="sti">initialState</span>)</span> accepts a parameter that allows to set the initial value of a state and returns an array consisting of the state itself and a function to update it.</p>
+        <p><span class="code">useEffect(<span class="sti">callback</span>, [<span class="sti opt">dependencies</span>])</span> accepts a callback function to be executed when the component is mounted and whenever any of variables of the optional dependencies array is modified. The callback may return another callback to be executed when unmounted.</p>
+        
+        <p><span class="code"></span> </p>
 
-        <p><span class="code"></span> </p>
-        <p><span class="code"></span> </p>
-        <p><span class="code"></span> </p>
-        Props and States
-        <span class="kwd">const</span> [state, setState] = useState(argument);	accepts a parameter that allows to set the initial value of a state and returns an array consisting of the state itself and a function to update it.
-        useEffect(callback, [dependencies]);	accepts a callback function to be executed when the component is mounted and whenever any of variables of the optional dependencies array is modified. The callback may return another callback to be executed when unmounted.
-  
       </article>
       <article>
-        <h1>Angular</h1>
+        <h1>Angular Framework (TypeScript)</h1>
         [property]="value"	property binding: evaluates the content of the value to a property set in the component.
         (event)="function()"	event binding: executes the function on the event defined.
         
