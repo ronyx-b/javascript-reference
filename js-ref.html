@@ -1297,7 +1297,27 @@
           <span class="p"><span class="code"><span class="sti">setState</span>(<span class="sti">newValue</span>|<span class="sti">callback</span>)</span> it receives either a "<span class="code sti">newValue</span>" or a "<span class="code sti">callback</span>" function to set the new value, which itself receives the previous value and returns the new one: "<span class="code"><span class="kwd">function</span> <span class="sti">callback</span>(<span class="sti">prewValue</span>) { …; <span class="kwd">return</span> <span class="sti">newValue</span>; }</span>".</span>
         </p>
         <p><span class="code">useEffect(<span class="sti">callback</span>, [<span class="sti opt">dependencies</span>])</span> accepts a callback function to be executed when the component is mounted and whenever any of variables of the optional dependencies array is modified. The callback may return another callback to be executed when unmounted.</p>
-        
+        <h2>React Router</h2>
+        <p><span class="code"><span class="kwd">import</span> { BrowserRouter } <span class="kwd">from</span> 'react-router-dom'</span> imports the "BrowserRouter" component, which needs to wrap the "&lt;App /&gt;" component on the "<span class="code">index.js</span> " file, to enable routing.</p>
+        <p><span class="code"><span class="kwd">import</span> { Switch, Route, Redirect, Link } <span class="kwd">from</span> 'react-router-dom'</span> imports the routing components to wire the routing, with "Switch" and "Route" being used inside the "App" component.</p>
+        <p><span class="code"><span class="kwd">import</span> { useParams, useLocation, useHistory, useRouteMatch } <span class="kwd">from</span> 'react-router-dom'</span> imports the "useParams" hook to read from parametric URLs ("path='/route/:param'"), or any of the other routing hooks; using any one needed on any other components.</p>
+        <p><span class="code"><span class="kwd">import</span> queryString <span class="kwd">from</span> 'query-string'</span> imports the "queryString" object which allows to parse a query string.</p>
+        <p><span class="code">&lt;Switch&gt;…&lt;/Switch&gt;</span> wraps the routes to be wired.</p>
+        <p><span class="code">&lt;Route&gt;…&lt;/Route&gt;</span> defines the path to be evaluated and wraps the component to be rendered on that path. Has the following attributes:
+          <ul>
+            <li>"<span class="code">path</span>": is set equal to the route to be associated with the component to be displayed ("path='/Page'"). A Route component without a "path" will render HTML code for a route not found.</li>
+            <li>"<span class="code">exact</span>": empty attribute used to specify that the path must be matched exactly (no parametric URL).</li>
+          </ul>
+        </p>
+        <p><span class="code">&lt;Redirect to='/Path' /&gt;</span> used inside a "&lt;Route&gt;" component to redirect to another path, where "to" can be an URL string or an object "<span class="code">{pathname: <span class="sti">URL</span>, search: ?<span class="sti">queryString</span>, state: { <span class="sti">stateObject</span> } }</span>".</p>
+        <p><span class="code">&lt;Link to='/Path'&gt;…&lt;/Link&gt;</span> creates a routable link (doesn't reload the whole application) to be used on rendered components.</p>
+        <p><span class="code">useParams()</span> returns the parameters from the URL ("let { param } = useParams()").</p>
+        <p><span class="code">useLocation()</span> returns an object that contains the location string, including the query string on its "<span class="code">.search</span>" member.</p>
+        <p><span class="code">useHistory()</span> returns and object that allows to programmatically change routes from within our code.
+          <span class="p"><span class="code"><span class="sti">history</span>.push(<span class="sti">URLstring</span>)</span> method that allows to change route programmatically ("let history = useHistory()")</span>
+        </p>
+        <p><span class="code">queryString.parse(location.search)</span> parses the query string and returns an object made of the "key=value" pairs (the "location" object is returned by "useLocation()").</p>
+
         <p><span class="code"></span> </p>
 
       </article>
