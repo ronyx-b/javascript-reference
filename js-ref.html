@@ -11,8 +11,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
   <link rel="manifest" href="/favicon/site.webmanifest">
   <style type="text/css">
-  @import url('https://db.onlinewebfonts.com/c/a78cfad3beb089a6ce86d4e280fa270b?family=Calibri');
-  @import url('https://db.onlinewebfonts.com/c/1db29588408eadbd4406aae9238555eb?family=Consolas');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
 
   * {
     box-sizing: border-box;
@@ -25,8 +24,8 @@
   body {
     background-color: #000000;
     color: #ffffff;
-    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    font-size: 1em;
+    font-family: 'Roboto', Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 16px;
     margin: 0;
     padding: 0;
     display: flex;
@@ -137,7 +136,8 @@
   }
 
   .code, .opt, .sti, .kwd {
-    font-family: Consolas, monaco, Courier, monospace;
+    font-family: 'Roboto Mono', Consolas, monaco, Courier, monospace;
+    font-size: 16px;
   }
 
   .code {
@@ -298,7 +298,7 @@
         <p><span class="code"><span class="kwd">const</span> <span class="sti">constant</span></span> declares a constant value o reference to an object.</p>
         <h3>Functions</h3>
         <p><span class="code"><span class="kwd">function</span> <span class="sti">funct</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</span> <span class="udl">function declaration:</span> may receive "<span class="code sti opt">parameters</span>", runs containing statements when called, may "<span class="kwd">return</span>" the specified "<span class="sti opt">output</span>" if given, else "<span class="code">undefined</span>" is implied.</p>
-        <p><span class="code"><span class="kwd">var</span> <span class="sti">funct</span> = <span class="kwd">function</span> <span class="sti">functName</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</span> <span class="udl">function expression:</span> assigns the given function to the variable; may be named, but only referred in the expression (useful when self-recurring).</p>
+        <p><span class="code"><span class="kwd">var</span> <span class="sti">funct</span> = <span class="kwd">function</span> <span class="sti opt">functName</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</span> <span class="udl">function expression:</span> assigns the given function to the variable; may be named, but only referred in the expression (useful when self-recurring).</p>
         <p>
           <span class="code">(<span class="opt"><span class="sti">parameters</span>, …</span>) => { …; <span class="opt">return <span class="sti">output</span>;</span> }</span> <span class="udl">arrow function notation:</span> creates anonymous functions, if it has only a single statement then its result is taken implicitly as return.
           <span class="p"><span class="code">arguments</span> functions' built-in array-like object that contains the arguments list.</span>
