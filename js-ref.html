@@ -1356,6 +1356,7 @@
     let navBar = document.querySelector('#navBar');
     let indexElem = document.querySelector('#index');
 
+    /* function to open/close the responsive menu (mobile view) */
     function toggleMenu(e) {
       if (navBar.style.width == '100%') {
         navBar.style.width = '0px';
@@ -1368,6 +1369,7 @@
 
     document.querySelector('#navButton').addEventListener('click', toggleMenu);
 
+    /* this will build the navigation menu: it will go through each section of the document and add a link to each section header to the menu */
     let headers = document.querySelectorAll('h1, h2, h3');
     let count = 0;
     headers.forEach((elem) => {
