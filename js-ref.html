@@ -26,7 +26,7 @@
   body {
     background-color: #000000;
     color: #ffffff;
-    font-family: 'Liberation Sans', Calibri, 'Roboto', Arial, sans-serif;
+    font-family: 'Roboto', 'Liberation Sans', Calibri, Arial, sans-serif;
     font-size: 16px;
     margin: 0;
     padding: 0;
@@ -138,7 +138,7 @@
   }
 
   code, .code, .opt, .sti, .kwd {
-    font-family: 'Liberation Mono', Consolas, 'Roboto Mono', Courier, monospace;
+    font-family: 'Roboto Mono', 'Liberation Mono', Consolas, Courier, monospace;
     font-size: 16px;
   }
 
@@ -151,10 +151,6 @@
     padding: 2px;
   }
 
-  .sti {
-    font-style: italic;
-  }
-
   .opt {
     color: #00ff00;
   }
@@ -162,6 +158,10 @@
   .kwd {
     font-style: normal;
     color: #ff00ff;
+  }
+
+  .sti {
+    font-style: italic;
   }
 
   .udl {
@@ -304,7 +304,7 @@
         <p><code><span class="kwd">let</span> <span class="sti">variable</span></code> declares a block level variable.</p>
         <p><code><span class="kwd">const</span> <span class="sti">constant</span></code> declares a constant value o reference to an object.</p>
         <h3>Functions</h3>
-        <p><code><span class="kwd">function</span> <span class="sti">funct</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</code> <span class="udl">function declaration:</span> may receive "<span class="code sti opt">parameters</span>", runs containing statements when called, may "<span class="kwd">return</span>" the specified "<span class="sti opt">output</span>" if given, else "<code>undefined</code>" is implied.</p>
+        <p><code><span class="kwd">function</span> <span class="sti">funct</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</code> <span class="udl">function declaration:</span> may receive "<code class="sti opt">parameters</code>", runs containing statements when called, may "<span class="kwd">return</span>" the specified "<span class="sti opt">output</span>" if given, else "<code>undefined</code>" is implied.</p>
         <p><code><span class="kwd">var</span> <span class="sti">funct</span> = <span class="kwd">function</span> <span class="sti opt">functName</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</code> <span class="udl">function expression:</span> assigns the given function to the variable; may be named, but only referred in the expression (useful when self-recurring).</p>
         <p>
           <code>(<span class="opt"><span class="sti">parameters</span>, …</span>) => { …; <span class="opt">return <span class="sti">output</span>;</span> }</code> <span class="udl">arrow function notation:</span> creates anonymous functions, if it has only a single statement then its result is taken implicitly as return.
@@ -468,13 +468,13 @@
         <p><code><span class="kwd">continue</span> <span class="sti opt">label</span>;</code> declares a jump to the next iteration of the innermost loop or the one defined by the "label".</p>
         <h3>If Else Statements</h3>
         <p><code><span class="kwd">if</span> (<span class="sti">condition</span>) { …; }</code> if condition evaluated is true, executes contained statements.
-          <span class="p"><span class="code opt">else if (<span class="sti">condition</span>) { …; }	</span> if previous conditions are false and the one indicated is true, run script.</span>
-          <span class="p"><span class="code opt">else  { …; }</span> if all previous conditions are false, run script.</span>
+          <span class="p"><code class="opt">else if (<span class="sti">condition</span>) { …; }	</code> if previous conditions are false and the one indicated is true, run script.</span>
+          <span class="p"><code class="opt">else  { …; }</code> if all previous conditions are false, run script.</span>
         </p>
         <h3>Switch Case</h3>
         <p><code><span class="kwd">switch</span> (<span class="sti">statement</span>) { <span class="sti">cases</span>… }	</code> evaluates the result of "<code class="sti">statement</code>" and executes the "<span class="kwd">case</span>" that matches.
           <span class="p"><code><span class="kwd">case</span> <span class="sti">value</span>: …; <span class="kwd">break</span>;</code> executes statements if "<code class="sti">statement</code>" is equal to "<code class="sti">value</code> ", ends with a "<span class="kwd">break</span>".</span>
-          <span class="p"><span class="code opt">default: <span class="sti">script</span>; break;</span> run "<span class="sti opt">script</span>" if "<code class="sti">statement</code>" is not equal to any defined case value.</span>
+          <span class="p"><code class="opt">default: <span class="sti">script</span>; break;</code> run "<span class="sti opt">script</span>" if "<code class="sti">statement</code>" is not equal to any defined case value.</span>
         </p>
         <h3>Do While Loops</h3>
         <p><code><span class="sti opt">label:</span> <span class="kwd">while</span> (<span class="sti">condition</span>) { …; }</code> executes statements while defined "<code class="sti">condition</code>" is true.</p>
@@ -486,13 +486,13 @@
         <h2>Error Handling, Promises and Modules.</h2>
         <h3>Error Handling</h3>
         <p><code><span class="kwd">try</span> { … }</code> defines a block of statements that might produce an error.
-          <span class="p"><span class="code kwd">throw</span> expression	defines an exception thrown, can be a string or an  "Error" object (new Error(msg)).</span>
+          <span class="p"><code class="kwd">throw</code> expression	defines an exception thrown, can be a string or an  "Error" object (new Error(msg)).</span>
         </p>
         <p><code><span class="kwd">catch</span>(<span class="sti">error</span>) { … }	</code> defines a block of statements to handle an error produced on a "<span class="kwd">try</span>" block, and stores it in the "<code class="sti">error</code>" object of type "<code>Error()</code>".
           <span class="p"><code>.message</code> property of "<code>Error</code>" type objects that contains the error message.</span>
           <span class="p"><code>.name</code> property of "<code>Error</code>" type objects that contains the error name.</span>
         </p>
-        <p><span class="code opt">finally { … }	</span> optional final block of statements that will be executed weather or not the "try" block threw an error.</p>
+        <p><code class="opt">finally { … }	</code> optional final block of statements that will be executed weather or not the "try" block threw an error.</p>
         <h3>Promises (Asynchronous Functions)</h3>
         <p><code><span class="kwd">return</span> <span class="kwd">new</span> Promise(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">resolve</span>, <span class="sti">reject</span>) { …; } )	</code> the function won't return an immediate value, but rather will either be successful and send the value in a "<code><span class="sti">resolve</span>(…)</code>", or fail and send an error message from a "<code><span class="sti">reject</span>(…)</code>".</p>
         <p><code><span class="sti">resolve</span>(<span class="sti opt">resolved</span>)</code> function declared in promise's callback that returns a "<span class="sti opt">resolved</span>" promise.</p>
@@ -753,12 +753,12 @@
           <span class="p"><code>var object = new Constructor(arguments, …);</code> creates an object which is a new instance of the original constructor object;</span>
           <span class="p"><code>.prototype</code> objects property that accesses the object from which it inherits, can be used on constructor functions to add new methods to derived instances.</span>
         </p>
-        <p><span class="code kwd">new</span> <span class="udl">instance operator:</span> creates a new object as an instance of the Constructor function that follows.</p>
-        <p><span class="code kwd">this</span> objects reference keyword, if alone refers to the global object, inside a method refers to the owner object.</p>
+        <p><code class="kwd">new</code> <span class="udl">instance operator:</span> creates a new object as an instance of the Constructor function that follows.</p>
+        <p><code class="kwd">this</code> objects reference keyword, if alone refers to the global object, inside a method refers to the owner object.</p>
         <p><code><span class="kwd">class</span> <span class="sti">ClassName</span> <span class="opt">extends <span class="sti">ParentClass</span></span> { … }</code> class declaration for custom defined objects, can inherit ("<span class="kwd">extends</span>") from a "<span class="sti opt">ParentClass</span>".
           <span class="p"><code>constructor(<span class="opt"><span class="sti">parameters</span>, …</span> ) { <span class="opt">this.<span class="sti">property</span> = <span class="sti">parameter</span>; …</span> }</code> class designated constructor.</span>
-          <span class="p"><span class="code kwd">super</span> refers the "ParentClass" object if it exists, and calls its constructor if the calling operator its applied.</span>
-          <span class="p"><span class="code kwd">static</span> defines a property or method that belongs to the class itself and not to any instance.</span>
+          <span class="p"><code class="kwd">super</code> refers the "ParentClass" object if it exists, and calls its constructor if the calling operator its applied.</span>
+          <span class="p"><code class="kwd">static</code> defines a property or method that belongs to the class itself and not to any instance.</span>
           <span class="p"><code><span class="kwd">var</span> <span class="sti">newObject</span> = <span class="kwd">new</span> <span class="sti">className</span>(<span class="opt">arguments</span>)</code> class instantiation (object creation).</span>
         </p>
       </article>
