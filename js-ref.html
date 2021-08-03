@@ -34,7 +34,7 @@
     flex-direction: column;
   }
 
-  header {
+  #header {
     background-color: #222222;
     text-align: center;
     font-size: 1.62em;
@@ -53,17 +53,13 @@
     overflow: auto;
   }
 
-  footer {
+  #footer {
     background-color: #222222;
     text-align: center;
     padding: 5px;
     flex: none;
     width: 100%;
     height: 30px;
-  }
-
-  footer span {
-    margin-left: 40px;
   }
 
   article {
@@ -148,7 +144,7 @@
     color: #0099ff;
     background-color: #000000;
     border-radius: 2px;
-    padding: 2px;
+    padding: 1px;
   }
 
   .opt {
@@ -228,13 +224,32 @@
   }
 
   #legend {
-    display: inline;
-    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 760px;
+    margin: 0px auto;
+  }
+
+  #legend-label::after {
+    content: ":";
+  }
+
+  #legend-content {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
   }
 
   @media only screen and (max-width: 768px) {
     article {
       margin: 5px;
+    }
+
+    #footer {
+      transition: 0.2s;
     }
 
     div.row {
@@ -258,11 +273,29 @@
       width: 0;
       transition: 0.2s;
     }
+
+    #legend {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    #legend-label {
+      cursor: pointer;
+    }
+
+    #legend-label::after {
+      content: "";
+    }
+
+    #legend-content {
+      flex-direction: column;
+      display: none;
+    }
   }
   </style>
 </head>
 <body>
-  <header><div id="navButton">≡</div><div id="title">JavaScript Reference Guide</div></header>
+  <header id="header"><div id="navButton">≡</div><div id="title">JavaScript Reference Guide</div></header>
   <main>
     <div id="navBar">
       <nav>
@@ -300,19 +333,19 @@
           </div>
         </div>
         <h3>Variables Declarations</h3>
-        <p><code><span class="kwd">var</span> <span class="sti">variable</span> = <span class="sti">value</span><span class="opt">, …</span></code>	declares a global scope variable, may be initialized to value, may declare an initialize a set of comma-separated variables.</p>
+        <p><code><span class="kwd">var</span> <span class="sti">variable</span> = <span class="sti">value</span><span class="opt">, …</span></code>	declares a global scope variable, may be initialized to "<code class="sti">value</code>", may declare and initialize a set of comma-separated variables.</p>
         <p><code><span class="kwd">let</span> <span class="sti">variable</span></code> declares a block level variable.</p>
         <p><code><span class="kwd">const</span> <span class="sti">constant</span></code> declares a constant value o reference to an object.</p>
         <h3>Functions</h3>
-        <p><code><span class="kwd">function</span> <span class="sti">funct</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</code> <span class="udl">function declaration:</span> may receive "<code class="sti opt">parameters</code>", runs containing statements when called, may "<span class="kwd">return</span>" the specified "<span class="sti opt">output</span>" if given, else "<code>undefined</code>" is implied.</p>
+        <p><code><span class="kwd">function</span> <span class="sti">funct</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</code> <span class="udl">function declaration:</span> may receive "<code class="sti opt">parameters</code>", runs containing statements when called, may "<code class="kwd">return</code>" the specified "<code class="sti opt">output</code>" if given, else "<code>undefined</code>" is implied.</p>
         <p><code><span class="kwd">var</span> <span class="sti">funct</span> = <span class="kwd">function</span> <span class="sti opt">functName</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { …; <span class="opt">return <span class="sti">output</span></span> }</code> <span class="udl">function expression:</span> assigns the given function to the variable; may be named, but only referred in the expression (useful when self-recurring).</p>
         <p>
           <code>(<span class="opt"><span class="sti">parameters</span>, …</span>) => { …; <span class="opt">return <span class="sti">output</span>;</span> }</code> <span class="udl">arrow function notation:</span> creates anonymous functions, if it has only a single statement then its result is taken implicitly as return.
           <span class="p"><code>arguments</code> functions' built-in array-like object that contains the arguments list.</span>
           <span class="p"><code>.name</code> nonstandard property that holds the function's name (even named function expressions).</span>
-          <span class="p"><code>.call(<span class="sti">thisArg</span><span class="opt">, <span class="sti">arguments</span>, …</span>)</code> calls a function and sets its "<span class="kwd">this</span>" reference to "<code class="sti">thisArg</code>".</span>
-          <span class="p"><code>.apply(<span class="sti">thisArg</span><span class="opt">, <span class="sti">argArray</span></span>)</code> calls a function and sets its "<span class="kwd">this</span>" reference to "<code class="sti">thisArg</code>", provides arguments for the functions as and array "<span class="sti opt">argArray</span>".</span>
-          <span class="p"><code>.bind(<span class="sti">thisArg</span><span class="opt">, <span class="sti">arguments</span>, …</span>)</code> creates a new function that, when called, has its "<span class="kwd">this</span>" keyword set to the provided "<code class="sti">thisArg</code>".</span>
+          <span class="p"><code>.call(<span class="sti">thisArg</span><span class="opt">, <span class="sti">arguments</span>, …</span>)</code> calls a function and sets its "<code class="kwd">this</code>" reference to "<code class="sti">thisArg</code>".</span>
+          <span class="p"><code>.apply(<span class="sti">thisArg</span><span class="opt">, <span class="sti">argArray</span></span>)</code> calls a function and sets its "<code class="kwd">this</code>" reference to "<code class="sti">thisArg</code>", provides arguments for the functions as and array "<span class="sti opt">argArray</span>".</span>
+          <span class="p"><code>.bind(<span class="sti">thisArg</span><span class="opt">, <span class="sti">arguments</span>, …</span>)</code> creates a new function that, when called, has its "<code class="kwd">this</code>" keyword set to the provided "<code class="sti">thisArg</code>".</span>
         </p>
         <p><code><span class="sti">funct</span>(<span class="opt"><span class="sti">arguments</span>, …</span>)</code> <span class="udl">function calling:</span> invokes a defined function, may require arguments to be passed.</p>
         <p><code>(<span class="sti">functionStatement</span>)(<span class="opt">arguments</span>)</code> <span class="udl">Immediately invoked function expression:</span> immediately calls the function defined in the grouping operator (it is a grouping operator and an invoking operator).</p>
@@ -472,15 +505,15 @@
           <span class="p"><code class="opt">else  { …; }</code> if all previous conditions are false, run script.</span>
         </p>
         <h3>Switch Case</h3>
-        <p><code><span class="kwd">switch</span> (<span class="sti">statement</span>) { <span class="sti">cases</span>… }	</code> evaluates the result of "<code class="sti">statement</code>" and executes the "<span class="kwd">case</span>" that matches.
-          <span class="p"><code><span class="kwd">case</span> <span class="sti">value</span>: …; <span class="kwd">break</span>;</code> executes statements if "<code class="sti">statement</code>" is equal to "<code class="sti">value</code> ", ends with a "<span class="kwd">break</span>".</span>
-          <span class="p"><code class="opt">default: <span class="sti">script</span>; break;</code> run "<span class="sti opt">script</span>" if "<code class="sti">statement</code>" is not equal to any defined case value.</span>
+        <p><code><span class="kwd">switch</span> (<span class="sti">statement</span>) { <span class="sti">cases</span>… }	</code> evaluates the result of "<code class="sti">statement</code>" and executes the "<code class="kwd">case</code>" that matches.
+          <span class="p"><code><span class="kwd">case</span> <span class="sti">value</span>: …; <span class="kwd">break</span>;</code> executes statements if "<code class="sti">statement</code>" is equal to "<code class="sti">value</code> ", ends with a "<code class="kwd">break</code>".</span>
+          <span class="p"><code class="opt">default: <span class="sti">script</span>; break;</code> run "<code class="sti opt">script</code>" if "<code class="sti">statement</code>" is not equal to any defined case value.</span>
         </p>
         <h3>Do While Loops</h3>
         <p><code><span class="sti opt">label:</span> <span class="kwd">while</span> (<span class="sti">condition</span>) { …; }</code> executes statements while defined "<code class="sti">condition</code>" is true.</p>
         <p><code><span class="sti opt">label:</span> <span class="kwd">do</span> { …; } <span class="kwd">while</span> (<span class="sti">condition</span>)</code> executes statements once and as long as "<code class="sti">condition</code>" is true.</p>
         <h3>For Loops</h3>
-        <p><code><span class="sti opt">label:</span> <span class="kwd">for</span> (<span class="sti opt">initial</span>; <span class="sti opt">condition</span>; <span class="sti opt">step</span>) { …; }	</code> sets the "<span class="sti opt">initial</span>" statement, then executes the statements in the body while "<span class="sti opt">condition</span>" is true, executing the "<span class="sti opt">step</span>" statement at the end of each iteration.</p>
+        <p><code><span class="sti opt">label:</span> <span class="kwd">for</span> (<span class="sti opt">initial</span>; <span class="sti opt">condition</span>; <span class="sti opt">step</span>) { …; }	</code> sets the "<code class="sti opt">initial</code>" statement, then executes the statements in the body while "<code class="sti opt">condition</code>" is true, executing the "<code class="sti opt">step</code>" statement at the end of each iteration.</p>
         <p><code><span class="sti opt">label:</span> <span class="kwd">for</span> (<span class="sti">key</span> <span class="kwd">in</span> <span class="sti">object</span>) { …; }</code> executes statements for each "<code class="sti">key</code>" property in the "<code class="sti">object</code>", using "<code class="sti">key</code>" as iterator key string (name of the current parameter of the object, refer as "<code><span class="sti">object</span>[<span class="sti">key</span>]</code>").</p>
         <p><code><span class="sti opt">label:</span> <span class="kwd">for</span> (<span class="sti">item</span> <span class="kwd">of</span> <span class="sti">iterable</span>) { …; }</code> executes statements for each "<code class="sti">item</code>" in the "<code class="sti">iterable</code>" object (array or array-like, string) using "<code class="sti">item</code>" as iterator.</p>
         <h2>Error Handling, Promises and Modules.</h2>
@@ -488,25 +521,25 @@
         <p><code><span class="kwd">try</span> { … }</code> defines a block of statements that might produce an error.
           <span class="p"><code class="kwd">throw</code> expression	defines an exception thrown, can be a string or an  "Error" object (new Error(msg)).</span>
         </p>
-        <p><code><span class="kwd">catch</span>(<span class="sti">error</span>) { … }	</code> defines a block of statements to handle an error produced on a "<span class="kwd">try</span>" block, and stores it in the "<code class="sti">error</code>" object of type "<code>Error()</code>".
+        <p><code><span class="kwd">catch</span>(<span class="sti">error</span>) { … }	</code> defines a block of statements to handle an error produced on a "<code class="kwd">try</code>" block, and stores it in the "<code class="sti">error</code>" object of type "<code>Error()</code>".
           <span class="p"><code>.message</code> property of "<code>Error</code>" type objects that contains the error message.</span>
           <span class="p"><code>.name</code> property of "<code>Error</code>" type objects that contains the error name.</span>
         </p>
         <p><code class="opt">finally { … }	</code> optional final block of statements that will be executed weather or not the "try" block threw an error.</p>
         <h3>Promises (Asynchronous Functions)</h3>
-        <p><code><span class="kwd">return</span> <span class="kwd">new</span> Promise(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">resolve</span>, <span class="sti">reject</span>) { …; } )	</code> the function won't return an immediate value, but rather will either be successful and send the value in a "<code><span class="sti">resolve</span>(…)</code>", or fail and send an error message from a "<code><span class="sti">reject</span>(…)</code>".</p>
-        <p><code><span class="sti">resolve</span>(<span class="sti opt">resolved</span>)</code> function declared in promise's callback that returns a "<span class="sti opt">resolved</span>" promise.</p>
-        <p><code><span class="sti">reject</span>(<span class="sti opt">rejected</span>)</code> function declared in promise's callback that returns a "<span class="sti opt">rejected</span>" promise.</p>
-        <p><code>.then(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti opt">resolved</span>) { … })</code> Promise's method that takes the "<span class="sti opt">resolved</span>" value and executes the statements that would follow, they can be chained (asyncFn(…).then(…).then(…).catch(…)).</p>
-        <p><code>.catch(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti opt">rejected</span>) { … })</code> Promise's method that takes the "<span class="sti opt">rejected</span>" value and executes the statements that would follow.</p>
+        <p><code><span class="kwd">return</span> <span class="kwd">new</span> Promise(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">resolve</span>, <span class="sti">reject</span>) { …; } )	</code> the function won't return an immediate value, but rather will either be successful and send the value passed to the "<code><span class="sti">resolve</span>(…)</code>" function, or fail and send the value passed to the "<code><span class="sti">reject</span>(…)</code>" function (normally a "<code>String</code>" error message).</p>
+        <p><code><span class="sti">resolve</span>(<span class="sti opt">resolved</span>)</code> function declared in promise's callback that returns a "<code class="sti opt">resolved</code>" promise.</p>
+        <p><code><span class="sti">reject</span>(<span class="sti opt">rejected</span>)</code> function declared in promise's callback that returns a "<code class="sti opt">rejected</code>" promise.</p>
+        <p><code>.then(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti opt">resolved</span>) { … })</code> Promise's method that takes the "<code class="sti opt">resolved</code>" value and executes the statements that would follow, they can be chained (Ej: "<code>asyncFn(…).then(…).then(…).catch(…)</code>").</p>
+        <p><code>.catch(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti opt">rejected</span>) { … })</code> Promise's method that takes the "<code class="sti opt">rejected</code>" value and executes the statements that would follow.</p>
         <p><code>.finally(<span class="kwd">function</span> <span class="sti opt">callback</span>() { … })</code> Promise's method that is called at the end of a promise chain when the promise is settled, whether fulfilled or rejected.</p>
         <p><code><span class="kwd">async</span> <span class="kwd">function</span> <span class="sti">asyncFn</span>(<span class="opt"><span class="sti">parameters</span>,…</span>) { … }</code> declares an asynchronous function that returns an implied promise, can be used inside "<code><span class="kwd">try</span> …<span class="kwd">catch</span></code>" blocks.
-          <span class="p"><code><span class="kwd">await</span> <span class="sti">asyncStatement</span></code> used only inside "<span class="kwd">async</span>" functions, stops its execution until a resolved or rejected promise is returned from the "<code class="sti">asyncStatement</code>" and returns that value.</span>
+          <span class="p"><code><span class="kwd">await</span> <span class="sti">asyncStatement</span></code> used only inside "<code class="kwd">async</code>" functions, stops its execution until a resolved or rejected promise is returned from the "<code class="sti">asyncStatement</code>" and returns that value.</span>
         </p>
         <h3>Modules</h3>
         <p><code><span class="kwd">import</span> <span class="sti">exported</span> <span class="opt">as <span class="sti">alias</span>,…</span> <span class="kwd">from</span> '<span class="sti">module-or-file-path</span>'</code> declares a resource imported (static) from another module, where the resources "<code class="sti">exported</code>" can be: the default module "<code>defaultExport</code>", all "<code>*</code>" (can also be done as "<code>import '<span class="sti">module</span>'</code>"), or a specific list "<code>{ <span class="sti">exportedN</span> <span class="opt">as <span class="sti">aliasN</span>, …</span> }</code>".</p>
         <p><code>import('<span class="sti">module</span>')</code> declares a dynamic import when called as a function and returns the module as a "<code>Promise</code>".</p>
-        <p><code><span class="kwd">export</span> <span class="opt">default</span> <span class="sti">resource</span></code> declares a "<code class="sti">resource</code>" (function, class, object, variable) to be exported to other modules, where only one can be set as "<span class="opt">default</span>" which doesn't need to be named.</p>
+        <p><code><span class="kwd">export</span> <span class="opt">default</span> <span class="sti">resource</span></code> declares a "<code class="sti">resource</code>" (function, class, object, variable) to be exported to other modules, where only one can be set as "<code class="opt">default</code>" which doesn't need to be named.</p>
         <h2>Built-in Objects, Properties, Methods and Functions</h2>
         <h3>Parent Object</h3>
         <p><code>Object(…)</code> constructor function for new objects, equivalent to: "<code><span class="kwd">var</span> <span class="sti">newObject</span> = {};</code>" can be initialized with a list of comma-separated pair of values in the form of "<code><span class="sti">property</span>: <span class="sti">value</span>,</code>", where value can variables, functions or other objects.
@@ -543,9 +576,9 @@
         <p><code>.pop()</code> removes the last element of the array and returns it.</p>
         <p><code>.shift()</code> removes the first element of the array and returns it.</p>
         <p><code>.concat(<span class="sti">elements</span>)</code> returns the original array joined together with other arrays or values provided in the arguments.</p>
-        <p><code>.slice(<span class="sti">start</span><span class="opt">, <span class="sti">end</span></span>)</code> returns a new array from "<code class="sti">start</code>" index (inclusive) until "<span class="sti opt">end</span>" index (not inclusive) if given, or until the end of the original string; indexes can be negative (from the end of the string).</p>
-        <p><code>.splice(<span class="sti">start</span><span class="opt">, <span class="sti">deleteCount</span>, <span class="sti">elements</span>…</span>)</code> changes the contents of an array from "<code class="sti">start</code>" index by removing (if "<span class="sti opt">deleteCount</span>" > 0) and/or adding new "<span class="sti opt">elements</span>" (if any) in place, and returns an array with the removed items (empty if none).</p>
-        <p><code>.fill(<span class="sti">value</span><span class="opt">, <span class="sti">start</span>, <span class="sti">end</span></span>)</code> assigns "<code class="sti">value</code>" to the elements of the array, from "<span class="sti opt">start</span>" index (inclusive, default "<code>0</code>") to "<span class="sti opt">end</span>" index (not inclusive, default "<code><span class="sti">array</span>.length</code>").</p>
+        <p><code>.slice(<span class="sti">start</span><span class="opt">, <span class="sti">end</span></span>)</code> returns a new array from "<code class="sti">start</code>" index (inclusive) until "<code class="sti opt">end</code>" index (not inclusive) if given, or until the end of the original string; indexes can be negative (from the end of the string).</p>
+        <p><code>.splice(<span class="sti">start</span><span class="opt">, <span class="sti">deleteCount</span>, <span class="sti">elements</span>…</span>)</code> changes the contents of an array from "<code class="sti">start</code>" index by removing (if "<code class="sti opt">deleteCount</code>" > 0) and/or adding new "<code class="sti opt">elements</code>" (if any) in place, and returns an array with the removed items (empty if none).</p>
+        <p><code>.fill(<span class="sti">value</span><span class="opt">, <span class="sti">start</span>, <span class="sti">end</span></span>)</code> assigns "<code class="sti">value</code>" to the elements of the array, from "<code class="sti opt">start</code>" index (inclusive, default "<code>0</code>") to "<code class="sti opt">end</code>" index (not inclusive, default "<code><span class="sti">array</span>.length</code>").</p>
         <p><code>.reverse()</code> reverses the order of the elements of an array in place (the original array).</p>
         <p><span class="udl">Array Query Methods:</span></p>  
         <p><code>.indexOf(<span class="sti">element</span><span class="opt">, <span class="sti">start</span></span>)</code> returns the index of the first element from "<code class="sti">start</code>" index (inclusive, default "<code>0</code>") that corresponds to "<code class="sti">element</code>", or "<code>-1</code>" if not found.</p>
@@ -755,7 +788,7 @@
         </p>
         <p><code class="kwd">new</code> <span class="udl">instance operator:</span> creates a new object as an instance of the Constructor function that follows.</p>
         <p><code class="kwd">this</code> objects reference keyword, if alone refers to the global object, inside a method refers to the owner object.</p>
-        <p><code><span class="kwd">class</span> <span class="sti">ClassName</span> <span class="opt">extends <span class="sti">ParentClass</span></span> { … }</code> class declaration for custom defined objects, can inherit ("<span class="kwd">extends</span>") from a "<span class="sti opt">ParentClass</span>".
+        <p><code><span class="kwd">class</span> <span class="sti">ClassName</span> <span class="opt">extends <span class="sti">ParentClass</span></span> { … }</code> class declaration for custom defined objects, can inherit ("<code class="kwd">extends</code>") from a "<code class="sti opt">ParentClass</code>".
           <span class="p"><code>constructor(<span class="opt"><span class="sti">parameters</span>, …</span> ) { <span class="opt">this.<span class="sti">property</span> = <span class="sti">parameter</span>; …</span> }</code> class designated constructor.</span>
           <span class="p"><code class="kwd">super</code> refers the "ParentClass" object if it exists, and calls its constructor if the calling operator its applied.</span>
           <span class="p"><code class="kwd">static</code> defines a property or method that belongs to the class itself and not to any instance.</span>
@@ -1058,7 +1091,7 @@
         </p>
         <p><code>__dirname</code> the name of the directory that the currently executing script resides in.</p>
         <p><code>__filename</code> the filename of the code being executed. This is the resolved absolute path of this code file.</p>
-        <p><code>require(<span class="sti">module</span>)</code> imports the "module" (node module or local file) and returns it as an object, by standard declared as a "<span class="kwd">const</span>".</p>
+        <p><code>require(<span class="sti">module</span>)</code> imports the "module" (node module or local file) and returns it as an object, by standard declared as a "<code class="kwd">const</code>".</p>
         <p><code>module</code> object that provides general utility methods when interacting with instances of "Module".
           <span class="p"><code>.exports</code> property that holds an object that exposes statements (module's properties or methods) to be imported by other modules. ("<code>module.exports.<span class="sti">resource</span> = <span class="sti">statement</span></code>")</span>
         </p>
@@ -1124,10 +1157,10 @@
         </p>
         <p><code><span class="kwd">const</span> <span class="sti">upload</span> = <span class="sti">multer</span>(<span class="opt">{ dest|storage:…, fileFilter:…, limits:…, preservePath:… }</span>)</code> sets the upload middleware for multer, these options are not required when handling text-only multipart form. They are:
         <ul>
-          <li>"<span class="opt">dest</span>" (path string) or "<span class="opt">storage</span>" (storage engine) set where to store the files.</li>
-          <li>"<span class="opt">fileFilter</span>" takes a function in the form "<code><span class="kwd">function</span> <span class="sti">fileFilter</span>(<span class="sti">req</span>, <span class="sti">file</span>, <span class="sti">cb</span>) { …; <span class="sti">cb</span>(<span class="sti">err</span>, <span class="sti">result</span>) }</code>" to control which files are accepted through the Boolean passed in the "<code class="sti">result</code>" of the "<code class="sti">cb</code>" callback function (if no errors, "<code class="sti">err</code>" should be "<code>null</code>").</li>
-          <li>"<span class="opt">limits</span>" takes an object specifying the size limits of the several optional properties.</li>
-          <li>"<span class="opt">preservePath</span>" takes a Boolean; if true, keeps the full path of files instead of just the base name.</li>
+          <li>"<code class="opt">dest</code>" (path string) or "<code class="opt">storage</code>" (storage engine) set where to store the files.</li>
+          <li>"<code class="opt">fileFilter</code>" takes a function in the form "<code><span class="kwd">function</span> <span class="sti">fileFilter</span>(<span class="sti">req</span>, <span class="sti">file</span>, <span class="sti">cb</span>) { …; <span class="sti">cb</span>(<span class="sti">err</span>, <span class="sti">result</span>) }</code>" to control which files are accepted through the Boolean passed in the "<code class="sti">result</code>" of the "<code class="sti">cb</code>" callback function (if no errors, "<code class="sti">err</code>" should be "<code>null</code>").</li>
+          <li>"<code class="opt">limits</code>" takes an object specifying the size limits of the several optional properties.</li>
+          <li>"<code class="opt">preservePath</code>" takes a Boolean; if true, keeps the full path of files instead of just the base name.</li>
         </ul>
         </p>
         <p><code><span class="sti">app</span>.post(<span class="sti">route</span>, <span class="sti">upload</span>.<span class="sti">method</span>(…), <span class="sti">callback</span>)</code> usage of the "<code class="sti">upload</code>" methods as middleware.
@@ -1137,7 +1170,7 @@
           <span class="p"><code>.none()</code> accept only text fields. If any file upload is made, "<code>LIMIT_UNEXPECTED_FILE</code>" error will be issued.</span>
           <span class="p"><code>.any()</code> Accepts all files that comes over the wire. An array of files will be stored in "<code><span class="sti">req</span>.files</code>".</span>
         </p>
-        <p><code><span class="kwd">const</span> <span class="sti">storage</span> = <span class="sti">multer</span>.diskStorage({destination: <span class="sti">destination</span>|<span class="sti">string</span>, filename: <span class="sti">filename</span>;})</code> creates a storage engine object for "<code class="sti">multer</code>" for its "<span class="opt">storage</span>" option, where both "<code class="sti">destination</code>" (can also be just a "<code class="sti">string</code>") and "<code class="sti">filename</code>" are callback functions in the form "<code><span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">req</span>, <span class="sti">file</span>, <span class="sti">cb</span>) { …; <span class="sti">cb</span>(<span class="sti">err</span>, <span class="sti">result</span>) } })</code>" which take the request "<code class="sti">req</code>" object, the "<code class="sti">file</code>" object, and the "<code class="sti">cb</code>" callback function that sends the expected "<code class="sti">result</code>" from the function, and "<code class="sti">err</code>" as "<code>null</code>" if there are no errors (the "<code class="sti">filename</code>" "<code class="sti">result</code>" string must include the file extension).</p>
+        <p><code><span class="kwd">const</span> <span class="sti">storage</span> = <span class="sti">multer</span>.diskStorage({destination: <span class="sti">destination</span>|<span class="sti">string</span>, filename: <span class="sti">filename</span>;})</code> creates a storage engine object for "<code class="sti">multer</code>" for its "<code class="opt">storage</code>" option, where both "<code class="sti">destination</code>" (can also be just a "<code class="sti">string</code>") and "<code class="sti">filename</code>" are callback functions in the form "<code><span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">req</span>, <span class="sti">file</span>, <span class="sti">cb</span>) { …; <span class="sti">cb</span>(<span class="sti">err</span>, <span class="sti">result</span>) } })</code>" which take the request "<code class="sti">req</code>" object, the "<code class="sti">file</code>" object, and the "<code class="sti">cb</code>" callback function that sends the expected "<code class="sti">result</code>" from the function, and "<code class="sti">err</code>" as "<code>null</code>" if there are no errors (the "<code class="sti">filename</code>" "<code class="sti">result</code>" string must include the file extension).</p>
         <p><code><span class="kwd">const</span> <span class="sti">storage</span> = <span class="sti">multer</span>.memoryStorage()</code> The "<code>MemoryStorage</code>" engine stores the files in memory as "<code>Buffer</code>" objects. It doesn't have any options.</p>
         <h3>Client Session Module</h3>
         <p><code><span class="kwd">const</span> <span class="sti">clientSessions</span> = require('client-sessions')</code> imports the "Client Session" module which uses cookies to store session information.</p>
@@ -1164,13 +1197,13 @@
         <h2>Express Handlebars Module</h2>
         <h3>Handlebars Set-Up</h3>
         <p><code><span class="kwd">const</span> <span class="sti">exphbs</span> = require('express-handlebars')</code> imports the "Handlebars" rendering engine and assigns its callback function to "<code class="sti">exphbs</code>".</p>
-        <p><code><span class="sti">app</span>.engine(<span class="sti">ext</span>, <span class="sti">exphbs</span>({extname: '.<span class="sti">hbs</span>'<span class="opt">, layoutsDir: '<span class="sti">views/layouts/</span>', partialsDir: '<span class="sti">views/partials/</span>', defaultLayout: '<span class="sti">main</span>', helpers: {…},…</span>}))</code> adds the handlebars engine to the Express "<code class="sti">app</code>" and configures it; where "<code class="sti">ext</code>" is the name given to engine (commonly "<code>'hbs'</code>" or "<code>'handlebars'</code>"), and other options can be "<span class="opt">defaultLayout</span>" that receives the name of the default layout file without the extension, and an object of "<span class="opt">helpers</span>" functions that can be used to add custom logic inside the handlebar statements.</p>
+        <p><code><span class="sti">app</span>.engine(<span class="sti">ext</span>, <span class="sti">exphbs</span>({extname: '.<span class="sti">hbs</span>'<span class="opt">, layoutsDir: '<span class="sti">views/layouts/</span>', partialsDir: '<span class="sti">views/partials/</span>', defaultLayout: '<span class="sti">main</span>', helpers: {…},…</span>}))</code> adds the handlebars engine to the Express "<code class="sti">app</code>" and configures it; where "<code class="sti">ext</code>" is the name given to engine (commonly "<code>'hbs'</code>" or "<code>'handlebars'</code>"), and other options can be "<code class="opt">defaultLayout</code>" that receives the name of the default layout file without the extension, and an object of "<span class="opt">helpers</span>" functions that can be used to add custom logic inside the handlebar statements.</p>
         <p><code><span class="opt">const <span class="sti">hbsInstance</span> = <span class="sti">exphbs</span>.create({ <span class="sti">config</span> }); <span class="sti">app</span>.engine(<span class="sti">ext</span>, <span class="sti">hbsInstance</span>.engine)</span></code> alternatively, the "<code>.create()</code>" method can be used to create an instance of the Handlebars engine and stores it in "<code class="sti">hbsInstance</code>", then pass its "<code>engine</code>" callback to the "<code><span class="sti">app</span>.engine()</code>" method.</p>
         <p><code><span class="sti">app</span>.set('view engine', <span class="sti">ext</span>)</code> sets handlebar as the rendering engine using the "<code class="sti">ext</code>" name given to it in the "<code><span class="sti">app</span>.engine()</code>" method.</p>
-        <p><code><span class="opt"><span class="sti">app</span>.set('views', './views/')</span></code> optionally, we can set a custom path for the views ("<code>./views/</code>" by default). If done so, it will need to be reflected on the "<span class="opt">layoutsDir</span>" and "<span class="opt">partialsDir</span>" configuration options.</p>
-        <p><code><span class="sti">res</span>.render(<span class="sti">view</span><span class="opt">, <span class="sti">options</span></span>)</code> invoked on any routing methods of the "<code>Application</code>" ("<code class="sti">app</code>") object ("<code>.get()</code>", "<code>.post()</code>", "<code>.put()</code>" , "<code>.delete()</code>" , "<code>.all()</code>"), where "<code class="sti">view</code>" is the name of the file without the "<code>.hbs</code>" extension, and the "<span class="sti opt">options</span>" object can be used to set a specific "<span class="opt">layout</span>" property (layout file name without extension, equal to "<span class="opt">defaultLayout</span>" if omitted, or can be set to "<code>false</code>" for no layout), add or override "<span class="opt">helpers</span>", and other custom properties to use as data on the view.</p>
+        <p><code><span class="opt"><span class="sti">app</span>.set('views', './views/')</span></code> optionally, we can set a custom path for the views ("<code>./views/</code>" by default). If done so, it will need to be reflected on the "<code class="opt">layoutsDir</code>" and "<code class="opt">partialsDir</code>" configuration options.</p>
+        <p><code><span class="sti">res</span>.render(<span class="sti">view</span><span class="opt">, <span class="sti">options</span></span>)</code> invoked on any routing methods of the "<code>Application</code>" ("<code class="sti">app</code>") object ("<code>.get()</code>", "<code>.post()</code>", "<code>.put()</code>" , "<code>.delete()</code>" , "<code>.all()</code>"), where "<code class="sti">view</code>" is the name of the file without the "<code>.hbs</code>" extension, and the "<span class="sti opt">options</span>" object can be used to set a specific "<span class="opt">layout</span>" property (layout file name without extension, equal to "<span class="opt">defaultLayout</span>" if omitted, or can be set to "<code>false</code>" for no layout), add or override "<code class="opt">helpers</code>", and other custom properties to use as data on the view.</p>
         <h3>Handlebars Files Syntax</h3>
-        <p><code>{{<span class="sti">statement</span>}}</code> syntax for inserting regular handlebar statements (data sent as properties of the "<span class="sti opt">options</span>" object from the "<code><span class="sti">res</span>.render()</code>" method) on an html document. Handlebar documents can be:
+        <p><code>{{<span class="sti">statement</span>}}</code> syntax for inserting regular handlebar statements (data sent as properties of the "<code class="sti opt">options</code>" object from the "<code><span class="sti">res</span>.render()</code>" method) on an html document. Handlebar documents can be:
           <ul>
             <li><span class="udl">Views:</span> regular files located in the "<code>./views</code>" folder.</li>
             <li><span class="udl">Partials:</span> Files that can be inserted into other views, located in the "<code>./views/partials</code>" folder.</li>
@@ -1178,14 +1211,14 @@
           </ul>
         </p>
         <p><code>{{#<span class="sti">helperName</span> <span class="sti">context</span>}} <span class="sti">block</span> {{/<span class="sti">helperName</span>}}</code> syntax for inserting built-in helpers.</p>
-        <p><code>{{#<span class="kwd">if</span> <span class="sti">condition</span>}} … {{<span class="opt">else</span>}} … {{/<span class="kwd">if</span>}}</code> inserts a block that will be displayed if "<code class="sti">condition</code>" evaluates to "<code>true</code>" (so it can be "<code>false</code>" if its "<code>undefined</code>"), can include an "<span class="opt">else</span>" block that displays if it evaluates to false.</p>
+        <p><code>{{#<span class="kwd">if</span> <span class="sti">condition</span>}} … {{<span class="opt">else</span>}} … {{/<span class="kwd">if</span>}}</code> inserts a block that will be displayed if "<code class="sti">condition</code>" evaluates to "<code>true</code>" (so it can be "<code>false</code>" if its "<code>undefined</code>"), can include an "<code class="opt">else</code>" block that displays if it evaluates to false.</p>
         <p><code>{{#<span class="kwd">unless</span> <span class="sti">condition</span>}} … {{/<span class="kwd">unless</span>}}</code> inserts a block that will be displayed if "<code class="sti">condition</code>" evaluates to "<code>false</code>".</p>
         <p><code>{{#<span class="kwd">each</span> <span class="sti">array</span>}} … {{/<span class="kwd">each</span>}}</code> inserts a block of statements that render for each member of the given "<code class="sti">array</code>".
           <span class="p"><code>@index</code> built-in variable that allows us to reference the current iteration index.</span>
           <span class="p"><code>this</code> built-in variable that contains all the information of the current object being iterated.</span>
         </p>
-        <p><code>{{> <span class="sti">partialfilename</span> <span class="sti opt">context</span> }}</code> inserts a partial view into the current view, can include "<span class="sti opt">context</span>" to send one or more variables to the partial in the form of "<code><span class="sti">variable</span>=<span class="sti">value</span></code>".</p>
-        <p><code>{{{body}}}</code> inserts views into the body of the layouts (declared in the "<code>layout</code>" property of the "<span class="sti opt">options</span>" object of the "<code><span class="sti">res</span>.render()</code>" method).</p>
+        <p><code>{{> <span class="sti">partialfilename</span> <span class="sti opt">context</span> }}</code> inserts a partial view into the current view, can include "<code class="sti opt">context</code>" to send one or more variables to the partial in the form of "<code><span class="sti">variable</span>=<span class="sti">value</span></code>".</p>
+        <p><code>{{{body}}}</code> inserts views into the body of the layouts (declared in the "<code>layout</code>" property of the "<code class="sti opt">options</code>" object of the "<code><span class="sti">res</span>.render()</code>" method).</p>
         <h2>Mongoose Module (MongoBD/Atlas)</h2>
         <h3>Mongoose Set-up</h3>
         <p><code><span class="kwd">const</span> <span class="sti">mongoose</span> = require('mongoose')</code> imports the "Mongoose" module to connect and communicate with "MongoDB/Atlas" databases.</p>
@@ -1197,7 +1230,7 @@
         <p><code><span class="sti">Model</span>.add({…})</code> method that allows to add additional keys to a created Schema, useful for recursive (containing intances of itself. Ej: "<code><span class="sti">user</span>.add({<span class="sti">family</span>: [<span class="sti">user</span>]})</code>" adds an array of "<code class="sti">user</code>" to the "<code class="sti">user</code>").</p>
         <h3>Mongoose CRUD Operations</h3>
         <p><code><span class="kwd">let</span> <span class="sti">newDocument</span> = <span class="kwd">new</span> <span class="sti">Model</span>({…})</code> new documents are created as instances of a "<code class="sti">Model</code>", by passing to the constructor an object with the document data.</p>
-        <p><code><span class="sti">newDocument</span>.save(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">error</span><span class="opt">, <span class="sti">data</span></span>) {…; process.exit(); })</code> to save the new document in the collection we apply the "<code>.save()</code>" method to it and pass it a "<span class="sti opt">callback</span>" function which can handle any "<code class="sti">error</code>" that might get thrown, as well access the document created with "<span class="sti opt">data</span>"; and finally call the "<code>process.exit()</code>" method at the end to exit the program after saving. By default, an "<code>_id</code>" which is a unique "<code>ObjectID</code>" (primary key) and a "<code>_v</code>" of type "<code>versionKey</code>" will be added as additional properties to each document.</p>
+        <p><code><span class="sti">newDocument</span>.save(<span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">error</span><span class="opt">, <span class="sti">data</span></span>) {…; process.exit(); })</code> to save the new document in the collection we apply the "<code>.save()</code>" method to it and pass it a "<code class="sti opt">callback</code>" function which can handle any "<code class="sti">error</code>" that might get thrown, as well access the document created with "<code class="sti opt">data</code>"; and finally call the "<code>process.exit()</code>" method at the end to exit the program after saving. By default, an "<code>_id</code>" which is a unique "<code>ObjectID</code>" (primary key) and a "<code>_v</code>" of type "<code>versionKey</code>" will be added as additional properties to each document.</p>
         <p><code>Query</code> object type returned by every query method from mongoose (find, update, replace, delete).
           <span class="p"><code>.exec()</code> method needed to be applied to any query method so that it returns a Promise that resolves into a Mongoose document, which later would have to be converted to a JavaScript object (Ej: "<code>find().exec().then(…)</code>").</span>
           <span class="p"><code>.sort(<span class="sti">string</span>|<span class="sti">object</span>)</code> optional method applied to query methods and before the "<code>.exec()</code>" method, sorts the results as follow:
@@ -1342,19 +1375,25 @@
       </article>
     </div>
   </main>
-  <footer> 
-    <div id="legend">Legend:
-      <span><code>strict syntax</code></span>
-      <span><code class="sti">stand-in</code></span>
-      <span><code class="kwd">keyword</code></span>
-      <span><code class="opt">optional</code></span>
-      <span><code class="sti opt">stand-in optional</code></span>
+  <footer id="footer"> 
+    <div id="legend">
+      <div id="legend-label">Legend</div>
+      <div id="legend-content">
+        <div><code>strict syntax</code></div>
+        <div><code class="sti">stand-in</code></div>
+        <div><code class="kwd">keyword</code></div>
+        <div><code class="opt">optional</code></div>
+        <div><code class="sti opt">stand-in optional</code></div>
+      </div>
     </div>
   </footer>
   <script type="text/javascript">
   document.body.onload = function() {
     let navBar = document.querySelector('#navBar');
     let indexElem = document.querySelector('#index');
+    let header = document.querySelector('#header');
+    let footer = document.querySelector('#footer');
+    let legend = document.querySelector('#legend-content');
 
     /* function to open/close the responsive menu (mobile view) */
     function toggleMenu(e) {
@@ -1368,6 +1407,22 @@
     }
 
     document.querySelector('#navButton').addEventListener('click', toggleMenu);
+
+    /* function to open/close the responsive legend (mobile view) */
+    function toggleLegend(e) {
+      console.log(`header.style.height = ${header.style.height}`);
+      if (footer.style.height != '140px') {
+        footer.style.height = '140px';
+        legend.style.display = 'flex';
+      } else {
+        footer.style.height = '30px';
+        legend.style.display = 'initial';
+      }
+    }
+
+    if (window.innerWidth < 768) {
+      document.querySelector('#legend-label').addEventListener('click', toggleLegend);
+    }
 
     /* this will build the navigation menu: it will go through each section of the document and add a link to each section header to the menu */
     let headers = document.querySelectorAll('h1, h2, h3');
