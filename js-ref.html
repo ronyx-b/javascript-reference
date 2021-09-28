@@ -108,8 +108,8 @@
 
   div.p {
     display: block;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     padding-left: 1em;
     text-indent: -1em;
   }
@@ -1194,22 +1194,22 @@
         <div class="p"><code><span class="opt"><span class="sti">app</span>.set('views', './views/')</span></code> optionally, we can set a custom path for the views ("<code>./views/</code>" by default). If done so, it will need to be reflected on the "<code class="opt">layoutsDir</code>" and "<code class="opt">partialsDir</code>" configuration options.</div>
         <div class="p"><code><span class="sti">res</span>.render(<span class="sti">view</span><span class="opt">, <span class="sti">options</span></span>)</code> invoked on any routing methods of the "<code>Application</code>" ("<code class="sti">app</code>") object ("<code>.get()</code>", "<code>.post()</code>", "<code>.put()</code>" , "<code>.delete()</code>" , "<code>.all()</code>"), where "<code class="sti">view</code>" is the name of the file without the "<code>.hbs</code>" extension, and the "<span class="sti opt">options</span>" object can be used to set a specific "<span class="opt">layout</span>" property (layout file name without extension, equal to "<span class="opt">defaultLayout</span>" if omitted, or can be set to "<code>false</code>" for no layout), add or override "<code class="opt">helpers</code>", and other custom properties to use as data on the view.</div>
         <h3>Handlebars Files Syntax</h3>
-        <div class="p"><code>{{<span class="sti">statement</span>}}</code> syntax for inserting regular handlebar statements (data sent as properties of the "<code class="sti opt">options</code>" object from the "<code><span class="sti">res</span>.render()</code>" method) on an html document. Handlebar documents can be:
+        <div class="p"><code>&#123;&#123;<span class="sti">statement</span>&#125;&#125;</code> syntax for inserting regular handlebar statements (data sent as properties of the "<code class="sti opt">options</code>" object from the "<code><span class="sti">res</span>.render()</code>" method) on an html document. Handlebar documents can be:
           <ul>
             <li><span class="udl">Views:</span> regular files located in the "<code>./views</code>" folder.</li>
             <li><span class="udl">Partials:</span> Files that can be inserted into other views, located in the "<code>./views/partials</code>" folder.</li>
             <li><span class="udl">Layouts:</span> Page templates that can other views inserted into them, located in the "<code>./views/layouts</code>" folder.</li>
           </ul>
         </div>
-        <div class="p"><code>{{#<span class="sti">helperName</span> <span class="sti">context</span>}} <span class="sti">block</span> {{/<span class="sti">helperName</span>}}</code> syntax for inserting built-in helpers.</div>
-        <div class="p"><code>{{#<span class="kwd">if</span> <span class="sti">condition</span>}} … {{<span class="opt">else</span>}} … {{/<span class="kwd">if</span>}}</code> inserts a block that will be displayed if "<code class="sti">condition</code>" evaluates to "<code>true</code>" (so it can be "<code>false</code>" if its "<code>undefined</code>"), can include an "<code class="opt">else</code>" block that displays if it evaluates to false.</div>
-        <div class="p"><code>{{#<span class="kwd">unless</span> <span class="sti">condition</span>}} … {{/<span class="kwd">unless</span>}}</code> inserts a block that will be displayed if "<code class="sti">condition</code>" evaluates to "<code>false</code>".</div>
-        <div class="p"><code>{{#<span class="kwd">each</span> <span class="sti">array</span>}} … {{/<span class="kwd">each</span>}}</code> inserts a block of statements that render for each member of the given "<code class="sti">array</code>".
+        <div class="p"><code>&#123;&#123;#<span class="sti">helperName</span> <span class="sti">context</span>&#125;&#125; <span class="sti">block</span> &#123;&#123;/<span class="sti">helperName</span>&#125;&#125;</code> syntax for inserting built-in helpers.</div>
+        <div class="p"><code>&#123;&#123;#<span class="kwd">if</span> <span class="sti">condition</span>&#125;&#125; … &#123;&#123;<span class="opt">else</span>&#125;&#125; … &#123;&#123;/<span class="kwd">if</span>&#125;&#125;</code> inserts a block that will be displayed if "<code class="sti">condition</code>" evaluates to "<code>true</code>" (so it can be "<code>false</code>" if its "<code>undefined</code>"), can include an "<code class="opt">else</code>" block that displays if it evaluates to false.</div>
+        <div class="p"><code>&#123;&#123;#<span class="kwd">unless</span> <span class="sti">condition</span>&#125;&#125; … &#123;&#123;/<span class="kwd">unless</span>&#125;&#125;</code> inserts a block that will be displayed if "<code class="sti">condition</code>" evaluates to "<code>false</code>".</div>
+        <div class="p"><code>&#123;&#123;#<span class="kwd">each</span> <span class="sti">array</span>&#125;&#125; … &#123;&#123;/<span class="kwd">each</span>&#125;&#125;</code> inserts a block of statements that render for each member of the given "<code class="sti">array</code>".
           <div class="p"><code>@index</code> built-in variable that allows us to reference the current iteration index.</div>
           <div class="p"><code>this</code> built-in variable that contains all the information of the current object being iterated.</div>
         </div>
-        <div class="p"><code>{{&gt; <span class="sti">partialfilename</span> <span class="sti opt">context</span> }}</code> inserts a partial view into the current view, can include "<code class="sti opt">context</code>" to send one or more variables to the partial in the form of "<code><span class="sti">variable</span>=<span class="sti">value</span></code>".</div>
-        <div class="p"><code>{{{body}}}</code> inserts views into the body of the layouts (declared in the "<code>layout</code>" property of the "<code class="sti opt">options</code>" object of the "<code><span class="sti">res</span>.render()</code>" method).</div>
+        <div class="p"><code>&#123;&#123;&gt; <span class="sti">partialfilename</span> <span class="sti opt">context</span> &#125;&#125;</code> inserts a partial view into the current view, can include "<code class="sti opt">context</code>" to send one or more variables to the partial in the form of "<code><span class="sti">variable</span>=<span class="sti">value</span></code>".</div>
+        <div class="p"><code>&#123;&#123;&#123;body&#125;&#125;&#125;</code> inserts views into the body of the layouts (declared in the "<code>layout</code>" property of the "<code class="sti opt">options</code>" object of the "<code><span class="sti">res</span>.render()</code>" method).</div>
         <h2>Mongoose Module (MongoBD/Atlas)</h2>
         <h3>Mongoose Set-up</h3>
         <div class="p"><code><span class="kwd">const</span> <span class="sti">mongoose</span> = require('mongoose')</code> imports the "Mongoose" module to connect and communicate with "MongoDB/Atlas" databases.</div>
@@ -1236,13 +1236,13 @@
         </div>
         <div class="p"><code><span class="sti">Model</span>.find(<span class="sti">query</span><span class="opt">, <span class="sti">fields</span></span>)</code> finds all documents that match the conditions set in the "<code class="sti">query</code>" object, can filter specific "<span class="sti opt">fields</span>", and returns a "<code>Query</code>" object. Ej: "<code><span class="sti">Model</span>.find(<span class="sti">query</span><span class="opt">, <span class="sti">fields</span></span>).exec().then((<span class="sti">data</span>) => {<span class="sti">data</span> = <span class="sti">data</span>.map((<span class="sti">document</span>) => (<span class="sti">document</span>.toObject()))})</code>"</div>
         <div class="p"><code><span class="sti">Model</span>.findOne(<span class="sti">query</span><span class="opt">, <span class="sti">fields</span></span>)</code> finds one document that matches the conditions set in the "<code class="sti">query</code>".</div>
-        <div class="p"><code><span class="sti">Model</span>.updateOne(<span class="sti">query</span>, { $set: { <span class="sti">update</span> }})</code> update the first document that matches the conditions set in the "<code class="sti">query</code>" taking the keys and their values in the "<code class="sti">update</code>" object.</div>
-        <div class="p"><code><span class="sti">Model</span>.updateMany(<span class="sti">query</span>, { $set: { <span class="sti">update</span> }})</code> updates all the documents that matches the conditions set in the "<code class="sti">query</code>" taking keys their values in the "<code class="sti">update</code>" object.</div>
+        <div class="p"><code><span class="sti">Model</span>.updateOne(<span class="sti">query</span>, { $set: { <span class="sti">update</span> &#125;&#125;)</code> update the first document that matches the conditions set in the "<code class="sti">query</code>" taking the keys and their values in the "<code class="sti">update</code>" object.</div>
+        <div class="p"><code><span class="sti">Model</span>.updateMany(<span class="sti">query</span>, { $set: { <span class="sti">update</span> &#125;&#125;)</code> updates all the documents that matches the conditions set in the "<code class="sti">query</code>" taking keys their values in the "<code class="sti">update</code>" object.</div>
         <div class="p"><code><span class="sti">Model</span>.replaceOne(<span class="sti">query</span>, <span class="sti">docObj</span>)</code> replaces the first document that matches the conditions set in the "<code class="sti">query</code>" using the information given in the "<code class="sti">docObj</code>" object (for complete update instead of individual fields).</div>
         <div class="p"><code><span class="sti">Model</span>.deleteOne(<span class="sti">query</span>)</code> deletes the first document that matches the conditions set in the "<code class="sti">query</code>".</div>
         <div class="p"><code><span class="sti">Model</span>.deleteMany(<span class="sti">query</span>)</code> deletes all the documents that matches the conditions set in the "<code class="sti">query</code>".</div>
         <div class="p"><code><span class="sti">Model</span>.findById(<span class="sti">id</span><span class="opt">, <span class="sti">fields</span></span>)</code> finds the document that matches the given "<code class="sti">id</code>", equivalent but preferred over "<code><span class="sti">Model</span>.findOne({_id: <span class="sti">id</span>})</code>".</div>
-        <div class="p"><code><span class="sti">Model</span>.findByIdAndUpdate(<span class="sti">id</span>, { $set: { <span class="sti">update</span> }})</code> update the document that matches the given "<code class="sti">id</code>" taking the keys and their values in the "<code class="sti">update</code>" object.</div>
+        <div class="p"><code><span class="sti">Model</span>.findByIdAndUpdate(<span class="sti">id</span>, { $set: { <span class="sti">update</span> &#125;&#125;)</code> update the document that matches the given "<code class="sti">id</code>" taking the keys and their values in the "<code class="sti">update</code>" object.</div>
         <div class="p"><code><span class="sti">Model</span>.findByIdAndDelete(<span class="sti">id</span>)</code> deletes the document that matches the given "<code class="sti">id</code>".</div>
         <div class="p"><code><span class="sti">query</span> = { <span class="sti">key</span>: <span class="sti">value</span>,… }</code> typical MongoDB/Mongoose query syntax, where there can be one or more field evaluated, and where value can be the exact value or one of the following operator objects, which themselves can be one or more and nested (Ej: "<code>{ <span class="sti">key</span>: { <span class="sti">oper</span>: { <span class="sti">oper</span>:  <span class="sti">value</span> }, <span class="sti">oper</span>: <span class="sti">value</span> } }</code>"):</div>
         <div class="row">
@@ -1386,23 +1386,43 @@
         <div class="p"><code>ng serve <span class="opt">--open</span></code> starts a dynamic server that runs the Angular app. Options include: open a new window/tab with the app ("<code class="opt">--open</code>")</div>
         <div class="p"><code>ng build <span class="opt">--prod</span></code> compiles/builds the code for the Angular app.</div>
         <h2>Angular Components</h2>
-        <div class="p"><code><span class="kwd">import</span> { … } <span class="kwd">from</span> '@angular/core'</code> imports the following:
+        <div class="p"><code><span class="kwd">import</span> { … } <span class="kwd">from</span> '@angular/core'</code> imports the following elements:
           <ul>
             <li><code>Component</code>: imports the "<code>@Component</code>" decorator that marks a class as an Angular component and provides configuration metadata that determines how the component should be processed, instantiated, and used at runtime.</li>
             <li><code>ngOnInit</code>: imports the base class that implements the method "<code>ngOnInit()</code>".</li>
+            <li><code>Input</code>: imports  the "<code>@Imput</code>" decorator that marks a class field as an input property and supplies configuration metadata.</li>
           </ul>
         </div>
-        <div class="p"><code>@Component({ <span class="sti">data</span> }) <span class="kwd">export</span> <span class="kwd">class</span> <span class="sti">ComponentName</span> { … }</code> Component class declaration that will be exported by the module. The metadata "<code class="sti">data</code>" object contains the following members:
+        <div class="p"><code>@Component({ <span class="sti">data</span> }) <span class="kwd">export</span> <span class="kwd">class</span> <span class="sti">CustomComponent</span> { … }</code> Component class declaration that will be exported by the module. The metadata "<code class="sti">data</code>" object contains the following members:
           <ul>
-            <li><code>selector</code>: a string with a CSS selector for the component (the HTML element name to use in templates. Ej: "<code>&lt;<span class="sti">component-name</span>&gt;&lt;/<span class="sti">component-name</span>&gt;</code>").</li>
+            <li><code>selector</code>: a string with a CSS selector for the component (the HTML element name to use in templates. Ej: "<code class="sti">CustomComponent</code>" should have "<code>selector: '<span class="sti">app-custom</span>'</code>", so using it like "<code>&lt;<span class="sti">app-custom</span>&gt;&lt;/<span class="sti">app-custom</span>&gt;</code>").</li>
             <li><code>templateUrl|template</code>: a string with the route to the HTML template file; or optionally a string with an inline HTML template inside the same file.</li>
             <li><code>styleUrls|styles</code>: an array of strings with the routes to the style files; or optionally an array of strings that contain the CSS rule declarations.</li>
           </ul>
         </div>
+        <div class="p"><code>ngOnInit() {}</code> .</div>
+        <div class="p"><code>@Input(<span class="opt">'<span class="sti">attr-property</span>'</span>) <span class="sti">attrField</span>: <span class="sti">type</span></code> the "<code>@Imput</code>" decorator marks the "<code class="sti">attrField</code>" class field as defined by the corresponding attribute of the class selector, with a value set on its parent element. Optionally, the attribute on the parent may be declared different like "<code class="sti">attr-property</code>" and assigned to the field "<code class="sti">attrField</code>". Ej: "<code>&lt;<span class="sti">app-component</span> <span class="sti">attrField</span>="<span class="sti">value</span>"&gt;&lt;/<span class="sti">app-component</span>&gt;</code>".</div>
         <h2>Template Syntax</h2>
-        <div class="p"><code>{{<span class="sti">property</span>}}</code> evaluates to the value of the "<code class="sti">property</code>" defined in the corresponding class file.</div>
-        <div class="p"><code>[<span class="sti">property</span>]="<span class="sti">value</span>"</code> <span class="udl">property binding:</span> evaluates the content of the value to a property set in the component.</div>
-        <div class="p"><code>(<span class="sti">event</span>)="<span class="sti">function</span>()"</code> <span class="udl">event binding:</span> executes the function on the event defined.</div>
+        <div class="p"><code>&#123;&#123;<span class="sti">property</span>&#125;&#125;</code> <span class="udl">Template expression:</span> evaluates to the value of the "<code class="sti">property</code>" defined in the corresponding class file.</div>
+        <div class="p"><code>[<span class="sti">property</span>]="<span class="sti">value</span>"</code> <span class="udl">Property binding:</span> used on the template HTML elements, evaluates the content of the value to a property set in the component.</div>
+        <div class="p"><code>(<span class="sti">event</span>)="<span class="sti">eventFunction</span>(<span class="opt">$event</span>)"</code> <span class="udl">Event binding:</span> used on the template HTML elements, executes the function on the event defined. Optionally, the "<code class="opt">$event</code>" object may be provided to the function.</div>
+        <div class="p"><code>[attr.<span class="sti">attribute</span>]="<span class="sti">value</span>"</code> <span class="udl">Attribute binding:</span> used on the template HTML elements, like property binding, but for attributes that don't have a matching DOM property (like "<code>colspan</code>").</div>
+        <div class="p"><code>[class.<span class="sti">className</span>]="<span class="sti">booleanExpression</span>"</code> <span class="udl">Class binding:</span> conditionally adds a class "<code class="sti">className</code>" if the "<code class="sti">booleanExpression</code>" evaluates to true.</div>
+        <div class="p"><code>[style.<span class="sti">style-property</span>]="<span class="sti">value</span>"</code> <span class="udl">Style binding:</span> dynamically sets the value of a style property. Aditionally, it can also be added or removed conditionally with the use of the ternary operator ("<code><span class="sti">condition</span>?<span class="sti">value</span>:null</code>").</div>
+        <h2>Built-in Structural Directives</h2>
+        <div class="p"><code>&#42;ngFor="let <span class="sti">item</span> in <span class="sti">collection</span><span class="opt">; <span class="sti">option</span> as <span class="sti">local</span>;…</span>"</code> renders a template for each "<code class="sti">item</code>" in a "<code class="sti">collection</code>". The directive is placed on an element, which becomes the parent of the cloned templates. Adittional options:
+          <ul>
+            <li><code>index: number</code> The index of the current item in the iterable.</li>
+            <li><code>count: number</code> The length of the iterable.</li>
+            <li><code>first|last: boolean</code> True when the item is the first|last item in the iterable.</li>
+            <li><code>even|odd: boolean</code>True when the item has an even|odd index in the iterable.</li>
+          </ul>
+        </div>
+        <div class="p"><code>&#42;ngIf="<span class="sti">booleanExpression</span><span class="opt">; then <span class="sti">thenBlock</span> else <span class="sti">elseBlock</span></span>"</code> conditionally includes a template based on the value of an expression coerced to Boolean. When the expression evaluates to true, Angular renders the template provided in a then clause ("<code>&lt;ng-template #<span class="sti">thenBlock</span>&gt;…&lt;/ng-template&gt;</code> "), and when false or null, Angular renders the template provided in an optional else clause ("<code>&lt;ng-template #<span class="sti">elseBlock</span>&gt;…&lt;/ng-template&gt;</code> "). The default template for the else clause is blank.</div>
+        <div class="p"><code>&#91;ngSwitch&#93;="<span class="sti">expression</span>" </code> adds or removes templates (displaying or hiding views) when the next match expression matches the switch expression.
+          <div class="p"><code>&#42;ngSwitchCase="<span class="sti">caseValue</span>"</code> Provide a switch case expression to match against an enclosing ngSwitch expression. When the expressions match, the given NgSwitchCase template is rendered. If multiple match expressions match the switch expression value, all of them are displayed.</div>
+          <div class="p"><code>&#42;ngSwitchDefault</code> Creates a view that is rendered when no "<code>NgSwitchCase</code>" expressions match the "<code>NgSwitch</code>" expression. This statement should be the final case in an "<code>NgSwitch</code>".</div>
+        </div>
       </article>
     </div>
   </main>
