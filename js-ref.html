@@ -1378,19 +1378,23 @@
         <h1>Angular Framework (TypeScript)</h1>
         <h2>Commands</h2>
         <div class="p"><code>ng new <span class="sti">app-name</span> <span class="opt">--routing -S -g</span></code> creates a new Angular app named "<code class="sit">app-name</code>". Options include: enabling routing ("<code class="opt">--routing</code>"), skipping testing code ("<code class="opt">-S</code>"), or skipping creating a Git repository ("<code class="opt">-g</code>"), among others.</div>
-        <div class="p"><code>ng generate component|</code> generates:
+        <div class="p"><code>ng generate|g component|service</code> generates:
           <ul>
-            <li><code>component <span class="sti">componentName</span></code>: generates a component creating 3 files: "<code><span class="sti">component-name</span>.component.ts</code>" for the component class, "<code><span class="sti">component-name</span>.component.html</code>" for the component template, and a corresponding style file (.css, .scss, or .less); and edits the "<code>app.module.ts</code>" file to add the new component to the "<code>declarations</code>" array.</li>
+            <li><code>component|c <span class="sti">ComponentName</span></code>: generates a component creating 3 files: "<code><span class="sti">component-name</span>.component.ts</code>" for the component class, "<code><span class="sti">component-name</span>.component.html</code>" for the component template, and a corresponding style file (.css, .scss, or .less); and edits the "<code>app.module.ts</code>" file to add the new component to the "<code>declarations</code>" array.</li>
+            <li><code>service|s <span class="sti">ServiceName</span></code>: generates a service creating a file named "<code><span class="sti">service-name</span>.service.ts</code>" which will contain an "<code>Injectable</code>" service class.</li>
           </ul>
         </div>
         <div class="p"><code>ng serve <span class="opt">--open</span></code> starts a dynamic server that runs the Angular app. Options include: open a new window/tab with the app ("<code class="opt">--open</code>")</div>
         <div class="p"><code>ng build <span class="opt">--prod</span></code> compiles/builds the code for the Angular app.</div>
         <h2>Angular Components</h2>
-        <div class="p"><code><span class="kwd">import</span> { … } <span class="kwd">from</span> '@angular/core'</code> imports the following elements:
+        <div class="p"><code><span class="kwd">import</span> { … } <span class="kwd">from</span> '@angular/core'</code> the following can be imported when creating Angular components:
           <ul>
             <li><code>Component</code>: imports the "<code>@Component</code>" decorator that marks a class as an Angular component and provides configuration metadata that determines how the component should be processed, instantiated, and used at runtime.</li>
-            <li><code>ngOnInit</code>: imports the base class that implements the method "<code>ngOnInit()</code>".</li>
-            <li><code>Input</code>: imports  the "<code>@Imput</code>" decorator that marks a class field as an input property and supplies configuration metadata.</li>
+            <li><code>OnInit</code>: imports a lifecycle hook interface that implements the method "<code>ngOnInit()</code>".</li>
+            <li><code>Input</code>: imports  the "<code>@Input</code>" decorator that marks a class field as an input property and supplies configuration metadata.</li>
+            <li><code>Output</code>: imports  the "<code>@Output</code>" decorator that marks a class field as an output property and supplies configuration metadata.</li>
+            <li><code>EventEmitter</code>: imports the "<code>EventEmitter</code>" class, used in components with the "<code>@Output</code>" directive to emit custom events synchronously or asynchronously, and register handlers for those events by subscribing to an instance.</li>
+            <li><code>OnDestroy</code>: imports a lifecycle hook interface that implements the method "<code>ngOnDestroy()</code>".</li>
           </ul>
         </div>
         <div class="p"><code>@Component({ <span class="sti">data</span> }) <span class="kwd">export</span> <span class="kwd">class</span> <span class="sti">CustomComponent</span> { … }</code> Component class declaration that will be exported by the module. The metadata "<code class="sti">data</code>" object contains the following members:
@@ -1400,15 +1404,19 @@
             <li><code>styleUrls|styles</code>: an array of strings with the routes to the style files; or optionally an array of strings that contain the CSS rule declarations.</li>
           </ul>
         </div>
-        <div class="p"><code>ngOnInit() {}</code> .</div>
-        <div class="p"><code>@Input(<span class="opt">'<span class="sti">attr-property</span>'</span>) <span class="sti">attrField</span>: <span class="sti">type</span></code> the "<code>@Imput</code>" decorator marks the "<code class="sti">attrField</code>" class field as defined by the corresponding attribute of the class selector, with a value set on its parent element. Optionally, the attribute on the parent may be declared different like "<code class="sti">attr-property</code>" and assigned to the field "<code class="sti">attrField</code>". Ej: "<code>&lt;<span class="sti">app-component</span> <span class="sti">attrField</span>="<span class="sti">value</span>"&gt;&lt;/<span class="sti">app-component</span>&gt;</code>".</div>
+        <div class="p"><code>ngOnInit() : void { … }</code> in classes that implement the "<code>OnInit</code>" interface ("<code><span class="kwd">class</span> <span class="sti">CustomComponent</span> <span class="kwd">implements</span> OnInit</code>"), defines a method to handle any additional initialization tasks.</div>
+        <div class="p"><code>ngOnDestroy() : void { … }</code> in classes that implement the "<code>OnDestroy</code>" interface ("<code><span class="kwd">class</span> <span class="sti">CustomComponent</span> <span class="kwd">implements</span> OnDestroy</code>"), defines a method to handle cleanup task when a component is closed.</div>
+        <div class="p"><code>@Input(<span class="opt">'<span class="sti">attr-property</span>'</span>) <span class="sti">attrField</span>: <span class="sti">type</span></code> the "<code>@Input</code>" decorator marks the "<code class="sti">attrField</code>" class field as defined by the corresponding attribute of the class selector, with a value set on its parent element. Optionally, the attribute on the parent may be declared different like "<code class="sti">attr-property</code>" and assigned to the field "<code class="sti">attrField</code>". Ej: "<code>&lt;<span class="sti">app-component</span> <span class="sti">attrField</span>="<span class="sti">value</span>"&gt;&lt;/<span class="sti">app-component</span>&gt;</code>".</div>
+        <div class="p"><code>@Output() <span class="sti">customEvent</span> = <span class="kwd">new</span> EventEmitter()</code> the "<code>EventEmitter()</code>" constructor alongside the "<code>@Output</code>" decorator creates an instance of this class that can deliver events synchronously or asynchronously. This event can then be handled by the parent component with event binding ("<code>&lt;<span class="sti">app-child</span> (<span class="sti">customEvent</span>)="<span class="sti">eventFunction</span>()"&gt;&lt;/<span class="sti">app-child</span>&gt;</code>").
+          <div class="p"><code><span class="kwd">this</span>.<span class="sti">customEvent</span>.emit(<span class="sti">eventObject</span>)</code> Method to emit the custom event to the parent component. Optionally, can send information inside an "<code class="sti">eventObject</code>" with any kind of data.</div>
+        </div>
         <h2>Template Syntax</h2>
         <div class="p"><code>&#123;&#123;<span class="sti">property</span>&#125;&#125;</code> <span class="udl">Template expression:</span> evaluates to the value of the "<code class="sti">property</code>" defined in the corresponding class file.</div>
         <div class="p"><code>[<span class="sti">property</span>]="<span class="sti">value</span>"</code> <span class="udl">Property binding:</span> used on the template HTML elements, evaluates the content of the value to a property set in the component.</div>
         <div class="p"><code>(<span class="sti">event</span>)="<span class="sti">eventFunction</span>(<span class="opt">$event</span>)"</code> <span class="udl">Event binding:</span> used on the template HTML elements, executes the function on the event defined. Optionally, the "<code class="opt">$event</code>" object may be provided to the function.</div>
         <div class="p"><code>[attr.<span class="sti">attribute</span>]="<span class="sti">value</span>"</code> <span class="udl">Attribute binding:</span> used on the template HTML elements, like property binding, but for attributes that don't have a matching DOM property (like "<code>colspan</code>").</div>
         <div class="p"><code>[class.<span class="sti">className</span>]="<span class="sti">booleanExpression</span>"</code> <span class="udl">Class binding:</span> conditionally adds a class "<code class="sti">className</code>" if the "<code class="sti">booleanExpression</code>" evaluates to true.</div>
-        <div class="p"><code>[style.<span class="sti">style-property</span>]="<span class="sti">value</span>"</code> <span class="udl">Style binding:</span> dynamically sets the value of a style property. Aditionally, it can also be added or removed conditionally with the use of the ternary operator ("<code><span class="sti">condition</span>?<span class="sti">value</span>:null</code>").</div>
+        <div class="p"><code>[style.<span class="sti">style-property</span>]="<span class="sti">value</span>"</code> <span class="udl">Style binding:</span> dynamically sets the value of a style property. Additionally, it can also be added or removed conditionally with the use of the ternary operator ("<code><span class="sti">condition</span>?<span class="sti">value</span>:null</code>").</div>
         <h2>Built-in Structural Directives</h2>
         <div class="p"><code>&#42;ngFor="let <span class="sti">item</span> in <span class="sti">collection</span><span class="opt">; <span class="sti">option</span> as <span class="sti">local</span>;…</span>"</code> renders a template for each "<code class="sti">item</code>" in a "<code class="sti">collection</code>". The directive is placed on an element, which becomes the parent of the cloned templates. Adittional options:
           <ul>
@@ -1423,6 +1431,49 @@
           <div class="p"><code>&#42;ngSwitchCase="<span class="sti">caseValue</span>"</code> Provide a switch case expression to match against an enclosing ngSwitch expression. When the expressions match, the given NgSwitchCase template is rendered. If multiple match expressions match the switch expression value, all of them are displayed.</div>
           <div class="p"><code>&#42;ngSwitchDefault</code> Creates a view that is rendered when no "<code>NgSwitchCase</code>" expressions match the "<code>NgSwitch</code>" expression. This statement should be the final case in an "<code>NgSwitch</code>".</div>
         </div>
+        <h2>Routing</h2>
+        <div class="p"><code><span class="kwd">const</span> routes: Routes = [ { <span class="sti">route</span> }, … ]</code> an array that contain "<code class="sti">route</code>" (type "<code>Route</code>") objects, located on the file "<code>app/app-routing.module.ts</code>". The "<code>Route</code>" object contains:
+          <ul>
+            <li><code>path</code>: The path to match against. A URL string that uses router matching notation. Can be a wild card (**) that matches any URL. Default is "/" (the root path).</li>
+            <li><code><span class="opt">component</span></code>: The component to instantiate when the path matches. Can be empty if child routes specify components. Components declared here must be previously imported ("<code><span class="kwd">import</span> { <span class="sti">CustomComponent</span> } <span class="kwd">from</span> '<span class="sti">path-to-component</span>'</code>").</li>
+            <li><code><span class="opt">redirectTo</span></code>: A URL to redirect to when the path matches.</li>
+            <li><code><span class="opt">pathMatch</span></code>: The path-matching strategy, one of "<code>'prefix'</code>" (default) or "<code>'full'</code>".</li>
+            <li><code><span class="opt">children</span></code>: An array of child "<code>Route</code>" objects that specifies a nested route configuration.</li>
+          </ul>
+        </div>
+        <div class="p"><code>&lt;router-outlet <span class="opt">name="'<span class="sti">routerName</span>'"</span>&gt;&lt;/router-outlet&gt;</code> Acts as a placeholder that Angular dynamically fills based on the current router state (by default located in the app component). Each outlet can have a unique name, determined by the optional "<code class="opt">name</code>" attribute. The name cannot be set or changed dynamically.</div>
+        <div class="p"><code>&lt;a routerLink="<span class="sti">path</span>"&gt;…&lt;/a&gt;</code> the "<code>routerLink=</code>" attribute, when applied to an element in a template, makes that element a link that initiates navigation to a route.
+          <div class="p"><code>routerLinkActive="<span class="sti">activeClass</span>"</code> Tracks whether the linked route of an element is currently active, and allows you to specify one or more CSS classes to add to the element when the linked route is active.</div>
+        </div>
+        <h2>Angular Services</h2>
+        <div class="p"><code><span class="kwd">import</span> { Injectable } <span class="kwd">from</span> '@angular/core'</code> imports the "<code>@Injectable</code>" decorator for the service class.</div>
+        <div class="p"><code>@Injectable({ providedIn: 'root' }) <span class="kwd">export</span> <span class="kwd">class</span> <span class="sti">CustomService</span> { … }</code> The "<code>@Injectable()</code>" decorator indicates that this service is intended to be “injected” into another component or service at runtime. When using a Service, a <strong>Component</strong> must:
+          <ul>
+            <li><code><span class="kwd">import</span> { <span class="sti">CustomService</span> } <span class="kwd">from</span> '<span class="sti">custom-service</span>.service.ts'</code> import the service.</li>
+            <li><code>constructor(<span class="kwd">private</span> <span class="sti">service</span>: <span class="sti">CustomService</span>)</code> inject the service into the Component constructor.</li>
+            <li><code><span class="sti">data</span>: <span class="sti">type</span>; … ngOnInit() { <span class="kwd">this</span>.<span class="sti">data</span> = <span class="kwd">this</span>.<span class="sti">service</span>.<span class="sti">getData</span>() }</code> declare a field to store the data and use a service method to get data from the service on the "<code>ngOnInit</code>" hook when the component is loaded/initialized.</li>
+          </ul>
+        </div>
+        <h2>HttpClient and Observables</h2>
+        <h3>Observables</h3>
+        <div class="p"><code><span class="kwd">import</span> { Observable } <span class="kwd">from</span> 'rxjs'</code> imports the "<code>Observable</code>" constructor from the "Reactive Extensions for JavaScript" (RxJS) library.</div>
+        <div class="p"><code><span class="kwd">let</span> <span class="sti">source</span> = <span class="kwd">new</span> Observable((<span class="sti">observer</span>) => { … })</code> the "<code>Observable</code>" constructor receives an "<code class="sti">observer</code>" object which contains 3 methods of callback functions:
+          <ul>
+            <li><code><span class="sti">observer</span>.next(<span class="sti">value</span>)</code> called when the information is ready.</li>
+            <li><code><span class="sti">observer</span>.error(<span class="sti">err</span>)</code> called when an error is encountered.</li>
+            <li><code><span class="sti">observer</span>.complete()</code> called when the operation is completed.</li>
+          </ul>
+          <div class="p"><code><span class="kwd">let</span> <span class="sti">subscription</span> = <span class="sti">source</span>.subscribe( <span class="kwd">function</span> <span class="sti opt">next</span>(<span class="sti">value</span>) { … }, <span class="kwd">function</span> <span class="sti opt">error</span>(<span class="sti">err</span>) { … }, <span class="kwd">function</span> <span class="sti opt">complete</span>() { … } )</code> we create a subscription to an observable calling its "<code>subscribe()</code>" method and passing to it at least 1 and up to 3 functions to be executed on: "next:, "error" or "complete". Ej: "<code>subscribe(<span class="sti">data</span> => this.<span class="sti">data</span> = <span class="sti">data</span>)</code>".</div>
+          <div class="p"><code><span class="sti">subscription</span>.unsubscribe()</code> use the "<code>unsubscribe()</code>" method to dispose the subscription once the component is destroyed ("<code>@ngOnDestroy() { <span class="kwd">this</span>.<span class="sti">subscription</span>.unsubscribe(); }</code>").</div>
+        </div>
+        <h3>HttpClient</h3>
+        <div class="p"><code><span class="kwd">import</span> { HttpClientModule } <span class="kwd">from</span> '@angular/common/http'</code> this must be imported on the root AppModule "<code>app.module.ts</code>" file.
+          <div class="p"><code>@NgModule({ …, imports: [ …, HttpClientModule ], … })</code> then the "<code>HttpClientModule</code>" module must be added to the "<code>imports</code>" array of the "<code>NgModule</code>" decorator.</div>
+        </div>
+        <div class="p"><code><span class="kwd">import</span> { HttpClient  } <span class="kwd">from</span> '@angular/common/http'</code> must be imported on any service or component that will use it.
+          <div class="p"><code>constructor(<span class="kwd">private</span> <span class="sti">http</span>: HttpClient) { }</code> then it must be injected into the constructor.</div>
+        </div>
+        <div class="p"><code><span class="sti">getData</span>(): Observable&lt;<span class="sti">type</span>&gt; { <span class="kwd">return</span> <span class="kwd">this</span>.<span class="sti">http</span>.get&lt;type&gt;('<span class="sti">URL</span>') }</code> the "<code>HttpClient.get()</code>" method makes a request to the given "<code class="sti">URL</code>" and returns an "<code>Observable</code>" that can be subscribed.</div>
       </article>
     </div>
   </main>
