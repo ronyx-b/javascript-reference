@@ -231,6 +231,23 @@
     justify-content: space-around;
   }
 
+  /* scrollbar */
+  ::-webkit-scrollbar {
+    width: 1em;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060608; 
+  }
+  /* ::-webkit-scrollbar-button {
+    background: #0a0a0d; 
+  } */
+  ::-webkit-scrollbar-thumb {
+    background: #676769;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #545456;
+  }
+
   @media only screen and (max-width: 768px) {
     article {
       margin: 5px;
@@ -1370,9 +1387,10 @@
         <div class="p"><code><span class="kwd">import</span> { useSelector, useDispatch } <span class="kwd">from</span> 'react-redux'</code> imports custom React hooks that allow your React components to interact with the Redux store.</div>
         <div class="p"><code>&lt;Provider store={<span class="sti">store</span>}&gt; … &lt;/Provider&gt;</code> wraps the "<code>&lt;App&gt;</code>" component (in React-Redux defined on the file "<code>./js/components/App</code>") inside the "<code>render()</code>" method. It takes a "<code>store</code>" attribute that can be bind to the imported store ("<code>&lt;Provider store={<span class="sti">store</span>}&gt;&lt;App /&gt;&lt;/Provider&gt;</code>").</div>
         <div class="p"><code><span class="kwd">import</span> { connect } <span class="kwd">from</span> 'react-redux'</code> imports the "<code>connect()</code>" function to bind the store to the state.</div>
-        <div class="p"><code>connect(<span class="opt">mapStateToProps</span>, <span class="opt">mapDispatchToProps</span>)(<span class="sti">StatelessComponent</span>)</code> returns a component with its state bind to the store.</div>
-        <div class="p"><code><span class="kwd">function</span> mapStateToProps</code></div>
-        <div class="p"><code><span class="kwd">function</span> mapDispatchToProps(dispatch) { <span class="kwd">return</span> { <span class="sti">doActionProp</span>: <span class="kwd">function</span>(<span class="sti">payload</span>) { dispatch(<span class="sti">doAction</span>(<span class="sti">payload</span>)) } }; } </code> connects Redux actions to React props</div>
+        <div class="p"><code>connect(<span class="opt">mapStateToProps</span>, <span class="opt">mapDispatchToProps</span>, <span class="opt">mergeProps</span>, <span class="opt">options</span>)(<span class="sti">StatelessComponent</span>)</code> returns a component with its state bind to the store.
+          <div class="p"><code><span class="kwd">function</span> mapStateToProps</code></div>
+          <div class="p"><code><span class="kwd">function</span> mapDispatchToProps(dispatch) { <span class="kwd">return</span> { <span class="sti">doActionProp</span>: <span class="kwd">function</span>(<span class="sti">payload</span>) { dispatch(<span class="sti">doAction</span>(<span class="sti">payload</span>)) } }; } </code> connects Redux actions to React props</div>
+        </div>
       </article>
       <article>
         <h1>Angular Framework (TypeScript)</h1>
@@ -1432,6 +1450,7 @@
           <div class="p"><code>&#42;ngSwitchDefault</code> Creates a view that is rendered when no "<code>NgSwitchCase</code>" expressions match the "<code>NgSwitch</code>" expression. This statement should be the final case in an "<code>NgSwitch</code>".</div>
         </div>
         <h2>Routing</h2>
+        <h3>Configuring Routing Module and App entry point</h3>
         <div class="p"><code><span class="kwd">const</span> routes: Routes = [ { <span class="sti">route</span> }, … ]</code> an array that contain "<code class="sti">route</code>" (type "<code>Route</code>") objects, located on the file "<code>app/app-routing.module.ts</code>". The "<code>Route</code>" object contains:
           <ul>
             <li><code>path</code>: The path to match against. A URL string that uses router matching notation. Can be a wild card ("<code>'**'</code>") that matches any URL. Can be parametric ("<code>'<span class="sti">route</span>/:<span class="sti">param</span>'</code>"). Default is "/" (the root path).</li>
@@ -1442,17 +1461,23 @@
           </ul>
         </div>
         <div class="p"><code>&lt;router-outlet <span class="opt">name="'<span class="sti">routerName</span>'"</span>&gt;&lt;/router-outlet&gt;</code> Acts as a placeholder that Angular dynamically fills based on the current router state (by default located in the app component). Each outlet can have a unique name, determined by the optional "<code class="opt">name</code>" attribute. The name cannot be set or changed dynamically.</div>
+        <h3>Links and Navigating Programmatically</h3>
         <div class="p"><code>&lt;a routerLink="<span class="sti">path</span>"&gt;…&lt;/a&gt;</code> the "<code>routerLink=</code>" attribute, when applied to an element in a template, makes that element a link that initiates navigation to a route.
-          <div class="p"><code>&#91;routerLink&#93;="['<span class="sti">path</span>', <span class="sti">param</span>]"</code> optionally, the routerLink directive can be parametric, passing an array which specifies the path, and the value of the route parameter.</div>
+          <div class="p"><code>&#91;routerLink&#93;="['<span class="sti">path</span>', <span class="sti">param</span>]"</code> <span class="udl">Parametric Link:</span> optionally, the routerLink directive can be parametric, passing an array which specifies the path, and the value of the route parameter.</div>
+          <div class="p"><code>&#91;queryParams&#93;="{ <span class="sti">queryObject</span> }"</code> <span class="udl">Query parameters:</span> alternatively, we can pass a "<code class="sti">queryObject</code>" alongside a "<code>&#91;routerLink&#93;="['<span class="sti">path</span>']"</code>" directive.</div>
           <div class="p"><code>routerLinkActive="<span class="sti">activeClass</span>"</code> Tracks whether the linked route of an element is currently active, and allows you to specify one or more CSS classes to add to the element when the linked route is active.</div>
         </div>
         <div class="p"><code><span class="kwd">import</span> { Router } <span class="kwd">from</span> '@angular/router'</code> imports the "<code>Router</code>" service to a component, which allows to route programmatically.
           <div class="p"><code>constructor( <span class="kwd">private</span> <span class="sti">router</span>: Router ){}</code> After importing the "<code>Router</code>" service, we must inject it in the component constructor.</div>
-          <div class="p"><code><span class="kwd">this</span>.<span class="sti">router</span>.navigate(['<span class="sti">path</span>'<span class="opt">, <span class="sti">param</span></span>])</code> the "<code>Router.navigate()</code>" method allows to navigate programmatically, it takes an array with a "<code class="sti">path</code>" and an optional "<code class="opt sti">param</code>".</div>
+          <div class="p"><code><span class="kwd">this</span>.<span class="sti">router</span>.navigate(['<span class="sti">path</span>'<span class="opt">, <span class="sti">param</span></span>]<span class="opt">, { queryParams: { <span class="sti">queryObject</span> } }</span> )</code> the "<code>Router.navigate()</code>" method allows to navigate programmatically, it takes an array with a "<code class="sti">path</code>", and optional "<code class="opt sti">param</code>" for parametric paths or an "<code class="opt">{ queryParams: { <span class="sti">queryObject</span> } }</code>" object for query parameters.</div>
         </div>
-        <div class="p"><code><span class="kwd">import</span> { ActivatedRoute } <span class="kwd">from</span> '@angular/router'</code> .
-          <div class="p"><code>constructor( private route: ActivatedRoute ) {}</code>.</div>
-          <div class="p"><code><span class="kwd">let</span> <span class="sti">paramField</span> = <span class="kwd">this</span>.<span class="sti">route</span>.snapshot.params['<span class="sti">param</span>']</code>.</div>
+        <h3>Components with Parametric routes and Query parameters</h3>
+        <div class="p"><code><span class="kwd">import</span> { ActivatedRoute } <span class="kwd">from</span> '@angular/router'</code> the "<code>ActivatedRoute</code>" service allows components to read parameters from a parametric path.
+          <div class="p"><code>constructor( <span class="kwd">private</span> <span class="sti">route</span>: ActivatedRoute ) {}</code> after imported in the component, the "<code>ActivatedRoute</code>" service must be injected to the component constructor for use.</div>
+          <div class="p"><code><span class="kwd">let</span> <span class="sti">paramField</span> = <span class="kwd">this</span>.<span class="sti">route</span>.snapshot.params['<span class="sti">param</span>']</code> the parameters from the path can be accessed through the "<code><span class="sti">route</span>.snapshot.params</code>" object.</div>
+          <div class="p"><code><span class="kwd">let</span> <span class="sti">queryField</span> = <span class="kwd">this</span>.<span class="sti">route</span>.snapshot.queryParams['<span class="sti">queryParam</span>']</code> the query parameters from the path can be accessed through the "<code><span class="sti">route</span>.snapshot.queryParams</code>" object. However, this should be done through a subscription directly to the "<code><span class="sti">route</span>.queryParams</code>" member:
+            <div class="p"><code>ngOnInit() { <span class="kwd">this</span>.<span class="sti">sub</span> = <span class="kwd">this</span>.<span class="sti">route</span>.queryParams.subscribe((<span class="sti">params</span>) => { <span class="kwd">this</span>.<span class="sti">queryField</span> = <span class="sti">params</span>['<span class="sti">queryParam</span>'] }) } … ngOnDestroy() { <span class="kwd">this</span>.<span class="sti">sub</span>.unsubscribe(); }</code></div>
+          </div>
         </div>
         <h2>Angular Services</h2>
         <div class="p"><code><span class="kwd">import</span> { Injectable } <span class="kwd">from</span> '@angular/core'</code> imports the "<code>@Injectable</code>" decorator for the service class.</div>
@@ -1483,6 +1508,16 @@
           <div class="p"><code>constructor(<span class="kwd">private</span> <span class="sti">http</span>: HttpClient) { }</code> then it must be injected into the constructor.</div>
         </div>
         <div class="p"><code><span class="sti">getData</span>(): Observable&lt;<span class="sti">type</span>&gt; { <span class="kwd">return</span> <span class="kwd">this</span>.<span class="sti">http</span>.get&lt;type&gt;('<span class="sti">URL</span>') }</code> the "<code>HttpClient.get()</code>" method makes a request to the given "<code class="sti">URL</code>" and returns an "<code>Observable</code>" that can be subscribed.</div>
+        <h2>Angular Forms (Template-driven)</h2>
+        <h3>Initial Configuration</h3>
+        <div class="p"><code><span class="kwd">import</span> { FormsModule } <span class="kwd">from</span> '@angular/forms'</code> imports the "<code>FormsModule</code>" service on the "<code>app.module.ts</code>" file, which exports the required providers and directives for template-driven forms, making them available for import by NgModules that import this module.</div>
+        <div class="p"><code>@NgModule({ …, imports: [ …, FormsModule ], … })</code> then the "<code>FormsModule</code>" module must be added to the "<code>imports</code>" array of the "<code>NgModule</code>" decorator.</div>
+        <h3>Form Directives</h3>
+        <div class="p"><code>&#91;(ngModel)&#93;='<span class="sti">componentProperty</span>'</code> the syntax allows two-way data binding on form elements.</div>
+        <div class="p"><code>#<span class="sti">fieldName</span>="ngModel"</code> this directive added to a form field, allows to access its state properties for validation and styling (Ej: "<code><span class="sti">fieldName</span>.valid</code>", "<code><span class="sti">fieldName</span>.errors?.required</code> ").</div>
+        <div class="p"><code>&lt;form <span class="opt">#<span class="sti">f</span>='ngForm'</span> &#40;ngSubmit&#41;='<span class="sti">onSubmit</span>(<span class="opt sti">f</span>)'&gt;</code> forms with two-way data binding are handled by the event "<code>ngSubmit</code>". If we wish to pass a reference to the specific form to the "<code><span class="sti">onSubmit</span>()</code>" event handler, we can use "<code>ngForm</code>" to assign a reference variable to the form itself, and pass it to the handler.
+          <div class="p"><code><span class="kwd">import</span> { NgForm } from '@angular/forms'</code> this service must be imported by components handling a reference to the form.</div>
+        </div>
       </article>
     </div>
   </main>
@@ -1546,9 +1581,9 @@
         elem.scrollIntoView();
       });
       let indent = parseInt(elem.outerHTML.charAt(2)) - 1;
-      anchor.setAttribute('style', `margin-left: ${indent * 15}px`)
       anchor.innerText = elem.innerText;
       let line = document.createElement('div');
+      line.setAttribute('style', `margin: 2px 0px 2px ${indent * 15}px; padding-left: 7px; text-indent: -7px;`)
       line.appendChild(anchor);
       indexElem.appendChild(line);
     });
