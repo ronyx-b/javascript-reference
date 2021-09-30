@@ -1434,7 +1434,7 @@
         <h2>Routing</h2>
         <div class="p"><code><span class="kwd">const</span> routes: Routes = [ { <span class="sti">route</span> }, … ]</code> an array that contain "<code class="sti">route</code>" (type "<code>Route</code>") objects, located on the file "<code>app/app-routing.module.ts</code>". The "<code>Route</code>" object contains:
           <ul>
-            <li><code>path</code>: The path to match against. A URL string that uses router matching notation. Can be a wild card (**) that matches any URL. Default is "/" (the root path).</li>
+            <li><code>path</code>: The path to match against. A URL string that uses router matching notation. Can be a wild card ("<code>'**'</code>") that matches any URL. Can be parametric ("<code>'<span class="sti">route</span>/:<span class="sti">param</span>'</code>"). Default is "/" (the root path).</li>
             <li><code><span class="opt">component</span></code>: The component to instantiate when the path matches. Can be empty if child routes specify components. Components declared here must be previously imported ("<code><span class="kwd">import</span> { <span class="sti">CustomComponent</span> } <span class="kwd">from</span> '<span class="sti">path-to-component</span>'</code>").</li>
             <li><code><span class="opt">redirectTo</span></code>: A URL to redirect to when the path matches.</li>
             <li><code><span class="opt">pathMatch</span></code>: The path-matching strategy, one of "<code>'prefix'</code>" (default) or "<code>'full'</code>".</li>
@@ -1443,7 +1443,16 @@
         </div>
         <div class="p"><code>&lt;router-outlet <span class="opt">name="'<span class="sti">routerName</span>'"</span>&gt;&lt;/router-outlet&gt;</code> Acts as a placeholder that Angular dynamically fills based on the current router state (by default located in the app component). Each outlet can have a unique name, determined by the optional "<code class="opt">name</code>" attribute. The name cannot be set or changed dynamically.</div>
         <div class="p"><code>&lt;a routerLink="<span class="sti">path</span>"&gt;…&lt;/a&gt;</code> the "<code>routerLink=</code>" attribute, when applied to an element in a template, makes that element a link that initiates navigation to a route.
+          <div class="p"><code>&#91;routerLink&#93;="['<span class="sti">path</span>', <span class="sti">param</span>]"</code> optionally, the routerLink directive can be parametric, passing an array which specifies the path, and the value of the route parameter.</div>
           <div class="p"><code>routerLinkActive="<span class="sti">activeClass</span>"</code> Tracks whether the linked route of an element is currently active, and allows you to specify one or more CSS classes to add to the element when the linked route is active.</div>
+        </div>
+        <div class="p"><code><span class="kwd">import</span> { Router } <span class="kwd">from</span> '@angular/router'</code> imports the "<code>Router</code>" service to a component, which allows to route programmatically.
+          <div class="p"><code>constructor( <span class="kwd">private</span> <span class="sti">router</span>: Router ){}</code> After importing the "<code>Router</code>" service, we must inject it in the component constructor.</div>
+          <div class="p"><code><span class="kwd">this</span>.<span class="sti">router</span>.navigate(['<span class="sti">path</span>'<span class="opt">, <span class="sti">param</span></span>])</code> the "<code>Router.navigate()</code>" method allows to navigate programmatically, it takes an array with a "<code class="sti">path</code>" and an optional "<code class="opt sti">param</code>".</div>
+        </div>
+        <div class="p"><code><span class="kwd">import</span> { ActivatedRoute } <span class="kwd">from</span> '@angular/router'</code> .
+          <div class="p"><code>constructor( private route: ActivatedRoute ) {}</code>.</div>
+          <div class="p"><code><span class="kwd">let</span> <span class="sti">paramField</span> = <span class="kwd">this</span>.<span class="sti">route</span>.snapshot.params['<span class="sti">param</span>']</code>.</div>
         </div>
         <h2>Angular Services</h2>
         <div class="p"><code><span class="kwd">import</span> { Injectable } <span class="kwd">from</span> '@angular/core'</code> imports the "<code>@Injectable</code>" decorator for the service class.</div>
