@@ -145,6 +145,11 @@
     color: #ff00ff;
   }
 
+  .kwo {
+    font-style: normal;
+    color: #ffff00;
+  }
+
   .sti {
     font-style: italic;
   }
@@ -206,6 +211,13 @@
   #content {
     flex: 1;
     overflow: auto;
+  }
+
+  #index-title {
+    text-align: center; 
+    font-size: 1.2em; 
+    font-weight: bold; 
+    text-decoration: underline;
   }
 
   #index a {
@@ -304,7 +316,7 @@
   <main>
     <div id="navBar">
       <nav>
-        <div style="text-align: center; font-size: 1.2em; font-weight: bold; text-decoration: underline;">Index</div>
+        <div id="index-title">Index</div>
         <div id="index"></div>
       </nav>
     </div>
@@ -791,14 +803,14 @@
         <div class="p"><code>encodeURI(<span class="sti">string</span>);  decodeURI(<span class="sti">string</span>)</code> global functions, encode/decode text from/to URI.</div>
         <h3>Custom Constructor Functions, Prototype (inheritance), and JavaScript Class</h3>
         <div class="p"><code><span class="kwd">function</span> <span class="sti">Constructor</span>(<span class="opt"><span class="sti">parameters</span>, …</span>) { <span class="opt">this.<span class="sti">prop</span> = <span class="sti">param</span>; … ; this.<span class="sti">method</span> = function (…) { …; }</span> };</code> defines a constructor function for objects of type "<code class="sti">Constructor</code>".
-          <div class="p"><code>var object = new Constructor(arguments, …);</code> creates an object which is a new instance of the original constructor object;</div>
+          <div class="p"><code><span class="kwd">var</span> object = <span class="kwd">new</span> <span class="sti">Constructor</span>(<span class="opt"><span class="sti">arguments</span>, …</span>);</code> creates an object which is a new instance of the original constructor object;</div>
           <div class="p"><code>.prototype</code> objects property that accesses the object from which it inherits, can be used on constructor functions to add new methods to derived instances.</div>
         </div>
         <div class="p"><code class="kwd">new</code> <span class="udl">instance operator:</span> creates a new object as an instance of the Constructor function that follows.</div>
         <div class="p"><code class="kwd">this</code> objects reference keyword, if alone refers to the global object, inside a method refers to the owner object.</div>
         <div class="p"><code><span class="kwd">class</span> <span class="sti">ClassName</span> <span class="opt">extends <span class="sti">ParentClass</span></span> { … }</code> class declaration for custom defined objects, can inherit ("<code class="kwd">extends</code>") from a "<code class="sti opt">ParentClass</code>".
           <div class="p"><code>constructor(<span class="opt"><span class="sti">parameters</span>, …</span> ) { <span class="opt">this.<span class="sti">property</span> = <span class="sti">parameter</span>; …</span> }</code> class designated constructor.</div>
-          <div class="p"><code class="kwd">super</code> refers the "ParentClass" object if it exists, and calls its constructor if the calling operator its applied.</div>
+          <div class="p"><code class="kwd">super</code> refers the "<code class="sti opt">ParentClass</code>" object if it exists, and calls its constructor if the calling operator its applied.</div>
           <div class="p"><code class="kwd">static</code> defines a property or method that belongs to the class itself and not to any instance.</div>
           <div class="p"><code><span class="kwd">var</span> <span class="sti">newObject</span> = <span class="kwd">new</span> <span class="sti">className</span>(<span class="opt">arguments</span>)</code> class instantiation (object creation).</div>
         </div>
@@ -1198,6 +1210,11 @@
         <div class="p"><code><span class="kwd">const</span> <span class="sti">https</span> = require('https')</code> imports the " HTTPS" module to create a HTTPS protocol server app.</div>
         <div class="p"><code><span class="sti">http</span>.createServer(<span class="sti">app</span>).listen(<span class="sti">HTTP_PORT</span><span class="opt">, <span class="sti">callback</span></span>)</code> the method takes the "<code>Application</code>" ("<code class="sti">app</code>") object and returns a new "<code>Application</code>" object that will handle all "<code>HTTP</code>" method request.</div>
         <div class="p"><code><span class="sti">https</span>.createServer({key: …, cert: …}, <span class="sti">app</span>).listen(<span class="sti">HTTPS_PORT</span><span class="opt">, <span class="sti">callback</span></span>)</code> the method takes an options object with the "<code>key</code>" and "<code>cert</code>" properties that take the contents of the certificate files and the "<code>Application</code>" ("<code class="sti">app</code>") object and returns a new "<code>Application</code>" object that will handle all "<code>HTTPS</code>" method request.</div>
+        <div class="p"><code><span class="kwd">let</span> <span class="sti">httpReq</span> = <span class="sti">http</span>.request(<span class="sti opt">resourceURL</span>, <span class="opt"><span class="sti">options</span>,</span> <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">httpRes</span>) { … })</code></div>
+        <div class="p"><code><span class="sti">http</span>.get(<span class="sti">resourceURL</span>, <span class="opt"><span class="sti">options</span>,</span> <span class="kwd">function</span> <span class="sti opt">callback</span>(<span class="sti">httpRes</span>) { … }).on('error', (<span class="sti">err</span>) => { … })</code> Since most requests are "<code>GET</code>" requests without bodies, Node.js provides this convenience method. The only difference between this method and "<code>http.request()</code>" is that it sets the method to "<code>GET</code>" and calls "<code>req.end()</code>" automatically. The callback is invoked with a single argument that is an instance of "<code>http.IncomingMessage</code>", and must take care to consume the response data.
+          <div class="p"><code><span class="sti">httpRes</span>.on('data', (<span class="sti">chunk</span>) => { <span class="sti">rawData</span> += <span class="sti">chunk</span>; })</code> the callback function needs to define an event handler that will handle the chunks of data by adding them to a previously defined "<code class="sti">rawData</code>" variable.</div>
+          <div class="p"><code><span class="sti">httpRes</span>.on('end', () => { <span class="sti">parsedData</span> = JSON.parse(<span class="sti">rawData</span>); } )</code> the callback function also needs to define an event handler that once data transmission end, will parse the "<code class="sti">rawData</code>" into a "<code class="sti">parsedData</code>".</div>
+        </div>
         <h3>Encryption With "bcrypt.js" Module</h3>
         <div class="p"><code><span class="kwd">const</span> <span class="sti">bcrypt</span> = require('bcryptjs')</code> imports the "bcrypt.js" encryption module.</div>
         <div class="p"><code><span class="sti">bcrypt</span>.hash(<span class="sti">string</span>, <span class="sti">rounds</span>)</code> takes a "<code class="sti">string</code>" and a number of "<code class="sti">rounds</code>" (normally "<code>10</code>") and returns a promise that resolves into a "<code class="sti">hash</code>" (a hashed value of the "<code class="sti">string</code>").</div>
@@ -1387,9 +1404,12 @@
         <div class="p"><code><span class="kwd">import</span> { useSelector, useDispatch } <span class="kwd">from</span> 'react-redux'</code> imports custom React hooks that allow your React components to interact with the Redux store.</div>
         <div class="p"><code>&lt;Provider store={<span class="sti">store</span>}&gt; … &lt;/Provider&gt;</code> wraps the "<code>&lt;App&gt;</code>" component (in React-Redux defined on the file "<code>./js/components/App</code>") inside the "<code>render()</code>" method. It takes a "<code>store</code>" attribute that can be bind to the imported store ("<code>&lt;Provider store={<span class="sti">store</span>}&gt;&lt;App /&gt;&lt;/Provider&gt;</code>").</div>
         <div class="p"><code><span class="kwd">import</span> { connect } <span class="kwd">from</span> 'react-redux'</code> imports the "<code>connect()</code>" function to bind the store to the state.</div>
-        <div class="p"><code>connect(<span class="opt">mapStateToProps</span>, <span class="opt">mapDispatchToProps</span>, <span class="opt">mergeProps</span>, <span class="opt">options</span>)(<span class="sti">StatelessComponent</span>)</code> returns a component with its state bind to the store.
-          <div class="p"><code><span class="kwd">function</span> mapStateToProps</code></div>
+        <div class="p"><code>connect(<span class="opt">mapStateToProps</span>, <span class="opt">mapDispatchToProps</span>, <span class="opt">mergeProps</span>, <span class="opt">options</span>)</code> returns a function that will generate component with its state bind to the store.
+          <div class="p"><code><span class="kwd">function</span>(<span class="sti">StatelessComponent</span>)</code> the "<code>connect()</code>" method returns a function that takes a stateless component and wraps it into a component with its state subscribed to the store. It is common to directly invoke the returned function without previusly storing it: "<code>connect(<span class="sti opt">…</span>)(<span class="sti">StatelessComponent</span>)</code>".</div>
+          <div class="p"><code><span class="kwd">function</span> mapStateToProps(state<span class="opt">, ownProps</span>)</code> If a "<code>mapStateToProps</code>" function is specified, the new wrapper component will subscribe to Redux store updates. This means that any time the store is updated, "<code>mapStateToProps</code>" will be called. The results of the function must be a plain object, which will be merged into the wrapped component's props (pass "<code>null</code>" or "<code>undefined</code>" instead if the component won't subscribe to store updates).</div>
           <div class="p"><code><span class="kwd">function</span> mapDispatchToProps(dispatch) { <span class="kwd">return</span> { <span class="sti">doActionProp</span>: <span class="kwd">function</span>(<span class="sti">payload</span>) { dispatch(<span class="sti">doAction</span>(<span class="sti">payload</span>)) } }; } </code> connects Redux actions to React props</div>
+          <div class="p"><code><span class="kwd">function</span> mergeProps(stateProps, dispatchProps, ownProps)</code> If specified, defines how the final props for your own wrapped component are determined. If you do not provide mergeProps, your wrapped component receives { ...ownProps, ...stateProps, ...dispatchProps } by default.</div>
+          <div class="p"><code><span class="kwd">let</span> options = { context?: Object,  pure?: boolean,  areStatesEqual?: Function,  areOwnPropsEqual?: Function,  areStatePropsEqual?: Function,  areMergedPropsEqual?: Function,  forwardRef?: boolean }</code> Additional options that can be configured (supported in >= v6.0 only).</div>
         </div>
       </article>
       <article>
