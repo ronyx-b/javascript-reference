@@ -1369,24 +1369,28 @@
         <div class="p"><code>useEffect(<span class="sti">callback</span>, [<span class="sti opt">dependencies</span>])</code> accepts a callback function to be executed when the component is mounted and whenever any of variables of the optional dependencies array is modified. The callback may return another callback to be executed when unmounted. The equivalent in Class Components is the use of the functions "<code>componentDidMount() { … }</code>" and "<code>  componentWillUnmount() { … }</code>"</div>
         <h2>React Router</h2>
         <div class="p"><code><span class="kwd">import</span> { BrowserRouter } <span class="kwd">from</span> 'react-router-dom'</code> imports the "BrowserRouter" component, which needs to wrap the "&lt;App /&gt;" component on the "<code>index.js</code> " file, to enable routing.</div>
-        <div class="p"><code><span class="kwd">import</span> { Switch, Route, Redirect, Link } <span class="kwd">from</span> 'react-router-dom'</code> imports the routing components to wire the routing, with "Switch" and "Route" being used inside the "App" component.</div>
-        <div class="p"><code><span class="kwd">import</span> { useParams, useLocation, useHistory, useRouteMatch } <span class="kwd">from</span> 'react-router-dom'</code> imports the "useParams" hook to read from parametric URLs ("path='/route/:param'"), or any of the other routing hooks; using any one needed on any other components.</div>
+        <div class="p"><code><span class="kwd">import</span> { Routes, Route, Redirect, Link, Outlet, Navigate } <span class="kwd">from</span> 'react-router-dom'</code> imports the routing components to wire the routing, with "Routes" and "Route" being used inside the main ("App") component.</div>
+        <div class="p"><code><span class="kwd">import</span> { useParams, useLocation, useNavigate, useSearchParams } <span class="kwd">from</span> 'react-router-dom'</code> imports the "useParams" hook to read from parametric URLs ("path='/route/:param'"), or any of the other routing hooks; using any one needed on any other components.</div>
         <div class="p"><code><span class="kwd">import</span> queryString <span class="kwd">from</span> 'query-string'</code> imports the "queryString" object which allows to parse a query string.</div>
-        <div class="p"><code>&lt;Switch&gt;…&lt;/Switch&gt;</code> wraps the routes to be wired.</div>
-        <div class="p"><code>&lt;Route&gt;…&lt;/Route&gt;</code> defines the path to be evaluated and wraps the component to be rendered on that path. Has the following attributes:
+        <div class="p"><code>&lt;Routes&gt;…&lt;/Routes&gt;</code> wraps the routes to be wired.</div>
+        <div class="p"><code>&lt;Route /&gt; | &lt;Route&gt;…&lt;/Route&gt;</code> defines the path, simple or nested, to be evaluated and defines the component to be rendered on that path. Has the following attributes:
           <ul>
             <li>"<code>path</code>": is set equal to the route to be associated with the component to be displayed ("<code>path='/<span class="sti">Page</span>'</code> "). A Route component without a "path" will render HTML code for a route not found.</li>
+            <li>"<code>element</code> ": sets the element to be rendered on the path (as embedded expression: "<code>element={&lt;<span class="sti">Component</span> /&gt;}</code>")</li>
             <li>"<code>exact</code>": empty attribute used to specify that the path must be matched exactly (no parametric URL).</li>
+            <li>"<code>index</code>": empty attribute used to specify an element to be rendered inside the "<code>&lt;Outlet /&gt;</code> " of a nested route when there are no children specified (default).</li>
           </ul>
         </div>
-        <div class="p"><code>&lt;Redirect to='/Path' /&gt;</code> used inside a "&lt;Route&gt;" component to redirect to another path, where "to" can be an URL string or an object "<code>{pathname: <span class="sti">URL</span>, search: ?<span class="sti">queryString</span>, state: { <span class="sti">stateObject</span> } }</code>".</div>
+        <div class="p"><code>&lt;Outlet /&gt;</code> on the parent of nested routes, sets the target for the children routes.</div>
+        <div class="p"><code>&lt;Navigate to='/Path' /&gt;</code> used inside a component to redirect to another path, where "to" can be an URL string or an object "<code>{pathname: <span class="sti">URL</span>, search: ?<span class="sti">queryString</span>, state: { <span class="sti">stateObject</span> } }</code>".</div>
         <div class="p"><code>&lt;Link to='/Path'&gt;…&lt;/Link&gt;</code> creates a routable link (doesn't reload the whole application) to be used on rendered components.</div>
         <div class="p"><code>useParams()</code> returns the parameters from the URL ("<code>let { <span class="sti">param</span> } = useParams()</code>").</div>
         <div class="p"><code>useLocation()</code> returns an object that contains the location string, including the query string on its "<code>.search</code>" member.</div>
-        <div class="p"><code>useHistory()</code> returns and object that allows to programmatically change routes from within our code.
-          <div class="p"><code><span class="sti">history</span>.push(<span class="sti">URLstring</span>)</code> method that allows to change route programmatically ("<code><span class="kwd">let</span> <span class="sti">history</span> = useHistory()</code>")</div>
+        <div class="p"><code>useNaviagte()</code> returns and object that allows to programmatically change routes from within our code.
+          <div class="p"><code><span class="sti">navigate</span>(<span class="sti">URLstring</span>)</code> method that allows to change route programmatically ("<code><span class="kwd">let</span> <span class="sti">navigate</span> = useNavigate()</code>")</div>
         </div>
-        <div class="p"><code>queryString.parse(location.search)</code> parses the query string and returns an object made of the "key=value" pairs (the "location" object is returned by "useLocation()").</div>
+        <div class="p"><code>URLSearchParams(<span class="sti">location</span>.search)</code> native interfaces that can be used to parse the query string and returns an object made of the "key=value" pairs (the "<code class="sti">location</code>" object is returned by "<code>useLocation()</code>").</div>
+        <div class="p"><code>useSearchParams(<span class="opt">{<span class="sti">initial</span>}</span>)</code> like "<code>useState()</code>" and "<code>URLSearchParams()</code>" combined, can receive an initial value to set the query string, and returns an array with to elements: the value of the query string object, and a function to set the value of the query string.</div>
         <h2>Redux and React-Redux</h2>
         <h3>Redux Store</h3>
         <div class="p"><code><span class="kwd">import</span> { createStore } <span class="kwd">from</span> 'redux'</code> imports the "<code>createStore</code>" function from "<code>redux</code>"</div>
